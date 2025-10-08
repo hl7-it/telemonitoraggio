@@ -54,7 +54,7 @@ Description: "Profilo base dell'Encounter condiviso in tutti i documenti di Tele
 * participant ^short = "Altre figura tecnica coinvolte"
 * participant ^definition = "BackboneElement contenente la lista dei coinvolti nella visita oltre al Patient."
 * participant ^comment = "In partecipat.individual può essere inserito il riferimento al Practitioner o al PractitionerRole che prende in carico la visita."
-* participant.individual only Reference(PractitionerTelemedicina)
+* participant.individual only Reference(PractitionerTelemonitoraggio)
 
 * appointment only Reference(AppointmentTelemedicina)
 * appointment ^short = "L'appuntamento da cui è partita l'incontro"

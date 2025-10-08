@@ -1,6 +1,6 @@
-Profile: PractitionerTelemedicina
+Profile: PractitionerTelemonitoraggio
 Parent: Practitioner
-Id: PractitionerTelemedicina
+Id: PractitionerTelemonitoraggio
 Description: "Profilo base del Practitioner condiviso in tutti i documenti di Telemedicina"
 * ^version = "0.1.0"
 * ^status = #active

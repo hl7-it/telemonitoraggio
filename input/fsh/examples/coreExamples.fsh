@@ -6,10 +6,10 @@ InstanceOf: PatientTelemonitoraggio
 Description: "Esempio di paziente nel contesto della televisita"
 Usage: #example
 * id = "2e7e0fe3-f0bf-4e0a-8228-b8e7fcec8c82"
-* extension[luogoNascita].valueAddress.extension[residenza].valueBoolean = true
-* extension[luogoNascita].valueAddress.line[+].extension[odonimo].valueString = "Via della Vittoria"
-* extension[luogoNascita].valueAddress.line[=].extension[houseNumber].valueString = "1"
-* extension[luogoNascita].valueAddress.line[=] = "Via della Vittoria, 1"
+// * extension[luogoNascita].valueAddress.extension[residenza].valueBoolean = true
+// * extension[luogoNascita].valueAddress.line[+].extension[odonimo].valueString = "Via della Vittoria"
+//* extension[luogoNascita].valueAddress.line[=].extension[houseNumber].valueString = "1"
+* extension[luogoNascita].valueAddress.line[0] = "Via della Vittoria, 1"
 * extension[luogoNascita].valueAddress.city = "Milano"
 * extension[luogoNascita].valueAddress.postalCode = "20100"
 * extension[luogoNascita].valueAddress.country = "IT"
@@ -35,9 +35,9 @@ Usage: #example
 * address.line = "Via della Libertà, 52"
 * address.use = #home
 * address.state = "Italia"
-* address.extension[residenza].valueBoolean = true
-* address.extension[certificazioneIndirizzo].extension[who].valueCodeableConcept = https://www.hl7.it/fhir/terminology/CodeSystem/it-tipoEntita#gov
-* address.line.extension[dugCode].valueCodeableConcept  = $istat-DUG-CS#67 "via"
+//* address.extension[residenza].valueBoolean = true
+//* address.extension[certificazioneIndirizzo].extension[who].valueCodeableConcept = https://www.hl7.it/fhir/terminology/CodeSystem/it-tipoEntita#gov
+//* address.line.extension[dugCode].valueCodeableConcept  = $istat-DUG-CS#67 "via"
 * contact[0].name.family = "Rossi"
 * contact[0].name.given = "Luigi"
 * contact[1].name.family = "Bianchi"
@@ -64,7 +64,7 @@ Usage: #example
 * id = "9f1a2b87-7d4c-4a65-8fc7-e8b56f7312f5"
 
 Instance: PractitionerTelemonitoraggioConulenteExample
-InstanceOf: PractitionerRoleTelemonitoraggio
+InstanceOf: PractitionerTelemonitoraggio
 Description: "Esempio di practitioner nel contesto della Telemonitoraggio"
 Usage: #example
 * id = "d37c3d0a-96d9-4de5-873c-68b6c1c64db2"

@@ -109,7 +109,7 @@ Description: "Profilo base del Patient condiviso in tutti i documenti di Telemed
     mmgPls 0..* MS and
     aziendaAssistenza 0..* MS
 * generalPractitioner[mmgPlsRole] only Reference(PractitionerRoleTelemonitoraggio)
-* generalPractitioner[mmgPls] only Reference(PractitionerTelemedicina)
+* generalPractitioner[mmgPls] only Reference(PractitionerTelemonitoraggio)
 * generalPractitioner[aziendaAssistenza] only Reference(OrganizationTelemedicina)
 
 

@@ -30,7 +30,7 @@ Description: "Profilo del Bundle utilizzato nel contesto della Relazione Finale 
 
 * entry[carePlan].resource only CarePlanPianoDiCuraTelemonitoraggio
 * entry[practitionerRole].resource only PractitionerRoleTelemonitoraggio
-* entry[practitioner].resource only PractitionerTelemedicina
+* entry[practitioner].resource only PractitionerTelemonitoraggio
 * entry[practitioner].resource.identifier ^slicing.discriminator.type = #pattern
 * entry[practitioner].resource.identifier ^slicing.discriminator.path = "$this"
 * entry[practitioner].resource.identifier ^slicing.description = "Slice based on the identifier pattern"
