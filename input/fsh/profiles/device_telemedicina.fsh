@@ -3,7 +3,6 @@ Parent: Device
 Id: DeviceTelemedicinaTesserino
 Title: "DeviceTelemedicinaTesserino"
 Description: "Profilo base del Device condiviso in tutti i documenti di Telemedicina"
-* ^url = "https://agenas.gov.it/fhir/StructureDefinition/DeviceTelemedicinaTesserino"
 * ^status = #draft
 * ^experimental = false
 * id MS

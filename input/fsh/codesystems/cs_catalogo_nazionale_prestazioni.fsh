@@ -3,7 +3,6 @@ Id: CodesystemCatalogoNazionalePrestazioni
 Title: "Codesystem catalogo nazionale prestazioni"
 Description: "Definisce il sistema di terminologie da usare per i codici prestazione definiti dal catalogo nazionale"
 * ^name = "CodesystemCatalogoNazionalePrestazioni"
-* ^url = "https://terminology.agenas.gov.it/CodeSystem/CodesystemCatalogoNazionalePrestazioni"
 * ^version = "1.0.0"
 * ^status = #draft
 * ^experimental = true

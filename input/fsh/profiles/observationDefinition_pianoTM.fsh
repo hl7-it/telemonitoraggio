@@ -2,7 +2,6 @@ Profile: ObservationDefinitionPianoTM
 Parent: ObservationDefinition
 Id: ObservationDefinitionPianoTM
 Description: "Profilo della Observation utilizzata nel contesto del Telemonitoraggio"
-* ^url = "https://agenas.gov.it/fhir/StructureDefinition/ObservationDefinitionPianoTM"
 * ^status = #draft
 * category ^short = "Tipologia di rilevazione"
 * category ^definition = "Tipologia di rilevazione"

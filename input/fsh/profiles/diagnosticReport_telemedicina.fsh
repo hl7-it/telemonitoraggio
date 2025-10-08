@@ -6,7 +6,6 @@ Profile: DiagnosticReportTelemedicina
 Parent: DiagnosticReport
 Id: DiagnosticReportTelemedicina
 Description: "Profilo base della DiagnosticReport condiviso in tutti i documenti di Telemedicina"
-* ^url = "https://agenas.gov.it/fhir/StructureDefinition/DiagnosticReportTelemedicina"
 * ^version = "1.0.0"
 * ^status = #draft
 * id MS
@@ -36,5 +35,5 @@ Description: "Profilo base della DiagnosticReport condiviso in tutti i documenti
 * encounter ^short = "Contesto in cui è stato generato il DiagnosticReport."
 * performer ^short = "Responsabile del report clinico."
 * performer ^definition = "Organizzazione o Persona che è responsabile del report; non è necessariamente l'autore dei dati atomici o l'entità che ha interpretato i risultati."
-* media.link.identifier.system = "https://terminology.agenas.gov.it/sid/identificativoOggettoCorrelato" (exactly)
+//* media.link.identifier.system = "https://terminology.agenas.gov.it/sid/identificativoOggettoCorrelato" (exactly)
 * conclusionCode from diagnosi-icd9cm (required)

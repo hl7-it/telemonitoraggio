@@ -2,7 +2,6 @@ Profile: CarePlanPianoDiCuraTelemonitoraggio
 Parent: CarePlan
 Id: CarePlanPianoDiCuraTelemonitoraggio
 Description: "Profilo del CarePlan utilizzato nel contesto del Telemonitoraggio"
-* ^url = "https://agenas.gov.it/fhir/StructureDefinition/CarePlanPianoDiCuraTelemonitoraggio"
 * ^status = #draft
 * identifier ^short = "Codice identificativo del Piano"
 * identifier ^definition = "Identificativi aziendali assegnati a questo piano di cura dall'esecutore o da altri sistemi, che rimangono costanti man mano che la risorsa viene aggiornata e propagata da server a server."

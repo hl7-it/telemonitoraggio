@@ -6,7 +6,6 @@ Profile: ActivityDefinitionPianoTM
 Parent: ActivityDefinition
 Id: ActivityDefinitionPianoTM
 Description: "Profilo dell'ActivityDefinition utilizzato nel contesto di Telemonitoraggio"
-* ^url = "https://agenas.gov.it/fhir/StructureDefinition/ActivityDefinitionPianoTM"
 * ^status = #draft
 * description ^short = "Descrizione attività"
 * description ^definition = "Descrizione attività"

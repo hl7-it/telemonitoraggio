@@ -5,7 +5,6 @@ Parent: $Device
 Id: DeviceTelemedicina
 Title: "Device"
 Description: "Profilo base del Device condiviso in tutti i documenti di Telemedicina"
-* ^url = "https://agenas.gov.it/fhir/StructureDefinition/DeviceTelemedicina"
 * ^status = #draft
 * ^experimental = false
 * ^date = "2024-04-29T16:08:42+02:00"

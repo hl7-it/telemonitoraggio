@@ -22,4 +22,3 @@ Context: Address, Patient, Patient.identifier
 * extension[who].value[x] only CodeableConcept or Reference
 * extension[who].value[x] from $tipoCertificatore (extensible)
 * extension[rank].value[x] only decimal
-* url = "https://agenas.gov.it/fhir/StructureDefinition/recordCertification" (exactly)

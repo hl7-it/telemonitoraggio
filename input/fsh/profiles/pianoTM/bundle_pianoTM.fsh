@@ -2,7 +2,6 @@ Profile: BundlePianoTM
 Parent: Bundle
 Id: BundlePianoTM
 Description: "Profilo del Bundle utilizzato nel contesto del Piano di Telemonitoraggio"
-* ^url = "https://agenas.gov.it/fhir/StructureDefinition/BundlePianoTM"
 * ^status = #draft
 * type = #document (exactly)
 * entry ^slicing.discriminator.type = #type

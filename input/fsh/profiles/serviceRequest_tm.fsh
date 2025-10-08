@@ -4,7 +4,6 @@ Profile: ServiceRequestTelemedicina
 Parent: ServiceRequest
 Id: ServiceRequestTelemedicina
 Description: "Profilo base della ServiceRequest condiviso in tutti i documenti di Telemedicina"
-* ^url = "https://agenas.gov.it/fhir/StructureDefinition/ServiceRequestTelemedicina"
 * ^version = "1.0.0"
 * ^status = #draft
 * ^date = "2024-04-29T16:08:42+02:00"

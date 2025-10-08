@@ -2,7 +2,6 @@ Profile: CarePlanPianoDiCuraTA
 Parent: CarePlan
 Id: CarePlanPianoDiCuraTA
 Description: "Profilo del CarePlan utilizzato nel contesto del Piano di Teleassisitenza"
-* ^url = "https://agenas.gov.it/fhir/StructureDefinition/CarePlanPianoDiCuraTA"
 * ^status = #draft
 * identifier ^short = "Codice identificativo del Piano"
 * identifier ^definition = "Identificativi aziendali assegnati a questo piano di cura dall'esecutore o da altri sistemi, che rimangono costanti man mano che la risorsa viene aggiornata e propagata da server a server."
