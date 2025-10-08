@@ -9,12 +9,12 @@ Description: "Profilo del CarePlan utilizzato nel contesto del Piano di Teleassi
 * category from tipologia-piano (required)
 * category ^short = "Tipologia di Piano"
 * category ^definition = "Identifica il \"tipo\" di piano per supportare la differenziazione tra più piani coesistenti."
-* subject only Reference(PatientTelemedicina)
+* subject only Reference(PatientTelemonitoraggio)
 * subject ^short = "Per chi è destinato il piano di cura"
 * subject ^definition = "Identifica il paziente la cui cura prevista è descritta dal piano."
 * period ^short = "Durata prevista del piano delle attività"
 * period ^definition = "Durata prevista del piano delle attività."
-* author only Reference(PractitionerRoleTelemedicina)
+* author only Reference(PractitionerRoleTelemonitoraggio)
 * author ^short = "Autore del piano di cura del paziente"
 * author ^definition = "Autore del piano di cura del paziente. Quando popolato l'autore è il responsabile del piano di cura."
 * activity ^short = "Azione da attuare come parte del piano"

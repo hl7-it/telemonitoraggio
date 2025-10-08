@@ -20,12 +20,12 @@ Description: "Profilo del Bundle utilizzato nel contesto del Piano di Telemonito
     observationDefinition 0..*
 * entry[composition].resource only CompositionPianoTM
 * entry[carePlan].resource only CarePlanPianoDiCuraTelemonitoraggio
-* entry[patient].resource only PatientTelemedicina
+* entry[patient].resource only PatientTelemonitoraggio
 * entry[patient].resource.address 1..
 * entry[patient].resource.address ^slicing.discriminator.type = #value
 * entry[patient].resource.address ^slicing.discriminator.path = "use"
 * entry[patient].resource.address ^slicing.rules = #open
-* entry[practitionerRole].resource only PractitionerRoleTelemedicina
+* entry[practitionerRole].resource only PractitionerRoleTelemonitoraggio
 * entry[organization].resource only OrganizationTelemedicina
 * entry[practitioner].resource only PractitionerTelemedicina
 * entry[practitioner].resource.identifier ^slicing.discriminator.type = #pattern

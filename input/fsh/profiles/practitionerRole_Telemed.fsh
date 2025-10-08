@@ -4,10 +4,10 @@ Alias: $Organization_T2 = https://agenas.gov.it/fhir/StructureDefinition/Organiz
 Alias: $Organization_T3 = https://agenas.gov.it/fhir/StructureDefinition/Organization_T3
 Alias: $specialityPractitionerRole = https://terminology.agenas.gov.it/ValueSet/specialityPractitionerRole
 
-Profile: PractitionerRoleTelemedicina
+Profile: PractitionerRoleTelemonitoraggio
 Parent: PractitionerRole
-Id: PractitionerRoleTelemedicina
-Title: "PractitionerRoleTelemedicina"
+Id: PractitionerRoleTelemonitoraggio
+Title: "PractitionerRoleTelemonitoraggio"
 Description: "Profilo base del PractitionerRole condiviso in tutti i documenti di Telemedicina"
 * ^version = "0.1.0"
 * ^status = #active

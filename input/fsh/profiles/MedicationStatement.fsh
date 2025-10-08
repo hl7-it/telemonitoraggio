@@ -12,7 +12,7 @@ Description: "Profilo base della MedicationStatement condiviso in tutti i docume
 * medication[x] ^mustSupport = true
 
 // Subject must be Telemedicina patient
-* subject only Reference(PatientTelemedicina)
+* subject only Reference(PatientTelemonitoraggio)
 
 // Optional metadata
 * effective[x] 0..1

@@ -7,9 +7,9 @@ Alias: $anpr = http://hl7.it/sid/anpr
 Alias: $cf = http://hl7.it/sid/codiceFiscale
 Alias: $tipoIdentificatore = http://hl7.it/fhir/lab-report/ValueSet/VstipoIdentificatore
 
-Profile: PatientTelemedicina
+Profile: PatientTelemonitoraggio
 Parent: Patient
-Id: PatientTelemedicina
+Id: PatientTelemonitoraggio
 Description: "Profilo base del Patient condiviso in tutti i documenti di Telemedicina"
 * ^version = "1.0.0"
 * ^status = #draft
@@ -108,7 +108,7 @@ Description: "Profilo base del Patient condiviso in tutti i documenti di Telemed
     mmgPlsRole 0..* MS and
     mmgPls 0..* MS and
     aziendaAssistenza 0..* MS
-* generalPractitioner[mmgPlsRole] only Reference(PractitionerRoleTelemedicina)
+* generalPractitioner[mmgPlsRole] only Reference(PractitionerRoleTelemonitoraggio)
 * generalPractitioner[mmgPls] only Reference(PractitionerTelemedicina)
 * generalPractitioner[aziendaAssistenza] only Reference(OrganizationTelemedicina)
 

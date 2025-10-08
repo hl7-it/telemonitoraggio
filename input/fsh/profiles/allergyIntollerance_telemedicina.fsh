@@ -7,5 +7,5 @@ Description: "Profilo base del AllergyIntolerance condiviso in tutti i documenti
 * code ^short = "Codice dell'allergia o intolleranza"
 * code ^definition = "Codice dell'allergia o intolleranza"
 * criticality ^short = "Criticità"
-* patient only Reference(PatientTelemedicina)
+* patient only Reference(PatientTelemonitoraggio)
 * reaction.severity ^short = "Gravità della reazione"

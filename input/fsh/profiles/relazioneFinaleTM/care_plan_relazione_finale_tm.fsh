@@ -5,7 +5,7 @@ Description: "Profilo del Care Plan utilizzato nel contesto del Report Rilevazio
 * ^status = #draft
 * identifier ^short = "Codice identificativo del Piano"
 * identifier ^definition = "Identificativi aziendali assegnati a questo piano di cura dall'esecutore o da altri sistemi, che rimangono costanti man mano che la risorsa viene aggiornata e propagata da server a server."
-* subject only Reference(PatientTelemedicina)
+* subject only Reference(PatientTelemonitoraggio)
 * subject ^short = "Per chi è destinato il piano di cura"
 * subject ^definition = "Identifica il paziente la cui cura prevista è descritta dal piano."
 * activity ^short = "Azione da attuare come parte del piano"

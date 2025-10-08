@@ -16,7 +16,7 @@ Description:  "Profilo base della Procedure condiviso in tutti i documenti di Te
 * code ^definition = "CodeableConcept che contiene i codici identificativi delle tipologie di interventi, come ad esempio i codici ICD9 supportati dallo standard FHIR"
 * code from VsCatalogoNazionalePrestazioni (required)
 
-* subject only Reference(PatientTelemedicina)
+* subject only Reference(PatientTelemonitoraggio)
 * subject ^short = "Paziente coinvolto nella procedira"
 * subject ^definition = "Su chi è stata eseguita la procedura."
 * performed[x] only Period
@@ -27,7 +27,7 @@ Description:  "Profilo base della Procedure condiviso in tutti i documenti di Te
 
 * performer ^short = "Le persone che hanno eseguito la procedura"
 * performer ^definition = "Elemento ripetibile contenente i riferimenti a chi prende parte alla procedura di intervento e alle tipologie di performance offerte durante la procedure."
-* performer.actor only Reference(PractitionerTelemedicina or PractitionerRoleTelemedicina or OrganizationTelemedicina or Patient or DeviceTelemedicinaTesserino)
+* performer.actor only Reference(PractitionerTelemedicina or PractitionerRoleTelemonitoraggio or OrganizationTelemedicina or Patient or DeviceTelemedicinaTesserino)
 
 * outcome ^short = "Parametri rilevanti al fine di caratterizzare la procedura"
 * outcome ^definition = "Elemento utilizzato per gestire la relazione del professionista generata al termine dell'erogazione"

@@ -23,7 +23,7 @@ Id: DeviceUseStatementTelemedicina
 Description: "Profilo della DeviceUseStatement che identifica il legame tra l'assistito e il device"
 * ^status = #draft
 * status = #active
-* subject only Reference(PatientTelemedicina)
+* subject only Reference(PatientTelemonitoraggio)
 * timing[x] ^short = "Data di assegnazione del dispositivo al paziente"
 * timing[x] only dateTime 
 * device only Reference(DeviceTelemedicina)

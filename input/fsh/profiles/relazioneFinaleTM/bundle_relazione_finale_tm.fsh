@@ -25,11 +25,11 @@ Description: "Profilo del Bundle utilizzato nel contesto della Relazione Finale 
     specimen 0..*
 
 * entry[composition].resource only CompositionRelazioneFinaleTelemonitoraggio
-* entry[patient].resource only PatientTelemedicina
+* entry[patient].resource only PatientTelemonitoraggio
 * entry[patient].resource.address 1..
 
 * entry[carePlan].resource only CarePlanPianoDiCuraTelemonitoraggio
-* entry[practitionerRole].resource only PractitionerRoleTelemedicina
+* entry[practitionerRole].resource only PractitionerRoleTelemonitoraggio
 * entry[practitioner].resource only PractitionerTelemedicina
 * entry[practitioner].resource.identifier ^slicing.discriminator.type = #pattern
 * entry[practitioner].resource.identifier ^slicing.discriminator.path = "$this"

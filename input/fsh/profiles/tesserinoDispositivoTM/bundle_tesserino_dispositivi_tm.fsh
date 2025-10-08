@@ -16,7 +16,7 @@ Description: "Profilo del Bundle utilizzato nel contesto del Tesserino Dispositi
     organization 0..*
 * entry[composition].resource only CompositionTesserinoDispositiviTM
 * entry[device].resource only DeviceTelemedicina
-* entry[patietn].resource only PatientTelemedicina
+* entry[patietn].resource only PatientTelemonitoraggio
 * entry[patietn].resource.address 1..
 * entry[patietn].resource.address ^slicing.discriminator.type = #value
 * entry[patietn].resource.address ^slicing.discriminator.path = "use"

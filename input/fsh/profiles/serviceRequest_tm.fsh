@@ -74,7 +74,7 @@ Description: "Profilo base della ServiceRequest condiviso in tutti i documenti d
 * orderDetail ^definition = "Ulteriori dettagli e istruzioni sulla servizi da erogare"
 * quantity[x] ^short = "Quantità prestazione"
 * quantity[x] ^definition = "Contiene la molteplicità della prestazione."
-* subject only Reference(PatientTelemedicina)
+* subject only Reference(PatientTelemonitoraggio)
 * subject ^short = "Reference a Patient"
 * subject ^definition = "Elemento di tipo Reference che contiene il riferimento alla risorsa Patient oggetto della richiesta."
 * subject ^comment = "I riferimenti DEVONO essere un riferimento a una risorsa FHIR effettiva e DEVONO essere risolvibili (consentendo il controllo dell'accesso, la non disponibilità temporanea, ecc.) La risoluzione può avvenire tramite recupero dall'URL o, se applicabile per tipo di risorsa, trattando un riferimento assoluto come un URL canonico e cercandolo in un registro/repository locale."
@@ -87,7 +87,7 @@ Description: "Profilo base della ServiceRequest condiviso in tutti i documenti d
 * occurrence[x] ^definition = "Data di erogazione/erogazione desiderata\nTiming: Estensione per la definizione di un timing specifico ad uno specifico orario del giorno/settimana"
 * authoredOn ^short = "Data di invio della richiesta."
 * authoredOn ^definition = "Nei casi di prescrizione, corrisponde alla data di compilazione della prescrizione."
-* requester only Reference(PractitionerRoleTelemedicina)
+* requester only Reference(PractitionerRoleTelemonitoraggio)
 * requester ^short = "Medico prescrittore."
 * requester ^short = "Richiedente richiesta"
 * requester ^definition = "Elemento di tipo Reference che contiene il riferimento alla asl e medico richiedente."

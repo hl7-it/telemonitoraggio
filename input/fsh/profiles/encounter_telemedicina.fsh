@@ -46,7 +46,7 @@ Description: "Profilo base dell'Encounter condiviso in tutti i documenti di Tele
 * priority.coding.code ^definition = "Simbolo nella sintassi definita dal sistema. Il simbolo può essere un codice predefinito o un'espressione in una sintassi definita dal sistema di codifica (ad esempio post-coordinamento)."
 * priority.coding.code ^comment = "Si noti che le stringhe FHIR NON devono superare 1 MB di dimensione"
 * subject ^short = "Paziente coinvolto nell'incontro"
-* subject only Reference(PatientTelemedicina)
+* subject only Reference(PatientTelemonitoraggio)
 * basedOn only Reference(ServiceRequestTelemedicina) 
 * basedOn ^short = "La richiesta che ha avviato la visita"
 * basedOn ^definition = "La richiesta che questa visita soddisfa."

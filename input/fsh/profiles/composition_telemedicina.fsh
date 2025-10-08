@@ -15,12 +15,12 @@ Description: "Profilo base della Composition condiviso in tutti i documenti di T
 * type from vsTipologiaDocumentale (required)
 * type ^short = "Tipo di Composition."
 
-* subject only Reference(PatientTelemedicina)
+* subject only Reference(PatientTelemonitoraggio)
 * encounter only Reference(EncounterTelemedicina)
 * encounter ^short = "Contesto in cui è stato generato il documento."
 * date ^short = "Data di modifica della risorsa da parte del firmatario."
 
-* author only Reference(PractitionerRoleTelemedicina or OrganizationTelemedicina)
+* author only Reference(PractitionerRoleTelemonitoraggio or OrganizationTelemedicina)
 * author ^short = "Autore della Composition (Medico Refertante)."
 
 * title ^short = "Titolo del documento"
@@ -34,7 +34,7 @@ Description: "Profilo base della Composition condiviso in tutti i documenti di T
 * attester[legalAuthenticator].mode = #legal (exactly)
 * attester[legalAuthenticator].time 1..
 * attester[legalAuthenticator].party 1..
-* attester[legalAuthenticator].party only Reference(PractitionerRoleTelemedicina)
+* attester[legalAuthenticator].party only Reference(PractitionerRoleTelemonitoraggio)
 
 * relatesTo ^short = "Ulteriori documenti correlati"
 
