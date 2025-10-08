@@ -28,7 +28,7 @@ Description: "Profilo base del Patient condiviso in tutti i documenti di Telemed
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "$this.system"
 * identifier ^slicing.rules = #open
-* identifier ^short = "Identificativo del paziente."
+* identifier ^short = "Codice identificativo del paziente."
 * identifier.value 1..  
 * identifier.value ^short = "ID del paziente (e.g. Codice Fiscale)."
 * identifier.value ^definition = "Identifictivo del paziente."
@@ -78,6 +78,9 @@ Description: "Profilo base del Patient condiviso in tutti i documenti di Telemed
 * name ^definition = "Un nome associato al paziente."
 * name ^comment = "Un paziente può avere più nomi con usi o periodi di applicazione diversi. Per gli animali, il nome è un \"HumanName\" nel senso che viene assegnato e utilizzato dagli esseri umani e ha gli stessi schemi."
 * name ^requirements = "Need to be able to track the patient by multiple names. Examples are your official name and a partner name. The Alphabetic representation of the name SHALL be always provided"
+* name.given ^short = "Nome del paziente"
+* name.family ^short = "Cognome del paziente"
+* gender ^short = "Sesso paziente"
 * gender ^definition = "Genere amministrativo - il genere che il paziente viene considerato per scopi amministrativi e di registrazione."
 * gender ^comment = "Il genere potrebbe non corrispondere al sesso biologico determinato dalla genetica o dall'identificazione preferita dall'individuo. Si noti che sia per gli esseri umani che, in particolare, per gli animali, esistono altre possibilità legittime oltre a quella di maschio e femmina, anche se la stragrande maggioranza dei sistemi e dei contesti supporta solo maschio e femmina.  I sistemi che forniscono supporto decisionale o applicano le regole aziendali dovrebbero idealmente farlo sulla base di osservazioni che riguardano il sesso specifico o l'aspetto del genere di interesse (anatomico, cromosomico, sociale, ecc.) Tuttavia, poiché queste osservazioni sono registrate di rado, la prassi comune è quella di assegnare il genere amministrativo.  In questi casi, l'applicazione delle regole deve tenere conto della variazione tra gli aspetti amministrativi e quelli biologici, cromosomici e di altro genere.  Ad esempio, un avviso relativo a un'isterectomia su un uomo dovrebbe essere gestito come un avvertimento o un errore escludibile, e non come un errore \"duro\".  Per ulteriori informazioni sulla comunicazione del sesso e del genere del paziente, consultare la sezione Genere e sesso del paziente."
 * address ^slicing.discriminator.type = #value
@@ -86,11 +89,16 @@ Description: "Profilo base del Patient condiviso in tutti i documenti di Telemed
 * address contains
     indirizzoResidenza 1..1 and
     indirizzoDomicilio 0..1
+* address[indirizzoResidenza] ^short = "Indirizzo di residenza del paziente"
 * address[indirizzoResidenza].use 1..
 * address[indirizzoResidenza].use = #billing (exactly)
+* address[indirizzoResidenza].city ^short = "Codice del comune di residenza dell'assistito"
+//* address[indirizzoResidenza].city ^short = "Codice del comune di residenza dell'assistito"
+//* address[indirizzoResidenza].city ^short = "Codice del comune di residenza dell'assistito"
+* address[indirizzoDomicilio] ^short = "Indirizzo di domicilio del paziente"
 * address[indirizzoDomicilio].use 1..
 * address[indirizzoDomicilio].use = #home (exactly)
-* birthDate ^short = "La data di nascita dell'individuo"
+* birthDate ^short = "Data nascita paziente"
 * birthDate ^definition = "La data di nascita dell'individuo."
 * birthDate ^comment = "Se non si conosce la vera data di nascita, si dovrebbe fornire almeno un anno stimato. Esiste un'estensione standard \"patient-birthTime\" che dovrebbe essere utilizzata quando è richiesta l'ora (ad esempio nei sistemi di assistenza alla maternità/infanzia)."
 * deceased[x] ^short = "Indica se l'individuo è deceduto o meno."
