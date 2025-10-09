@@ -22,6 +22,6 @@ Description: "Profilo del CarePlan utilizzato nel contesto del Telemonitoraggio"
 * activity.detail.code from TipologiaAttivitaPianoDiTelemonitoraggio (example) //TODO add things from excel
 //* activity.reference only Reference(ServiceRequestTelemedicina)
 * activity.detail.instantiatesCanonical only Canonical(ActivityDefinitionPianoTM)
-* activity.detail.performer only Reference(DeviceTelemedicina)
+* activity.detail.performer only Reference(deviceTelemonitoraggio)
 * activity.detail.performer ^short = "Dispositivo per il telemonitoraggio"
 * activity.detail.performer ^definition = "Dispositivo per il telemonitoraggio che raccoglie e trasmette dati clinici in tempo reale, supportando il monitoraggio remoto del paziente."

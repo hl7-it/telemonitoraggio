@@ -1,9 +1,8 @@
 Alias: $Device = http://hl7.org/fhir/StructureDefinition/Device
 
-Profile: DeviceTelemedicina
+Profile: deviceTelemonitoraggio
 Parent: $Device
-Id: DeviceTelemedicina
-Title: "Device"
+Id: deviceTelemonitoraggio
 Description: "Profilo base del Device condiviso in tutti i documenti di Telemedicina"
 * ^status = #draft
 * ^experimental = false
@@ -17,7 +16,7 @@ Description: "Profilo base del Device condiviso in tutti i documenti di Telemedi
 * identifier ^short = "Identificativo business del Device"
 * identifier ^definition = "Descrive identificativi business per la risorsa"
 * udiCarrier MS
-* udiCarrier ^short = "Unique Device Identifier (UDI)"
+* udiCarrier ^short = "L'UDI utilizza il formato “identificazione automatica e raccolta dei dati” (AIDC), ad esempio codici a barre lineari o 2D e l'identificativo del dispositivo UDI (UDI-DI) utilizza un formato leggibile dall'uomo"
 * udiCarrier ^definition = "Unique device identifier (UDI) assegnato all'etichetta o al pacchetto del dispositivo."
 * status MS
 * manufacturer MS
@@ -30,20 +29,20 @@ Description: "Profilo base del Device condiviso in tutti i documenti di Telemedi
 * expirationDate ^short = "Data di scadenza (se applicabile)"
 * expirationDate ^definition = "Data di scadenza"
 * lotNumber MS
-* lotNumber ^short = "Numero di lotto"
-* lotNumber ^definition = "Numero di lotto"
+* lotNumber ^short = "Numero del lotto"
+* lotNumber ^definition = "Numero del lotto"
 * serialNumber MS
 * serialNumber ^short = "Numero seriale"
-* serialNumber ^definition = "Numero seriale assegnato al device"
+* serialNumber ^definition = "Numero seriale assegnato al dispositivo"
 * deviceName MS
 * deviceName ^short = "Il nome del dispositivo fornito dal produttore"
-* deviceName ^definition = "Rappresenta il nome del produttore del dispositivo fornito dal dispositivo, da un'etichetta UDI o da una persona che descrive il dispositivo."
+* deviceName ^definition = "Rappresenta il nome del produttore del device fornito dal dispositivo, da un'etichetta UDI o da una persona che descrive il dispositivo."
 * deviceName.name MS
-* deviceName.name ^short = "Nome del device"
-* deviceName.name ^definition = "Nome del device"
+* deviceName.name ^short = "Denominazoine del dispositivo"
+* deviceName.name ^definition = "Nome del dispositivo"
 * deviceName.type MS
 * deviceName.type ^definition = "Tipologia del deviceName"
 * type MS
-* type ^short = "Tipologia del device"
-* type ^definition = "Tipologia device associati al piano (es. monitor multiparametrico)."
+* type ^short = "Tipologia del dispositivo"
+* type ^definition = "Tipologia dispositivo associati al piano (es. monitor multiparametrico)."
 * type.text MS

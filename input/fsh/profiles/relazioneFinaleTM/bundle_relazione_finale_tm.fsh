@@ -42,6 +42,6 @@ Description: "Profilo del Bundle utilizzato nel contesto della Relazione Finale 
 * entry[observation].resource only ObservationTelemedicina
 * entry[allergyIntolerance].resource only AllergyIntoleranceTelemedicina
 * entry[procedure].resource only ProcedureTelemedicina
-* entry[device].resource only DeviceTelemedicina
+* entry[device].resource only deviceTelemonitoraggio
 * entry[location].resource only Location
 * entry[specimen].resource only Specimen
