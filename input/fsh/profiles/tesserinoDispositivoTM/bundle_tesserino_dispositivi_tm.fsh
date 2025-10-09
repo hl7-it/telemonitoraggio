@@ -16,6 +16,7 @@ Description: "Profilo del Bundle utilizzato nel contesto del Tesserino Dispositi
     organization 0..*
 * entry[composition].resource only CompositionTesserinoDispositiviTM
 * entry[device].resource only DeviceTelemedicina
+<<<<<<< Updated upstream
 * entry[patient].resource only PatientTelemonitoraggio
 * entry[patient].resource.address 1..
 * entry[patient].resource.address ^slicing.discriminator.type = #value
@@ -23,3 +24,12 @@ Description: "Profilo del Bundle utilizzato nel contesto del Tesserino Dispositi
 * entry[patient].resource.address ^slicing.rules = #open
 * entry[procedure].resource only ProcedureTelemedicina
 * entry[organization].resource only OrganizationTelemedicina
+=======
+* entry[patietn].resource only PatientTelemonitoraggio
+* entry[patietn].resource.address 1..
+* entry[patietn].resource.address ^slicing.discriminator.type = #value
+* entry[patietn].resource.address ^slicing.discriminator.path = "use"
+* entry[patietn].resource.address ^slicing.rules = #open
+* entry[procedure].resource only ProcedureTelemonitoraggio
+* entry[organization].resource only OrganizationT1
+>>>>>>> Stashed changes

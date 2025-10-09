@@ -1,7 +1,7 @@
-Alias: $Timing = http://hl7.org/fhir/StructureDefinition/Timing
+//Alias: $Timing = http://hl7.org/fhir/StructureDefinition/Timing
 
 Profile: TimingTelemedicina
-Parent: $Timing
+Parent: Timing
 Id: TimingTelemedicina
 Description: "Descrizione dei campi da valorizzare in Timing"
 * ^status = #draft

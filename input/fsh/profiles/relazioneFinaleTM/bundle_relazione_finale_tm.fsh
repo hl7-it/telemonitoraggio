@@ -36,12 +36,12 @@ Description: "Profilo del Bundle utilizzato nel contesto della Relazione Finale 
 * entry[practitioner].resource.identifier ^slicing.description = "Slice based on the identifier pattern"
 * entry[practitioner].resource.identifier ^slicing.rules = #open
 
-* entry[organization].resource only OrganizationTelemedicina
+* entry[organization].resource only OrganizationT1
 * entry[medicationRequest].resource only MedicationRequest
 * entry[encounter].resource only Encounter
 * entry[observation].resource only ObservationTelemedicina
 * entry[allergyIntolerance].resource only AllergyIntoleranceTelemedicina
-* entry[procedure].resource only ProcedureTelemedicina
+* entry[procedure].resource only ProcedureTelemonitoraggio
 * entry[device].resource only DeviceTelemedicina
 * entry[location].resource only Location
 * entry[specimen].resource only Specimen

@@ -1,8 +1,8 @@
 Alias: $Patient = https://agenas.gov.it/fhir/StructureDefinition/Patient
 
-Profile: ConditionTelemedicina
+Profile: ConditionTelemonitoraggio
 Parent: Condition
-Id: ConditionTelemedicina
+Id: ConditionTelemonitoraggio
 Description: "Profilo base della Condition condiviso in tutti i documenti di Telemedicina"
 * ^status = #draft
 * ^date = "2024-04-29T16:08:42+02:00"
