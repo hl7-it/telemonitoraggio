@@ -1,6 +1,6 @@
 Alias: $loinc = http://loinc.org
-Alias: $Condition = https://agenas.gov.it/fhir/StructureDefinition/Condition
-Alias: $Procedure = https://agenas.gov.it/fhir/StructureDefinition/Procedure
+Alias: $Condition = http://hl7.it/fhir/StructureDefinition/Condition
+Alias: $Procedure = http://hl7.it/fhir/StructureDefinition/Procedure
 
 Profile: CompositionTesserinoDispositiviTM
 Parent: CompositionTelemedicina

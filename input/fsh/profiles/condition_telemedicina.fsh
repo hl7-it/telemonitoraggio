@@ -1,4 +1,4 @@
-Alias: $Patient = https://agenas.gov.it/fhir/StructureDefinition/Patient
+Alias: $Patient = http://hl7.it/fhir/StructureDefinition/Patient
 
 Profile: ConditionTelemonitoraggio
 Parent: Condition

@@ -1,5 +1,5 @@
 Alias: $extension-DiagnosticReport.composition = http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition
-Alias: $extension-DiagnosticReport-suggestedServices = https://agenas.gov.it/fhir/StructureDefinition/extension-DiagnosticReport-suggestedServices
+Alias: $extension-DiagnosticReport-suggestedServices = http://hl7.it/fhir/StructureDefinition/extension-DiagnosticReport-suggestedServices
 Alias: $diagnosiICD9CM = https://terminology.agenas.gov.it/ValueSet/diagnosiICD9CM
 
 Profile: DiagnosticReportTelemonitoraggio

@@ -7,4 +7,4 @@ Description: "Contiene la lista di codici da utilizzare per le specialità del P
 * ^status = #draft
 * ^experimental = true
 * ^publisher = "pnt.gov.it"
-* include codes from system https://agenas.gov.it/fhir/CodeSystem/csspecialityPractitionerRole
+* include codes from system http://hl7.it/fhir/CodeSystem/csspecialityPractitionerRole

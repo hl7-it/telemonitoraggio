@@ -1,5 +1,5 @@
-//Alias: $Timing = https://agenas.gov.it/fhir/StructureDefinition/Timing
-//Alias: $ObservationDefinition_PianoTM = https://agenas.gov.it/fhir/StructureDefinition/ObservationDefinition_PianoTM
+//Alias: $Timing = http://hl7.it/fhir/StructureDefinition/Timing
+//Alias: $ObservationDefinition_PianoTM = http://hl7.it/fhir/StructureDefinition/ObservationDefinition_PianoTM
 //Alias: $catalogoNazionalePrestazioni = https://terminology.agenas.gov.it/ValueSet/catalogoNazionalePrestazioni
 
 Profile: ActivityDefinitionPianoTM
