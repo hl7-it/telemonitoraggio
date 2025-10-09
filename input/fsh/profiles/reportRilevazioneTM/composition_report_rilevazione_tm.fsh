@@ -1,5 +1,5 @@
 Alias: $loinc = http://loinc.org
-// Alias: $CarePlan_Report_Rilevazione_TM = https://agenas.gov.it/fhir/StructureDefinition/CarePlan_ReportRilevazioneTM
+// Alias: $CarePlan_Report_Rilevazione_TM = http://hl7.it/fhir/StructureDefinition/CarePlan_ReportRilevazioneTM
 
 Profile: CompositionReportRilevazioneTM
 Parent: CompositionTelemedicina

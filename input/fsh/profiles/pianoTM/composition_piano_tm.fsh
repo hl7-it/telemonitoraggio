@@ -1,6 +1,6 @@
 Alias: $loinc = http://loinc.org
-//Alias: $CarePlan_PianoDiCura_TM = https://agenas.gov.it/fhir/StructureDefinition/CarePlan_PianoDiCura_TM
-//Alias: $Observation = https://agenas.gov.it/fhir/StructureDefinition/Observation
+//Alias: $CarePlan_PianoDiCura_TM = http://hl7.it/fhir/StructureDefinition/CarePlan_PianoDiCura_TM
+//Alias: $Observation = http://hl7.it/fhir/StructureDefinition/Observation
 
 Profile: CompositionPianoTM
 Parent: CompositionTelemedicina

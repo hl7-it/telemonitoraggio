@@ -25,7 +25,7 @@ Description: "Profilo del Bundle utilizzato nel contesto del Piano di Telemonito
 * entry[patient].resource.address ^slicing.discriminator.path = "use"
 * entry[patient].resource.address ^slicing.rules = #open
 * entry[practitionerRole].resource only PractitionerRoleTelemonitoraggio
-* entry[organization].resource only OrganizationTelemedicina
+* entry[organization].resource only OrganizationT1
 * entry[practitioner].resource only PractitionerTelemonitoraggio
 * entry[practitioner].resource.identifier ^slicing.discriminator.type = #pattern
 * entry[practitioner].resource.identifier ^slicing.discriminator.path = "$this"
