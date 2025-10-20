@@ -27,10 +27,10 @@ Description: "Profilo base del Patient condiviso in tutti i documenti di Telemed
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "$this.system"
 * identifier ^slicing.rules = #open
-* identifier ^short = "Codice identificativo del paziente."
+* identifier ^short = "Codice identificativo dell'assistito."
 * identifier.value 1..  
-* identifier.value ^short = "ID del paziente (e.g. Codice Fiscale)."
-* identifier.value ^definition = "Identifictivo del paziente."
+* identifier.value ^short = "ID dell'assistito (e.g. Codice Fiscale)."
+* identifier.value ^definition = "Identifictivo dell'assistito."
 * identifier.type from VstipoIdentificatore (extensible)
 * identifier contains
     codiceFiscale 0..1   and
@@ -46,7 +46,7 @@ Description: "Profilo base del Patient condiviso in tutti i documenti di Telemed
 * identifier[codiceFiscale].system = $cf (exactly)
 * identifier[codiceFiscale].value ^short = "Valore dell'identifier."
 * identifier[codiceFiscale].value obeys pat-id-cf-1
-* identifier[anpr] ^short = "Identificativo del paziente nell'Anagrafe nazionale della popolazione residente."
+* identifier[anpr] ^short = "Identificativo dell'assistito nell'Anagrafe nazionale della popolazione residente."
 * identifier[anpr].system ^short = "Namespace per il valore dell'identifier."
 * identifier[anpr].system 1..  
 * identifier[anpr].system = $anpr
@@ -73,9 +73,9 @@ Description: "Profilo base del Patient condiviso in tutti i documenti di Telemed
 
 * name 1..
 * name obeys it-pat-1
-* name ^short = "Un nome associato al paziente"
+* name ^short = "Nome e cognome associato dell'assistito"
 
-* telecom ^short = "recapiti paziente"
+* telecom ^short = "Recapiti dell'assistito"
 
 * address ^slicing.discriminator.type = #value
 * address ^slicing.discriminator.path = "use"
@@ -83,21 +83,21 @@ Description: "Profilo base del Patient condiviso in tutti i documenti di Telemed
 * address contains
     indirizzoResidenza 1..1 and
     indirizzoDomicilio 0..1
-* address[indirizzoResidenza] ^short = "Indirizzo di residenza del paziente"
+* address[indirizzoResidenza] ^short = "Indirizzo di residenza dell'assistito"
 * address[indirizzoResidenza].use 1..
 * address[indirizzoResidenza].use = #billing (exactly)
 * address[indirizzoResidenza].city ^short = "Codice del comune di residenza dell'assistito"
 //* address[indirizzoResidenza].city ^short = "Codice del comune di residenza dell'assistito"
 //* address[indirizzoResidenza].city ^short = "Codice del comune di residenza dell'assistito"
-* address[indirizzoDomicilio] ^short = "Indirizzo di domicilio del paziente"
+* address[indirizzoDomicilio] ^short = "Indirizzo di domicilio dell'assistito"
 * address[indirizzoDomicilio].use 1..
 * address[indirizzoDomicilio].use = #home (exactly)
 
-* birthDate ^short = "La data di nascita dell'individuo"
-
+* birthDate ^short = "Data di nascita dell'assistito"
+* gender ^short = "Genere dell'assistito"
 * deceased[x] ^short = "Indica se l'individuo è deceduto o meno."
 
-* maritalStatus ^short = "Stato civile del paziente"
+* maritalStatus ^short = "Stato civile dell'assistito"
 
 * generalPractitioner MS
 * generalPractitioner ^slicing.discriminator.type = #profile
@@ -108,10 +108,13 @@ Description: "Profilo base del Patient condiviso in tutti i documenti di Telemed
     mmgPls 0..* MS and
     aziendaAssistenza 0..* MS
 * generalPractitioner[mmgPlsRole] only Reference(PractitionerRoleTelemonitoraggio)
+* generalPractitioner[mmgPlsRole] ^short = "Medico del ruolo unico di assistenza primaria dell'assistito"
 * generalPractitioner[mmgPls] only Reference(PractitionerTelemonitoraggio)
+* generalPractitioner[mmgPls] ^short = "Medico del ruolo unico di assistenza primaria dell'assistito"
 * generalPractitioner[aziendaAssistenza] only Reference(OrganizationT1)
+* generalPractitioner[aziendaAssistenza] ^short = "Codice e descrizione dell'Azienda sanitaria di residenza dell'assistito"
 
-
+* managingOrganization ^short = "Codice e descrizione Azienda sanitaria da cui il paziente è assistito"
 
 Invariant: pat-id-cf-1
 Description: "Il Codice Fiscale deve essere di 16 caratteri alfanumerici (3 per il cognome; 3 per il nome; 2 caratteri numerici per l'anno di nascita; 1 per il mese di nascita; 2 caratteri numerici per il giorno di nascita ed il sesso; 4 associati al Comune oppure allo Stato estero di nascita. 1 carattere di controllo"
