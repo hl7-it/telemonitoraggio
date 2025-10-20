@@ -30,7 +30,7 @@ Description:  "Profilo base della Procedure condiviso in tutti i documenti di Te
 * outcome.text ^short = "Testo libero per la relazione alla fine della procedura"
 
 * usedReference ^short = "Strumentazione utilizzata nel corso della procedura"
-//* usedReference only Reference(deviceTelemonitoraggioTesserino)
+//* usedReference only Reference(DeviceTelemonitoraggioTesserino)
 
 * category ^short = "procedura operativa eseguita"
 

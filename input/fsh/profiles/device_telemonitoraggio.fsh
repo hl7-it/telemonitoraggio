@@ -1,8 +1,8 @@
 Alias: $Device = http://hl7.org/fhir/StructureDefinition/Device
 
-Profile: deviceTelemonitoraggio
+Profile: DeviceTelemonitoraggio
 Parent: $Device
-Id: deviceTelemonitoraggio
+Id: DeviceTelemonitoraggio
 Description: "Profilo base del Device condiviso in tutti i documenti di Telemedicina"
 * ^status = #draft
 * ^experimental = false

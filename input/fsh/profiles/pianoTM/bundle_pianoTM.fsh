@@ -31,6 +31,6 @@ Description: "Profilo del Bundle utilizzato nel contesto del Piano di Telemonito
 * entry[practitioner].resource.identifier ^slicing.discriminator.path = "$this"
 * entry[practitioner].resource.identifier ^slicing.description = "Slice based on the identifier pattern"
 * entry[practitioner].resource.identifier ^slicing.rules = #open
-* entry[device].resource only deviceTelemonitoraggio
+* entry[device].resource only DeviceTelemonitoraggio
 * entry[activityDefinition].resource only ActivityDefinitionPianoTM
 * entry[observationDefinition].resource only ObservationDefinitionPianoTM
