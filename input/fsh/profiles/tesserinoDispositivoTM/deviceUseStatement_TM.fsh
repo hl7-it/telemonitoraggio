@@ -9,3 +9,4 @@ Description: "Profilo della DeviceUseStatement che identifica il legame tra l'as
 * timing[x] only dateTime 
 * device only Reference(DeviceTelemonitoraggio)
 * reasonReference only Reference(Condition)
+* reasonReference ^short = "Patologia del paziente"
