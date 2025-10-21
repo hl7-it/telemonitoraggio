@@ -34,8 +34,10 @@ Description: "Profilo base della Composition condiviso in tutti i documenti di T
 * attester contains legalAuthenticator 1..1
 * attester[legalAuthenticator].mode = #legal (exactly)
 * attester[legalAuthenticator].time 1..
+* attester[legalAuthenticator].time ^short = "Data di firma del documento"
 * attester[legalAuthenticator].party 1..
 * attester[legalAuthenticator].party only Reference(PractitionerRoleTelemonitoraggio)
+* attester[legalAuthenticator].party ^short = "Medico firmatario del documento"
 
 * relatesTo ^short = "Ulteriori documenti correlati"
 

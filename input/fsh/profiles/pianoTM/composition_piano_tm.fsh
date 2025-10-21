@@ -15,7 +15,6 @@ Description: "Profilo della Composition utilizzata nel contesto del Telemonitora
 
 //Section
 
-// Aggiungere slice Attester, legalAuthenticator
 
 * section
   * ^slicing.discriminator[+].type = #exists

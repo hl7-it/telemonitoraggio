@@ -18,10 +18,12 @@ Description: "Profilo del CarePlan utilizzato nel contesto del Telemonitoraggio"
 * author ^definition = "Autore del piano di cura del paziente. Quando popolato l'autore è il responsabile del piano di cura."
 * activity ^short = "Azione da attuare come parte del piano"
 * activity ^definition = "Identifica un'azione pianificata da attuare come parte del piano."
-* activity.detail.code ^short = "Tipologia di Attività" 
+* activity.detail.code ^short = "Tipologia dell'attività da eseguire (i.e. teleassitenza, teleriabilitazione neurologica,telemonitoraggio cardiologico etc.)" 
+* activity.detail.code ^definition = "Tipologia di attività"
 * activity.detail.code from TipologiaAttivitaPianoDiTelemonitoraggio (example) //TODO add things from excel
 //* activity.reference only Reference(ServiceRequestTelemonitoragio)
 * activity.detail.instantiatesCanonical only Canonical(ActivityDefinitionPianoTM)
 * activity.detail.performer only Reference(DeviceTelemonitoraggio)
 * activity.detail.performer ^short = "Dispositivo per il telemonitoraggio"
 * activity.detail.performer ^definition = "Dispositivo per il telemonitoraggio che raccoglie e trasmette dati clinici in tempo reale, supportando il monitoraggio remoto del paziente."
+* note ^short = "Permette di indicare che si tratta della prima stesura, di un rinnovo o di una modifica del piano delle attività"
