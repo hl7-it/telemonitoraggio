@@ -77,21 +77,7 @@ Description: "Profilo base del Patient condiviso in tutti i documenti di Telemed
 
 * telecom ^short = "Recapiti dell'assistito"
 
-* address ^slicing.discriminator.type = #value
-* address ^slicing.discriminator.path = "use"
-* address ^slicing.rules = #open
-* address contains
-    indirizzoResidenza 1..1 and
-    indirizzoDomicilio 0..1
-* address[indirizzoResidenza] ^short = "Indirizzo di residenza dell'assistito"
-* address[indirizzoResidenza].use 1..
-* address[indirizzoResidenza].use = #billing (exactly)
-* address[indirizzoResidenza].city ^short = "Codice del comune di residenza dell'assistito"
-//* address[indirizzoResidenza].city ^short = "Codice del comune di residenza dell'assistito"
-//* address[indirizzoResidenza].city ^short = "Codice del comune di residenza dell'assistito"
-* address[indirizzoDomicilio] ^short = "Indirizzo di domicilio dell'assistito"
-* address[indirizzoDomicilio].use 1..
-* address[indirizzoDomicilio].use = #home (exactly)
+* address only AddressItTelemedicina
 
 * birthDate ^short = "Data di nascita dell'assistito"
 * gender ^short = "Genere dell'assistito"
