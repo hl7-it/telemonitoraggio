@@ -42,7 +42,7 @@ Description: "Profilo base dell'Encounter condiviso in tutti i documenti di Tele
 * subject ^short = "Paziente coinvolto nell'incontro"
 * subject only Reference(PatientTelemonitoraggio)
 
-* basedOn only Reference(ServiceRequestTelemonitoragio) 
+* basedOn only Reference(ServiceRequestTelemonitoraggio) 
 * basedOn ^short = "La richiesta che ha avviato la visita"
 
 * participant ^short = "Altre figura tecnica coinvolte"

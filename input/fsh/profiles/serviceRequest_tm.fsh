@@ -1,8 +1,8 @@
 Alias: $brancaPrestazione = https://terminology.agenas.gov.it/ValueSet/brancaPrestazione
 
-Profile: ServiceRequestTelemonitoragio
+Profile: ServiceRequestTelemonitoraggio
 Parent: ServiceRequest
-Id: ServiceRequestTelemonitoragio
+Id: ServiceRequestTelemonitoraggio
 Description: "Profilo base della ServiceRequest condiviso in tutti i documenti di Telemedicina"
 * ^version = "1.0.0"
 * ^status = #draft
