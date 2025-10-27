@@ -4,7 +4,6 @@ Profile: CarePlanReportRilevazioneTM
 Parent: CarePlan
 Id: CarePlanReportRilevazioneTM
 Description: "Profilo del Care Plan utilizzato nel contesto del Report Rilevazione di Telemonitoraggio"
-* ^url = "http://hl7.it/fhir/StructureDefinition/CarePlanReportRilevazioneTM"
 * ^status = #draft
 * identifier ^short = "Codice identificativo del Piano"
 * identifier ^definition = "Identificativi aziendali assegnati a questo piano di cura dall'esecutore o da altri sistemi, che rimangono costanti man mano che la risorsa viene aggiornata e propagata da server a server."

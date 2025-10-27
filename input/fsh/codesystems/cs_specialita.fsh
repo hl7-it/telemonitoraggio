@@ -6,6 +6,7 @@ Description: "Definisce il sistema di terminologie da usare per i codici delle s
 * ^version = "1.0.0"
 * ^status = #draft
 * ^experimental = true
+* ^caseSensitive = true
 * ^publisher = "pnt.gov.it"
 * ^versionNeeded = false
 * ^content = #example

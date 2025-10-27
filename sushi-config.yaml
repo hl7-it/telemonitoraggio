@@ -163,9 +163,25 @@ groups:
     resources:
     - StructureDefinition/BundleRelazioneFinaleTM
     - StructureDefinition/CompositionRelazioneFinaleTelemonitoraggio
+    - StructureDefinition/CarePlanRelazioneFinaleTM
     - StructureDefinition/SpecimenRelazioneFinaleTm
     - StructureDefinition/EncounterRelazioneFinaleTm
     - StructureDefinition/ObservationRelazioneFinaleTm
+  GroupC:
+    name: Profili Report Rilevazione Telemonitoraggio
+    description: Profili utilizzati nel contesto del Report Rilevazione Telemonitoraggio
+    resources:
+    - StructureDefinition/BundleReportRilevazioniTM
+    - StructureDefinition/CarePlanReportRilevazioneTM
+    - StructureDefinition/CompositionReportRilevazioneTM
+  GroupD:
+    name: Profili Tesserino Dispositivi Telemonitoraggio
+    description: Profili utilizzati nel contesto del Tesserino Dispositivo di Telemonitoraggio
+    resources:
+    - StructureDefinition/BundleTesserinoDispositiviTM
+    - StructureDefinition/CompositionTesserinoDispositiviTM
+    - StructureDefinition/DeviceTelemedicinaTesserino
+    - StructureDefinition/DeviceUseStatementTelemonitoraggio
 #
 #
 # The ImplementationGuide resource defines several other properties

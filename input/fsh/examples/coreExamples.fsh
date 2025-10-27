@@ -58,12 +58,12 @@ Instance: PractitionerRoleTelemonitoraggioConsulenteExample
 InstanceOf: PractitionerRoleTelemonitoraggio
 Description: "Esempio di practitionerRole nel contesto della Telemonitoraggio"
 Usage: #example
-* organization = Reference(Organization/asl-roma-1)
-* practitioner = Reference(Practitioner/2b373c5c-0fbf-4167-875b-47ee7fc5cd5d)
+* organization = Reference(AslRoma1)
+* practitioner = Reference(PractitionerTelemonitoraggioConsulenteExample)
 * specialty = csspecialityPractitionerRole#01 "Allergologia"
 * id = "9f1a2b87-7d4c-4a65-8fc7-e8b56f7312f5"
 
-Instance: PractitionerTelemonitoraggioConulenteExample
+Instance: PractitionerTelemonitoraggioConsulenteExample
 InstanceOf: PractitionerTelemonitoraggio
 Description: "Esempio di practitioner nel contesto della Telemonitoraggio"
 Usage: #example

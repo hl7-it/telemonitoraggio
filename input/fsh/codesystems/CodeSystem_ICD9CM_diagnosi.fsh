@@ -6,6 +6,7 @@ Description: "Definisce il sistema di terminologie da usare per le diagnosi seco
 * ^status = #draft
 * ^content = #complete
 * ^caseSensitive = false
+* ^experimental = false
 
 * #001 "COLERA"
 * #001.0 "COLERA DA VIBRIO CHOLERAE"
