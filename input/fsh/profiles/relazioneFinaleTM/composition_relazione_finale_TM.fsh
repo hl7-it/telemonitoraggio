@@ -22,7 +22,8 @@ Description: "Profilo della Composition utilizzata nel contesto della Relazione 
     diagnosi 0..1 and
     suggerimentiPerMedicoPrescrittore 0..1 and
     accertamentiControlliConsigliati 0..1 and
-    referto 0..1
+    referto 0..1 and
+    conclusioni 0..1
 * section[pianoDiCura] ^sliceName = "pianoDiCura"
 * section[pianoDiCura].code = $loinc#18776-5 (exactly)
 * section[pianoDiCura].entry only Reference(CarePlanRelazioneFinaleTM)
@@ -59,3 +60,6 @@ Description: "Profilo della Composition utilizzata nel contesto della Relazione 
 * section[referto] ^sliceName = "referto"
 * section[referto].code = $loinc#47045-0 (exactly)
 * section[referto].entry only Reference(ObservationTelemedicina)
+* section[conclusioni] ^sliceName = "conclusioni"
+* section[conclusioni].entry only Reference(ObservationTelemedicina)
+* section[conclusioni].code = $loinc#55110-1  

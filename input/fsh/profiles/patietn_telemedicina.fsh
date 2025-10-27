@@ -78,6 +78,7 @@ Description: "Profilo base del Patient condiviso in tutti i documenti di Telemed
 * telecom ^short = "Recapiti dell'assistito"
 
 * address only AddressItTelemedicina
+* address ^short = "Indirizzi di residenza e/o domicilio dell'assistito"
 
 * birthDate ^short = "Data di nascita dell'assistito"
 * gender ^short = "Genere dell'assistito"

@@ -16,4 +16,4 @@ Description: "Profilo base del Practitioner condiviso in tutti i documenti di Te
 * identifier[codiceFiscale] ^patternIdentifier.system = "http://hl7.it/sid/codiceFiscale"
 * identifier[codiceFiscale].system = "http://hl7.it/sid/codiceFiscale" (exactly)
 
-* name ^short = "Nome dell'operatore sanitario: include le informazioni minime per descrivere un operatore sanitario"
+* name ^short = "Nome dell'operatore sanitario"

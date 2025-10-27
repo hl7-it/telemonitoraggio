@@ -49,6 +49,7 @@ Description: "Descrizione di Address con parti addizionali specifiche per gli in
 * line.extension[houseNumber] ^requirements = "Numero Civico"
 * line.extension[houseNumber] ^example.label = "ex-1"
 * line.extension[houseNumber] ^example.valueString = "1"
+* city ^short = "Nome del comune"
 * city ^definition = "Nome della città, paese, frazione, ecc."
 * city ^alias[0] = "Comune"
 * district ^short = "Nome della Provincia"
@@ -65,12 +66,13 @@ Description: "Descrizione di Address con parti addizionali specifiche per gli in
     $iso21090-SC-coding named codiceRegione 0..1
 * state.extension[codiceRegione] ^sliceName = "codiceRegione"
 * state.extension[codiceRegione] ^short = "Codice Regione"
+* postalCode ^short = "CAP (Codice di avviamento postale)"
 * postalCode obeys it-postal-code-pattern
   * ^comment = "I codici postali italiani hanno un pattern '[1,9]{4}'."
   * ^alias[0] = "CAP"
   * ^alias[+] = "postcode"
   
-
+* country ^short = "Stato"
 * country.extension contains
     $iso21090-SC-coding named codiceStato 0..1
 * country.extension[codiceStato] ^sliceName = "codiceStato"
