@@ -9,4 +9,4 @@ Description: "Ministero della Salute - Identificativi ASL (FLS11) [attivi e riti
 * ^status = #draft
 * ^experimental = true
 * ^publisher = "pnt.gov.it"
-* include codes from system https://terminology.agenas.gov.it/CodeSystem/minsan-fls
+* include codes from system CodesystemMinisteroSaluteASL

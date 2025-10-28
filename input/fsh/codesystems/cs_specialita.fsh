@@ -9,7 +9,6 @@ Description: "Definisce il sistema di terminologie da usare per i codici delle s
 * ^caseSensitive = true
 * ^publisher = "pnt.gov.it"
 * ^versionNeeded = false
-* ^content = #example
 * #01 "Allergologia" "Allergologia"
 * #02 "Day hospital" "Day hospital - Identifica reparti esclusivamente dedicati ad attività di day hospital multispecialistico"
 * #03 "Anatomia ed istologia patologica" "Anatomia ed istologia patologica"
