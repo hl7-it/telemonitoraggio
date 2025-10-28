@@ -115,3 +115,55 @@ Usage: #example
 * partOf = Reference(Organization/osp-pertini)
 * identifier.system = "http://hl7.it/sid/hsp"
 * identifier.value = "UO12345"
+
+Instance: Device-Pulsossimetro-Esempio
+InstanceOf: DeviceTelemonitoraggio
+Usage: #example
+Title: "Pulsossimetro - Esempio"
+Description: "Device di teleassistenza per monitoraggio SpO2"
+* status = #active
+* identifier[0].system = "http://example.org/fhir/id/device"
+* identifier[0].value = "DEV-SPO2-0021"
+
+* udiCarrier.deviceIdentifier = "98765432109876"
+* udiCarrier.carrierHRF = "(01)98765432109876(21)SNSPO20021(10)BATCH9"
+
+* manufacturer = "Meditech Italia S.r.l."
+* manufactureDate = "2023-11-02"
+* expirationDate = "2028-11-01"
+* lotNumber = "BATCH9"
+* serialNumber = "SNSPO20021"
+
+* deviceName[0].name = "Meditech OxiCare Pro"
+* deviceName[0].type = http://hl7.org/fhir/device-nametype#model-name "Model name"
+
+
+// *************** Esempi per il Tesserino Dispositivo *******************
+Instance: Pulsossimetro-DeviceUseStatement-Esempio
+InstanceOf: DeviceUseStatementTelemonitoraggio
+Usage: #example
+Title: "Use statetement pulsossimetro - Esempio"
+Description: "Assegnazione del device per il monitoraggio SpO2 al paziente"
+* subject = Reference(PatientTelemonitoraggioExample)
+* device = Reference(Device-Pulsossimetro-Esempio)
+
+Instance: CompositionTesserinoDispositiviTM-Esempio
+InstanceOf: CompositionTesserinoDispositiviTM
+Title: "Esempio di Tesserino Dispositivo"
+Description: "Tesserino Dispositivo contenente tutte le informazioni obbligatorie"
+Usage: #example
+* status = #final
+//rivedere il type
+* type = $loinc#75496-0 "Telehealth Note"
+* title = "Tesserino dispositivi"
+* subject = Reference(PatientTelemonitoraggioExample)
+* date = "2025-06-16T10:30:00+02:00"
+* author[0] = Reference(PractitionerRoleTelemonitoraggioConsulenteExample)
+* attester[legalAuthenticator].mode = #legal
+* attester[legalAuthenticator].time = "2025-06-16T10:30:00+02:00"
+* attester[legalAuthenticator].party = Reference(PractitionerRoleTelemonitoraggioConsulenteExample)
+* section[informazioniDevice].code = $loinc#104972-5
+* section[informazioniDevice].title = "Informazioni sul dispositivo"
+* section[informazioniDevice].entry[0] = Reference(Pulsossimetro-DeviceUseStatement-Esempio)
+
+// creare il Bundle Tesserino dispositivi
