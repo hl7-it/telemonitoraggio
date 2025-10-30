@@ -6,7 +6,6 @@ Description: "Profilo della DeviceUseStatement che identifica il legame tra l'as
 * status = #active
 * subject only Reference(PatientTelemonitoraggio)
 * timing[x] only Period 
-* timing[x] ^short = "Data di assegnazione e di eventuale restituzione del dispositivo in oggetto"
 * timingPeriod.start ^short = "Data di impianto del dispositivo in oggetto (data di assegnazione del paziente)"
 * timingPeriod.end ^short = "Data di restituzione del dispositivo in oggetto"
 * device only Reference(DeviceTelemonitoraggio)
