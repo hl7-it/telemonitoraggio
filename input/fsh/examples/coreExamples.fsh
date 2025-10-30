@@ -121,6 +121,7 @@ InstanceOf: DeviceTelemonitoraggio
 Usage: #example
 Title: "Pulsossimetro - Esempio"
 Description: "Device di teleassistenza per monitoraggio SpO2"
+* id = "7cbbe77d-dcdb-409b-a215-pulsioss"
 * status = #active
 * identifier[0].system = "http://example.org/fhir/id/device"
 * identifier[0].value = "DEV-SPO2-0021"
@@ -144,14 +145,17 @@ InstanceOf: DeviceUseStatementTelemonitoraggio
 Usage: #example
 Title: "Use statetement pulsossimetro - Esempio"
 Description: "Assegnazione del device per il monitoraggio SpO2 al paziente"
+* id = "7cbbe77d-dcdb-409b-a215-tessdisp"
 * subject = Reference(PatientTelemonitoraggioExample)
 * device = Reference(Device-Pulsossimetro-Esempio)
+* timingPeriod.start = "2025-06-16T10:30:00+02:00"
 
 Instance: CompositionTesserinoDispositiviTM-Esempio
 InstanceOf: CompositionTesserinoDispositiviTM
 Title: "Esempio di Tesserino Dispositivo"
 Description: "Tesserino Dispositivo contenente tutte le informazioni obbligatorie"
 Usage: #example
+* id = "7cbbe77d-dcdb-409b-a215-comptess"
 * status = #final
 //rivedere il type
 * type = $loinc#75496-0 "Telehealth Note"
@@ -166,4 +170,20 @@ Usage: #example
 * section[informazioniDevice].title = "Informazioni sul dispositivo"
 * section[informazioniDevice].entry[0] = Reference(Pulsossimetro-DeviceUseStatement-Esempio)
 
-// creare il Bundle Tesserino dispositivi
+// BUNDLE DI TIPO DOCUMENT
+/*
+Instance: BundleTesserino-Esempio
+InstanceOf: BundleTesserinoDispositiviTM
+Description: "Esempio di Bundle document relativo al Tesserino Dispositivi"
+Usage: #example
+* type = #document
+* identifier.system = "urn:ietf:rfc:39861"
+* identifier.value = "urn:uuid:bfcf00e2-e2bb-4a7d-adaa-29ott2509v6"
+* timestamp = "2025-06-16T10:32:00+02:00"
+* entry[0].fullUrl = "http://example/Composition/7cbbe77d-dcdb-409b-a215-comptess"
+* entry[0].resource = CompositionTesserinoDispositiviTM-Esempio
+* entry[1].fullUrl = "http://example/Device/7cbbe77d-dcdb-409b-a215-pulsioss"
+* entry[1].resource = Device-Pulsossimetro-Esempio
+* entry[1].fullUrl = "http://example/Patient/2e7e0fe3-f0bf-4e0a-8228-b8e7fcec8c82"
+* entry[2].resource = PatientTelemonitoraggioExample
+*/
