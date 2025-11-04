@@ -1,22 +1,24 @@
 
-// Profile: OrganizationTelemedicina
-// Parent: Organization
-// Id: OrganizationTelemedicina
-// Description: "Profilo base della Organization condiviso in tutti i documenti di Telemedicina"
-// * ^version = "0.1.0"
-// * ^status = #draft
-// * ^jurisdiction = urn:iso:std:iso:3166#IT
-// * identifier ^short = "Identificativi di Organization"
+Profile: OrganizationFabbricante
+Parent: Organization
+Id: OrganizationFabbricante
+Description: "Profilo della risorsa Organization che rappresenta il fabbricante del dispositivo."
+* ^status = #draft
+* identifier ^short = "Identificativi di Organization"
 
-// * active ^short = "Indica se la risorsa è attiva."
+* name ^short = "Nome del fabbricante del dispositivo medico in oggetto."
 
-// * type ^short = "Tipo di organizzazione"
-// * type.coding ^short = "Codice definito da un sistema terminologico"
+* address ^short = "Indirizzo del fabbricante del dispositivo medico in oggetto"
+* address.city ^short = "Comune"
+* address.district ^short = "Nome della provincia"
+* address.state ^short = "Sotto-unità dello stato (Regione)."
 
-// * name ^short = "Nome usato per l'Organization"
-
-// * address.city ^short = "Comune"
-// * address.district ^short = "Nome della provincia"
-// * address.state ^short = "Sotto-unità dello stato (Regione)."
-
-// * partOf ^short = "L'Organization di cui questa Organization è parte"
+* telecom ^slicing.discriminator[0].type = #value
+* telecom ^slicing.discriminator[0].path = "system"
+* telecom ^slicing.rules = #open 
+* telecom contains
+    Website 1..1
+* telecom[Website].system 1..1
+* telecom[Website].system = #url
+* telecom[Website].value 1..1
+* telecom[Website].value ^short = "URL del sito web del fabbricante"

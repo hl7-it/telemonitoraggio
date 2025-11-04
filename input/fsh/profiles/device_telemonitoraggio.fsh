@@ -30,3 +30,8 @@ Description: "Profilo base del Device condiviso in tutti i documenti di Telemedi
 * deviceName[modelloDelDevice].name 1..1
 * deviceName[modelloDelDevice].name ^short = "Nome del modello"
 * type ^short = "Tipologia del device"
+* definition ^short = "Riferimento alla definizione (o modello) del dispositivo"
+* definition only Reference(DeviceDefinitionTelemonitoraggio)
+* owner ^short = "Nome e indirizzo dell’istituzione sanitaria che ha effettuato l’assegnazione del dispositivo in oggetto "
+* owner only Reference(OrganizationT2)
+
