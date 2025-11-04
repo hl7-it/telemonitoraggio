@@ -24,7 +24,7 @@ Description:  "Profilo base della Procedure condiviso in tutti i documenti di Te
 * recorder ^short = "Chi ha registrato la procedura"
 
 * performer ^short = "Le persone che hanno eseguito la procedura"
-* performer.actor only Reference(PractitionerTelemonitoraggio or PractitionerRoleTelemonitoraggio or OrganizationT1 or Patient or DeviceTelemedicinaTesserino)
+* performer.actor only Reference(PractitionerTelemonitoraggio or PractitionerRoleTelemonitoraggio or OrganizationT1 or Patient or DeviceTelemonitoraggio)
 
 * outcome ^short = "Parametri rilevanti al fine di caratterizzare la procedura"
 * outcome.text ^short = "Testo libero per la relazione alla fine della procedura"
