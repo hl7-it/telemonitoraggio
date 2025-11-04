@@ -36,4 +36,4 @@ Description: "Profilo base della DiagnosticReport condiviso in tutti i documenti
 * performer ^definition = "Organizzazione o Persona che è responsabile del report; non è necessariamente l'autore dei dati atomici o l'entità che ha interpretato i risultati."
 //* media.link.identifier.system = "https://terminology.agenas.gov.it/sid/identificativoOggettoCorrelato" (exactly)
 
-* conclusionCode from diagnosi-icd9cm (required)
+* conclusionCode from diagnosi-icd9cm-vs (required)
