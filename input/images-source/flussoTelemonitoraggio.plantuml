@@ -1,0 +1,68 @@
+@startuml
+title Flusso documentale Telemonitoraggio e inserimento in FSE
+
+skinparam ParticipantPadding 20
+skinparam BoxPadding 12
+skinparam sequenceArrowThickness 1
+skinparam monochrome true
+
+actor Paziente
+participant "Dispositivo\n(di TM)" as Dispositivo
+participant "Piattaforma IRT\n(Infrastruttura Regionale di Telemedicina)" as IRT
+participant "Team Clinico\n/ Operatore Sanitario" as Team
+participant "Sistema Documentale IRT" as DocRepo
+database "FSE\n(Fascicolo Sanitario Elettronico)" as FSE
+
+== Avvio presa in carico ==
+Team -> IRT: Arruolamento paziente e attivazione percorso
+IRT -> Team: Dati anagrafici/clinici di base
+
+note over Team,IRT
+Elaborazione e validazione del "Piano di Telemonitoraggio"
+(con obiettivi, parametri, frequenze, soglie e durata)
+end note
+
+Team -> DocRepo: Crea documento: **Piano di Telemonitoraggio**
+DocRepo -> Team: Documento pronto (versione firmata/validata)
+DocRepo -> FSE: **Pubblica "Piano di Telemonitoraggio"**
+note right of FSE
+Inserimento in FSE al momento
+dell'attivazione del percorso
+end note
+
+== Consegna e configurazione dispositivi ==
+Team -> Dispositivo: Configurazione e pairing
+Dispositivo -> IRT: Registrazione dispositivo e test dati
+IRT -> DocRepo: Genera **Tesserino dispositivi di Telemonitoraggio**
+DocRepo -> FSE: **Pubblica "Tesserino dispositivi"**
+note right of FSE
+Inserimento in FSE alla consegna/configurazione
+del kit al paziente
+end note
+
+== Fase di telemonitoraggio ==
+loop Per ogni periodo/sessione di monitoraggio
+  Dispositivo -> IRT: Invio parametri (programmato/continuo)
+  IRT -> Team: Disponibilizza dati per revisione
+  Team -> IRT: Validazione esito sessione (secondo protocolli)
+  IRT -> DocRepo: Crea **Report Rilevazione Telemonitoraggio**
+  DocRepo -> Team: Notifica documento per conferma
+  Team -> DocRepo: Convalida documento
+  DocRepo -> FSE: **Pubblica "Report Rilevazione Telemonitoraggio"**
+  note right of FSE
+  Inserimento in FSE con cadenza periodica
+  o al termine della revisione clinica
+  end note
+end
+
+== Chiusura percorso ==
+Team -> IRT: Valutazione finale e chiusura presa in carico
+IRT -> DocRepo: Genera **Rilevazione Finale di Telemonitoraggio**
+DocRepo -> Team: Revisione e validazione finale
+DocRepo -> FSE: **Pubblica "Rilevazione Finale di Telemonitoraggio"**
+note right of FSE
+Inserimento in FSE alla chiusura del percorso,
+con sintesi dell’andamento e degli esiti
+end note
+
+@enduml
