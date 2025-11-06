@@ -19,15 +19,13 @@ Description: "Profilo base del Device condiviso in tutti i documenti di Telemedi
 * deviceName ^slicing.discriminator[0].path = "type"
 * deviceName ^slicing.rules = #open
 * deviceName contains
-    nomeDelDevice 1..1 and
-    modelloDelDevice 1..1
+    nomeDelDevice 0..1 and
+    modelloDelDevice 0..1
 * deviceName[nomeDelDevice] ^short = "Denominazione del dispositivo (user-friendly)"
 * deviceName[nomeDelDevice].type = #user-friendly-name
-* deviceName[nomeDelDevice].name 1..1
 * deviceName[nomeDelDevice].name ^short = "Nome del dispositivo"
 * deviceName[modelloDelDevice] ^short = "Modello del dispositivo"
 * deviceName[modelloDelDevice].type = #model-name
-* deviceName[modelloDelDevice].name 1..1
 * deviceName[modelloDelDevice].name ^short = "Nome del modello"
 * type ^short = "Tipologia del device"
 * definition ^short = "Riferimento alla definizione (o modello) del dispositivo"

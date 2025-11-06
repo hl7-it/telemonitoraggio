@@ -9,6 +9,9 @@ Description: "Profilo base della MedicationStatement condiviso in tutti i docume
 // Limit medication to CodeableConcept
 * medication[x] only CodeableConcept
 * medication[x] ^mustSupport = true
+* medication[x] from https://www.hl7.it/fhir/terminology/ValueSet/aifa-aic (required)
+* medication[x] ^short = "Definizione farmaco"
+* medication[x] ^binding.strength = #preferred
 
 // Subject must be Telemedicina patient
 * subject only Reference(PatientTelemonitoraggio)

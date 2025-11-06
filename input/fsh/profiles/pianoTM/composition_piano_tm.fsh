@@ -1,6 +1,4 @@
 Alias: $loinc = http://loinc.org
-//Alias: $CarePlan_PianoDiCura_TM = http://hl7.it/fhir/StructureDefinition/CarePlan_PianoDiCura_TM
-//Alias: $Observation = http://hl7.it/fhir/StructureDefinition/Observation
 
 Profile: CompositionPianoTM
 Parent: CompositionTelemedicina
@@ -14,8 +12,6 @@ Description: "Profilo della Composition utilizzata nel contesto del Telemonitora
 * title ^definition = "Titolo human-readable ufficiale per la Composition."
 
 //Section
-
-
 * section
   * ^slicing.discriminator[+].type = #exists
   * ^slicing.discriminator[=].path = "$this.section"

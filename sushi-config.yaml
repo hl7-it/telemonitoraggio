@@ -6,7 +6,7 @@
 id: telemonitoraggio
 canonical: http://hl7.it/fhir/telemonitoraggio
 name: Telemonitoraggio
-# title: Example Title
+title: Telemonitoraggio
 # description: Example Implementation Guide for getting started with SUSHI
 status: draft # draft | active | retired | unknown
 version: 0.1.0
@@ -180,7 +180,6 @@ groups:
     resources:
     - StructureDefinition/BundleTesserinoDispositiviTM
     - StructureDefinition/CompositionTesserinoDispositiviTM
-    - StructureDefinition/DeviceTelemedicinaTesserino
     - StructureDefinition/DeviceUseStatementTelemonitoraggio
 #
 #

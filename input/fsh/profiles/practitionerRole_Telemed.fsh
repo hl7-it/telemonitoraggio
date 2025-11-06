@@ -17,10 +17,11 @@ Description: "Profilo base del PractitionerRole condiviso in tutti i documenti d
 
 * period ^short = "Il periodo durante il quale il professionista è autorizzato a svolgere questi ruoli"
 
+* practitioner 1..
 * practitioner only Reference(PractitionerTelemonitoraggio)
 * practitioner ^short = "Dettagli dell'operatore"
 
-* organization only Reference(OrganizationT1 or OrganizationT1)
+* organization only Reference(OrganizationT1)
 * organization ^short = "Organizzazione di Appartenenza"
 
 * code ^short = "Ruoli che questo professionista può svolgere"

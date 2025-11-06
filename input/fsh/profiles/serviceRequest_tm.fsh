@@ -8,6 +8,7 @@ Description: "Profilo base della ServiceRequest condiviso in tutti i documenti d
 * ^status = #draft
 * ^date = "2024-04-29T16:08:42+02:00"
 
+* identifier 1..
 * identifier ^short = "Identifiicativi associati alle singole istanze della richiesta (Numero ricetta medica)."
 
 * requisition ^short = "Identificativo univoco della richiesta composita"

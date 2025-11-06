@@ -21,12 +21,11 @@ Description: "Profilo base della Composition condiviso in tutti i documenti di T
 
 * date ^short = "Data di modifica della risorsa da parte del firmatario."
 
-* author only Reference(PractitionerRoleTelemonitoraggio or OrganizationT1)
+* author only Reference(PractitionerRoleTelemonitoraggio)
 * author ^short = "Autore della Composition (Medico Refertante)."
 
 * title ^short = "Titolo del documento"
 
-// * confidentiality ^short = "Codice di confidenzialità della Composition."
 * attester ^slicing.discriminator.type = #value
 * attester ^slicing.discriminator.path = "mode"
 * attester ^slicing.rules = #open

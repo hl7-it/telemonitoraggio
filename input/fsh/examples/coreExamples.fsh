@@ -135,8 +135,8 @@ Description: "Device di teleassistenza per monitoraggio SpO2"
 * lotNumber = "BATCH9"
 * serialNumber = "SNSPO20021"
 
-* deviceName[0].name = "Meditech OxiCare Pro"
-* deviceName[0].type = http://hl7.org/fhir/device-nametype#model-name "Model name"
+* deviceName[modelloDelDevice].name = "Meditech OxiCare Pro"
+* deviceName[modelloDelDevice].type = http://hl7.org/fhir/device-nametype#model-name "Model name"
 
 
 // *************** Esempi per il Tesserino Dispositivo *******************

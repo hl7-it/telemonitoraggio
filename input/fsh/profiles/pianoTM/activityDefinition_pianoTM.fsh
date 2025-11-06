@@ -11,6 +11,7 @@ Description: "Profilo dell'ActivityDefinition utilizzato nel contesto di Telemon
 * timingTiming.repeat.count ^short = "Numero di cicli di attività previsti durante la durata del piano."
 * timingTiming.repeat.duration ^short = "Durata del singolo ciclo."
 * timingTiming.repeat.frequency ^short = "Numero di attività per Ciclo."
+* timingTiming.repeat.timeOfDay ^short = "Fascia orario di svolgimento dell’attività programmata."
 
 * observationRequirement only Reference(ObservationDefinitionPianoTM)
 * observationRequirement ^short = "Elenco dei parametri da rilevare"

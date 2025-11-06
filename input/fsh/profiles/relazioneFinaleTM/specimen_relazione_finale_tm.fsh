@@ -7,4 +7,4 @@ Description: "Profilo dello Specimen ne contesto del Report Rilevazione di Telem
 * ^experimental = true
 * collection.method ^short = "Metodo di raccolta del campione"
 * collection.bodySite ^short = "Origine del campione"
-* type ^short = "Tipologia del campione"
+* type ^short = "Tipologia del campione, se non già evidente dalla misurazione"

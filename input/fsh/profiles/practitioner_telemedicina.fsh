@@ -4,6 +4,8 @@ Id: PractitionerTelemonitoraggio
 Description: "Profilo base del Practitioner condiviso in tutti i documenti di Telemedicina"
 * ^version = "0.1.0"
 * ^status = #active
+
+* identifier 1..
 * identifier ^slicing.discriminator.type = #pattern
 * identifier ^slicing.discriminator.path = "$this"
 * identifier ^slicing.description = "Slice based on the identifier pattern"
@@ -15,5 +17,4 @@ Description: "Profilo base del Practitioner condiviso in tutti i documenti di Te
 * identifier[codiceFiscale] ^definition = "Codice Fiscale"
 * identifier[codiceFiscale] ^patternIdentifier.system = "http://hl7.it/sid/codiceFiscale"
 * identifier[codiceFiscale].system = "http://hl7.it/sid/codiceFiscale" (exactly)
-
 * name ^short = "Nome dell'operatore sanitario"

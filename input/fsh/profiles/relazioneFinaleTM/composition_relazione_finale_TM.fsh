@@ -22,7 +22,8 @@ Description: "Profilo della Composition utilizzata nel contesto della Relazione 
     terapiaFarmacologicaConsigliata 0..1 and
     suggerimentiPerMedicoPrescrittore 0..1 and
     accertamentiControlliConsigliati 0..1 and
-    conclusioni 0..1
+    conclusioni 0..1 and
+    allegati 0..1
 * section[pianoDiCura] ^sliceName = "pianoDiCura"
 * section[pianoDiCura].code = $loinc#18776-5 (exactly)
 * section[pianoDiCura].entry only Reference(CarePlanRelazioneFinaleTM)
@@ -37,7 +38,8 @@ Description: "Profilo della Composition utilizzata nel contesto della Relazione 
 * section[InquadramentoClinicoIniziale].section contains
     anamnesi 0..1 and
     allergie 0..* and
-    terapiaFarmacologicaInAtto 0..*
+    terapiaFarmacologicaInAtto 0..* and
+    esameObiettivo 0..1
 * section[InquadramentoClinicoIniziale].section[anamnesi] ^sliceName = "anamnesi"
 * section[InquadramentoClinicoIniziale].section[anamnesi].code = $loinc#11329-0  
 * section[InquadramentoClinicoIniziale].section[anamnesi].entry only Reference(ObservationTelemedicina)
@@ -47,15 +49,18 @@ Description: "Profilo della Composition utilizzata nel contesto della Relazione 
 * section[InquadramentoClinicoIniziale].section[terapiaFarmacologicaInAtto] ^sliceName = "terapiaFarmacologicaInAtto"
 * section[InquadramentoClinicoIniziale].section[terapiaFarmacologicaInAtto].code = $loinc#10160-0 (exactly)
 * section[InquadramentoClinicoIniziale].section[terapiaFarmacologicaInAtto].entry only Reference(MedicationStatementTelemedicina)
+* section[InquadramentoClinicoIniziale].section[esameObiettivo] ^sliceName = "esameObiettivo"
+* section[InquadramentoClinicoIniziale].section[esameObiettivo].code = $loinc#29545-1 (exactly)
+* section[InquadramentoClinicoIniziale].section[esameObiettivo].entry only Reference(ObservationTelemedicina)
 * section[precedentiEsamiEseguiti] ^sliceName = "precedentiEsamiEseguiti"
 * section[precedentiEsamiEseguiti].code = $loinc#30954-2 (exactly)
-* section[precedentiEsamiEseguiti].entry only Reference(ObservationTelemedicina)
+* section[precedentiEsamiEseguiti].entry only Reference(ObservationRelazioneFinaleTm)
 * section[confrontoPrecedentiEsamiEseguiti] ^sliceName = "confrontoPrecedentiEsamiEseguiti"
 * section[confrontoPrecedentiEsamiEseguiti].code = $loinc#93126-1 (exactly)
 * section[confrontoPrecedentiEsamiEseguiti].entry only Reference(ObservationTelemedicina)
 * section[prestazioni] ^sliceName = "prestazioni"
 * section[prestazioni].code = $loinc#62387-6 (exactly)
-* section[prestazioni].entry only Reference(EncounterTelemedicina)
+* section[prestazioni].entry only Reference(ProcedureTelemonitoraggio)
 * section[diagnosi] ^sliceName = "diagnosi"
 * section[diagnosi].code = $loinc#29548-5 (exactly)
 * section[diagnosi].entry only Reference(ObservationTelemedicina)
@@ -74,3 +79,6 @@ Description: "Profilo della Composition utilizzata nel contesto della Relazione 
 * section[conclusioni] ^sliceName = "conclusioni"
 * section[conclusioni].entry only Reference(ObservationTelemedicina)
 * section[conclusioni].code = $loinc#55110-1  
+* section[allegati] ^sliceName = "allegati"
+* section[allegati].entry only Reference(DocumentReference or Binary or Media)
+* section[allegati].code = $loinc#77599-9  

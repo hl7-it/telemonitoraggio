@@ -6,8 +6,9 @@ Id: AppointmentTelemedicina
 Description: "Profilo base del Appointment condiviso in tutti i documenti di Telemedicina"
 * ^status = #draft
 * ^date = "2023-10-18T12:01:35+02:00"
-* identifier ^short = "Codice della prenotazione"
 
+* identifier 1..
+* identifier ^short = "Codice della prenotazione"
 * serviceCategory ^short = "Categorizzazione del servizio erogato durante l'appuntamento."
 
 * reasonCode ^short = "Motivo codificato per cui è stato fissato l'appuntamento"
