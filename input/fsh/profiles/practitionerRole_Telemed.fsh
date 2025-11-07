@@ -21,7 +21,7 @@ Description: "Profilo base del PractitionerRole condiviso in tutti i documenti d
 * practitioner only Reference(PractitionerTelemonitoraggio)
 * practitioner ^short = "Dettagli dell'operatore"
 
-* organization only Reference(OrganizationT1)
+* organization only Reference(OrganizationT2)
 * organization ^short = "Organizzazione di Appartenenza"
 
 * code ^short = "Ruoli che questo professionista può svolgere"

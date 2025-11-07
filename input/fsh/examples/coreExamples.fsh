@@ -170,20 +170,424 @@ Usage: #example
 * section[informazioniDevice].title = "Informazioni sul dispositivo"
 * section[informazioniDevice].entry[0] = Reference(Pulsossimetro-DeviceUseStatement-Esempio)
 
-// BUNDLE DI TIPO DOCUMENT
+
+
+
 /*
-Instance: BundleTesserino-Esempio
-InstanceOf: BundleTesserinoDispositiviTM
-Description: "Esempio di Bundle document relativo al Tesserino Dispositivi"
-Usage: #example
-* type = #document
-* identifier.system = "urn:ietf:rfc:39861"
-* identifier.value = "urn:uuid:bfcf00e2-e2bb-4a7d-adaa-29ott2509v6"
-* timestamp = "2025-06-16T10:32:00+02:00"
-* entry[0].fullUrl = "http://example/Composition/7cbbe77d-dcdb-409b-a215-comptess"
-* entry[0].resource = CompositionTesserinoDispositiviTM-Esempio
-* entry[1].fullUrl = "http://example/Device/7cbbe77d-dcdb-409b-a215-pulsioss"
-* entry[1].resource = Device-Pulsossimetro-Esempio
-* entry[1].fullUrl = "http://example/Patient/2e7e0fe3-f0bf-4e0a-8228-b8e7fcec8c82"
-* entry[2].resource = PatientTelemonitoraggioExample
+  PIANO DI TELEMONITRAGIO: Caso d’uso: Scompenso cardiaco in follow-up (Telemonitoraggio di Tipo I)
+  Paziente: Maria Rossi (67 anni), dimessa da 10 giorni dopo riacutizzazione di scompenso cardiaco (HFrEF).
+  Obiettivo del TM: intercettare precocemente segni di congestione e variazioni pressorie/frequenza.
+  Parametri e frequenze:
+  - Peso: 1 volta/die (mattina, a digiuno).
+  - PA e FC: 1 volta/die.
+  - SpO₂: 1 volta/die (a riposo).
+  - Durata iniziale del piano: 30 giorni (rinnovabile).
+  - Attori: Medico referente ambulatorio scompenso; infermieri territoriali; caregiver.
+  - Dispositivi domiciliari: bilancia connessa (BLE→gateway), sfigmomanometro BT, pulsossimetro BT.
+  - Modalità di revisione dati: revisione periodica (giornaliera/settimanale) secondo protocollo; nessuna gestione “real-time” degli allarmi (Tipo I).
 */
+
+//**********Helper Res di telemonitoraggio**********
+
+Instance: RoleMedicoBianchiTM
+InstanceOf: PractitionerRoleTelemonitoraggio
+Usage: #example
+* practitioner = Reference(MedicoBianchi)         
+* organization = Reference(PresidioSandroPertini)
+* active = true
+* period.start = "2025-01-01"
+* period.end = "2026-12-31"
+* code[0].text = "Medico Referente Telemonitoraggio"
+* specialty = csspecialityPractitionerRole#07 "Cardiochirurgia"
+
+Instance: MedicoBianchi
+InstanceOf: PractitionerTelemonitoraggio
+Usage: #example
+* name[0].family = "Bianchi"
+* name[0].given[0] = "Laura"
+* identifier
+  * system = "http://hl7.it/sid/codiceFiscale"
+  * value = "BNCLRA71E41D612A"
+
+// ===== DeviceDefinition per i tre dispositivi — profilo: DeviceDefinitionTelemonitoraggio =====
+// ===== Alias utili =====
+Alias: $csTipoAlimentazione = http://example.it/fhir/CodeSystem/tipoAlimentazione
+Alias: $csTipoCollegamento = http://example.it/fhir/CodeSystem/tipoCollegamento
+Alias: $sct = http://snomed.info/sct
+
+// ===== Fabbricante (profilo: OrganizationFabbricante) =====
+Instance: OrgFab-AcmeHealth
+InstanceOf: OrganizationFabbricante
+Usage: #example
+* identifier[0].system = "http://hl7.it/sid/partitaIVA"
+* identifier[0].value = "09876543210"
+* name = "Acme Health S.p.A."
+* address[0].line[0] = "Via delle Industrie 12"
+* address[0].city = "Milano"
+* address[0].district = "MI"         
+* address[0].state = "Lombardia"     
+* address[0].postalCode = "20100"
+* address[0].country = "IT"
+* telecom[Website].system = #url
+* telecom[Website].value = "https://www.acmehealth.example.it"
+
+
+// ===== DeviceDefinition conformi a DeviceDefinitionTelemonitoraggio =====
+
+// --- Bilancia connessa ACME-B100 ---
+Instance: DevDef-Bilancia-B100
+InstanceOf: DeviceDefinitionTelemonitoraggio
+Usage: #example
+* manufacturerReference = Reference(OrgFab-AcmeHealth)
+* modelNumber = "ACME-B100"
+* type = $sct#469769005 "Weighing scale"
+
+* property[tipoAlimentazione].type.text = "Tipo di alimentazione"
+* property[tipoAlimentazione].valueCode.coding[0].system = $csTipoAlimentazione
+* property[tipoAlimentazione].valueCode.coding[0].code = #BAT
+* property[tipoAlimentazione].valueCode.coding[0].display = "Batterie"
+
+* property[tipoCollegamento].type.text = "Tipo di collegamento"
+* property[tipoCollegamento].valueCode.coding[0].system = $csTipoCollegamento
+* property[tipoCollegamento].valueCode.coding[0].code = #BLE
+* property[tipoCollegamento].valueCode.coding[0].display = "Bluetooth Low Energy"
+
+// --- Sfigmomanometro BT ACME-P200 ---
+Instance: DevDef-Sfigmo-P200
+InstanceOf: DeviceDefinitionTelemonitoraggio
+Usage: #example
+* manufacturerReference = Reference(OrgFab-AcmeHealth)
+* modelNumber = "ACME-P200"
+* type = $sct#707797006 "Automatic blood pressure monitor"
+
+* property[tipoAlimentazione].type.text = "Tipo di alimentazione"
+* property[tipoAlimentazione].valueCode.coding[0].system = $csTipoAlimentazione
+* property[tipoAlimentazione].valueCode.coding[0].code = #BAT
+* property[tipoAlimentazione].valueCode.coding[0].display = "Batterie"
+
+* property[tipoCollegamento].type.text = "Tipo di collegamento"
+* property[tipoCollegamento].valueCode.coding[0].system = $csTipoCollegamento
+* property[tipoCollegamento].valueCode.coding[0].code = #BT
+* property[tipoCollegamento].valueCode.coding[0].display = "Bluetooth"
+
+// --- Pulsossimetro BT ACME-O50 ---
+Instance: DevDef-Pulsossimetro-O50
+InstanceOf: DeviceDefinitionTelemonitoraggio
+Usage: #example
+* manufacturerReference = Reference(OrgFab-AcmeHealth)
+* modelNumber = "ACME-O50"
+* type = $sct#706043007 "Pulse oximeter"
+
+* property[tipoAlimentazione].type.text = "Tipo di alimentazione"
+* property[tipoAlimentazione].valueCode.coding[0].system = $csTipoAlimentazione
+* property[tipoAlimentazione].valueCode.coding[0].code = #BAT
+* property[tipoAlimentazione].valueCode.coding[0].display = "Batterie"
+
+* property[tipoCollegamento].type.text = "Tipo di collegamento"
+* property[tipoCollegamento].valueCode.coding[0].system = $csTipoCollegamento
+* property[tipoCollegamento].valueCode.coding[0].code = #BT
+* property[tipoCollegamento].valueCode.coding[0].display = "Bluetooth"
+
+
+// ===== Dispositivi conformi a DeviceTelemonitoraggio =====
+
+// --- Bilancia connessa ---
+Instance: DevBilancia
+InstanceOf: DeviceTelemonitoraggio
+Usage: #example
+* status = #active
+* manufacturer = "Acme Health"
+* manufactureDate = "2025-01-15"
+* serialNumber = "SN-B100-00987"
+* lotNumber = "LOT-2025-01-A"
+* definition = Reference(DevDef-Bilancia-B100)
+* owner = Reference(PresidioSandroPertini)
+// UDI (esempio GS1)
+* udiCarrier[0].deviceIdentifier = "12345678901234"
+* udiCarrier[0].issuer = "urn:oid:1.3.160.10.3"          // esempio
+* udiCarrier[0].carrierHRF = "(01)12345678901234(21)SN-B100-00987"
+// deviceName slicing: nomeDelDevice + modelloDelDevice
+* deviceName[nomeDelDevice].name = "Bilancia Connessa ACME-B100"
+* deviceName[nomeDelDevice].type = #user-friendly-name
+* deviceName[modelloDelDevice].name = "ACME-B100"
+* deviceName[modelloDelDevice].type = #model-name
+// Tipologia
+* type = $sct#39857003 "Weighing patient"
+// (facoltativo) estensione di “technicalCheck” — lasciare la sola URL se non modelli i sotto-campi
+//* extension[technicalCheck].url = "http://hl7.it/fhir/StructureDefinition/DeviceTechnicalCheck"
+
+// --- Sfigmomanometro BT ---
+Instance: DevSfigmo
+InstanceOf: DeviceTelemonitoraggio
+Usage: #example
+* status = #active
+* manufacturer = "Acme Health"
+* manufactureDate = "2025-02-10"
+* serialNumber = "SN-P200-00421"
+* lotNumber = "LOT-2025-02-B"
+* definition = Reference(DevDef-Sfigmo-P200)
+* owner = Reference(PresidioSandroPertini)
+// UDI (esempio GS1)
+* udiCarrier[0].deviceIdentifier = "22345678901231"
+* udiCarrier[0].issuer = "urn:oid:1.3.160.10.3"
+* udiCarrier[0].jurisdiction = "http://hl7.org/fhir/NamingSystem/gs1-di"
+* udiCarrier[0].carrierHRF = "(01)22345678901231(21)SN-P200-00421"
+// deviceName slicing
+* deviceName[nomeDelDevice].name = "Sfigmomanometro BT ACME-P200"
+* deviceName[nomeDelDevice].type = #user-friendly-name
+* deviceName[modelloDelDevice].name = "ACME-P200"
+* deviceName[modelloDelDevice].type = #model-name
+// Tipologia
+* type = $sct#95691000146106 "Blood pressure using automatic blood pressure monitor"
+
+// --- Pulsossimetro BT ---
+Instance: DevPulsossimetro
+InstanceOf: DeviceTelemonitoraggio
+Usage: #example
+* status = #active
+* manufacturer = "Acme Health"
+* manufactureDate = "2025-03-05"
+* serialNumber = "SN-O50-00033"
+* lotNumber = "LOT-2025-03-C"
+* definition = Reference(DevDef-Pulsossimetro-O50)
+* owner = Reference(PresidioSandroPertini)
+// UDI (esempio GS1)
+* udiCarrier[0].deviceIdentifier = "32345678901230"
+* udiCarrier[0].issuer = "urn:oid:1.3.160.10.3"
+* udiCarrier[0].jurisdiction = "http://hl7.org/fhir/NamingSystem/gs1-di"
+* udiCarrier[0].carrierHRF = "(01)32345678901230(21)SN-O50-00033"
+// deviceName slicing
+* deviceName[nomeDelDevice].name = "Pulsossimetro BT ACME-O50"
+* deviceName[nomeDelDevice].type = #user-friendly-name
+* deviceName[modelloDelDevice].name = "ACME-O50"
+* deviceName[modelloDelDevice].type = #model-name
+// Tipologia
+* type = $sct#448703006 "Pulse oximeter"
+
+
+// ===== Alias utili =====
+Alias: $loinc = http://loinc.org
+Alias: $sct = http://snomed.info/sct
+Alias: $catTM = http://example.it/fhir/CodeSystem/observation-category-telemonitoraggio
+Alias: $icd9cm = http://hl7.org/fhir/sid/icd-9-cm
+
+// ======================================================
+// OBSERVATION DEFINITION — profilo: ObservationDefinitionPianoTM
+// ======================================================
+
+// -- Peso corporeo --
+Instance: ObsDef-Peso
+InstanceOf: ObservationDefinitionPianoTM
+Usage: #example
+* category[0].coding[0].system = $catTM
+* category[0].coding[0].code = #intermediato
+* category[0].coding[0].display = "Intermediato"
+* code = $loinc#29463-7 "Body weight"
+* method.text = "Bilancia connessa domestica"
+* qualifiedInterval[0].condition = "Attenzione se aumento > 2 kg in 3 giorni rispetto al baseline."
+
+// -- Pressione arteriosa sistolica --
+Instance: ObsDef-PAS
+InstanceOf: ObservationDefinitionPianoTM
+Usage: #example
+* category[0].coding[0].system = $catTM
+* category[0].coding[0].code = #intermediato
+* category[0].coding[0].display = "Intermediato"
+* code = $loinc#8480-6 "Systolic blood pressure"
+* method.text = "Sfigmomanometro automatico (bracciale)"
+* qualifiedInterval[0].range.low.value = 90
+* qualifiedInterval[0].range.low.unit = "mmHg"
+* qualifiedInterval[0].range.high.value = 160
+* qualifiedInterval[0].range.high.unit = "mmHg"
+* qualifiedInterval[0].condition = "Soglie operative per TM Tipo I."
+
+// -- Pressione arteriosa diastolica --
+Instance: ObsDef-PAD
+InstanceOf: ObservationDefinitionPianoTM
+Usage: #example
+* category[0].coding[0].system = $catTM
+* category[0].coding[0].code = #intermediato
+* category[0].coding[0].display = "Intermediato"
+* code = $loinc#8462-4 "Diastolic blood pressure"
+* method.text = "Sfigmomanometro automatico (bracciale)"
+* qualifiedInterval[0].range.low.value = 50
+* qualifiedInterval[0].range.low.unit = "mmHg"
+* qualifiedInterval[0].range.high.value = 100
+* qualifiedInterval[0].range.high.unit = "mmHg"
+* qualifiedInterval[0].condition = "Soglie operative per TM Tipo I."
+
+// -- Frequenza cardiaca --
+Instance: ObsDef-FC
+InstanceOf: ObservationDefinitionPianoTM
+Usage: #example
+* category[0].coding[0].system = $catTM
+* category[0].coding[0].code = #intermediato
+* category[0].coding[0].display = "Intermediato"
+* code = $loinc#8867-4 "Heart rate"
+* method.text = "Derivata da sfigmomanometro automatico"
+* qualifiedInterval[0].range.low.value = 50
+* qualifiedInterval[0].range.low.unit = "beats/min"
+* qualifiedInterval[0].range.high.value = 110
+* qualifiedInterval[0].range.high.unit = "beats/min"
+* qualifiedInterval[0].condition = "Soglie operative per TM Tipo I."
+
+// -- Saturazione periferica di O2 (SpO2) --
+Instance: ObsDef-SpO2
+InstanceOf: ObservationDefinitionPianoTM
+Usage: #example
+* category[0].coding[0].system = $catTM
+* category[0].coding[0].code = #intermediato
+* category[0].coding[0].display = "Intermediato"
+* code = $loinc#59408-5 "Oxygen saturation in Arterial blood by Pulse oximetry"
+* method.text = "Pulsossimetro da dito"
+* qualifiedInterval[0].range.low.value = 92
+* qualifiedInterval[0].range.low.unit = "%"
+* qualifiedInterval[0].range.high.value = 100
+* qualifiedInterval[0].range.high.unit = "%"
+* qualifiedInterval[0].condition = "Valori < 92% da verificare secondo protocollo."
+
+// ======================================================
+// ACTIVITY DEFINITION — profilo: ActivityDefinitionPianoTM
+// ======================================================
+
+// --- Rilevazione peso quotidiana ---
+Instance: AD-PesoQuotidiano
+InstanceOf: ActivityDefinitionPianoTM
+Usage: #example
+* name = "PesoQuotidiano"
+* title = "Rilevazione peso quotidiana"
+* description = "Misurazione del peso corporeo al mattino, a digiuno, con bilancia connessa."
+* status = #active
+// timing[x] = Timing
+* timingTiming.repeat.frequency = 1
+* timingTiming.repeat.period = 1
+* timingTiming.repeat.periodUnit = #d
+* timingTiming.repeat.timeOfDay[0] = "08:00:00"
+// codice della prestazione pianificata (es. SNOMED o locale)
+* code = $sct#27113001 "Body weight"
+// elenco dei parametri richiesti dall'attività
+* observationRequirement[0] = Reference(ObsDef-Peso)
+
+// --- Pressione arteriosa + Frequenza cardiaca quotidiane ---
+Instance: AD-PAFC-Quotidiane
+InstanceOf: ActivityDefinitionPianoTM
+Usage: #example
+* status = #active
+* name = "PAFCQuotidiane"
+* title = "Pressione arteriosa e frequenza cardiaca quotidiane"
+* description = "Misurazione PA (sistolica e diastolica) e FC con sfigmomanometro automatico."
+* timingTiming.repeat.frequency = 1
+* timingTiming.repeat.period = 1
+* timingTiming.repeat.periodUnit = #d
+* timingTiming.repeat.timeOfDay[0] = "08:30:00"
+// codice dell'attività (SNOMED generico su misurazione PA/FC)
+* code = $sct#75367002 "Blood pressure"
+// observationRequirement multipli
+* observationRequirement[0] = Reference(ObsDef-PAS)
+* observationRequirement[1] = Reference(ObsDef-PAD)
+* observationRequirement[2] = Reference(ObsDef-FC)
+
+// --- SpO2 quotidiana ---
+Instance: AD-SpO2-Quotidiana
+InstanceOf: ActivityDefinitionPianoTM
+Usage: #example
+* status = #active
+* name = "SpO2Quotidiana"
+* title = "Saturazione periferica di ossigeno quotidiana"
+* description = "Misurazione SpO₂ a riposo con pulsossimetro da dito."
+* timingTiming.repeat.frequency = 1
+* timingTiming.repeat.period = 1
+* timingTiming.repeat.periodUnit = #d
+* timingTiming.repeat.timeOfDay[0] = "08:45:00"
+// codice dell'attività
+* code = $sct#448703006 "Pulse oximeter"
+// observationRequirement
+* observationRequirement[0] = Reference(ObsDef-SpO2)
+
+
+Instance: ObsDiagnosiTM
+InstanceOf: ObservationPianoTelemonitoraggio
+Usage: #example
+* status = #final
+* code = CodeSystem_DiagnosiICD9CM#428 "INSUFFICIENZA CARDIACA (SCOMPENSO CARDIACO)"
+* code.text = "Scompenso cardiaco"
+* subject = Reference(PatientTelemonitoraggioExample)
+* effectiveDateTime = "2025-11-07"
+// preferibile referenziare il ruolo se il profilo ObservationTelemedicina lo consente
+* performer[0] = Reference(RoleMedicoBianchiTM)
+// facoltativo: mantenere un mapping clinico descrittivo nel value
+* valueCodeableConcept.text = "Scompenso cardiaco a frazione di eiezione ridotta (HFrEF)"
+
+
+//**********Composition Piano di telemonitoraggio**********
+
+Instance: EsempioCompositionPianoTM
+InstanceOf: CompositionPianoTM
+Description: "Esempio di Composition nel contesto del Piano di Telemonitoraggio"
+Usage: #example
+* status = #final
+* type = $loinc#53576-5 "Personal health monitoring report Document"
+* date = "2025-11-07T10:00:00+01:00"
+* title = "Piano di Telemonitoraggio"
+* subject = Reference(PatientTelemonitoraggioExample)
+* author = Reference(RoleMedicoBianchiTM)
+
+* attester[legalAuthenticator].mode = #legal
+* attester[legalAuthenticator].time = "2025-11-07T10:15:00+01:00"
+* attester[legalAuthenticator].party = Reference(RoleMedicoBianchiTM)
+
+* event[0].period.start = "2025-11-07"
+* event[0].period.end = "2025-12-07"
+
+* section[pianoDiCura].code = $loinc#18776-5 "Plan of care note"
+* section[pianoDiCura].entry[0] = Reference(CarePlanPiano)
+
+* section[diagnosi].code = $loinc#29548-5 "Diagnosis"
+* section[diagnosi].entry[0] = Reference(ObsDiagnosiTM)
+
+
+//**********Care Plan Piano di telemonitoraggio**********
+Instance: CarePlanPiano
+InstanceOf: CarePlanPianoDiCuraTelemonitoraggio
+Usage: #example
+
+* identifier[0].system = "http://example.it/fhir/CarePlan/identifier"
+* identifier[0].value = "TM-2025-000123"
+* category = csTipologiaPiano#01 "Piano di Telemonitoraggio"
+* subject = Reference(PatientTelemonitoraggioExample)
+
+* status = #active
+* intent = #plan
+
+* period.start = "2025-11-07"
+* period.end = "2025-12-07"
+
+* author = Reference(RoleMedicoBianchiTM)
+
+* extension[statoDelPiano].url = "http://hl7.it/fhir/telemonitoraggio/StructureDefinition/careplan-stato-type"
+* extension[statoDelPiano].valueCodeableConcept = CSCarePlanStato#initial "Prima stesura"
+
+* activity[+].detail.status = #in-progress
+* activity[=].detail.code = $sct#879780004 "Telehealth monitoring for chronic heart failure (regime/therapy)"
+* activity[=].detail.code.text = "Peso quotidiano"
+* activity[=].detail.instantiatesCanonical = Canonical(AD-PesoQuotidiano)
+* activity[=].detail.performer[0] = Reference(DevBilancia)
+* activity[=].detail.description = "Misurazione mattutina a digiuno, 1/die."
+
+* activity[+].detail.status = #in-progress
+* activity[=].detail.code = $sct#879780004 "Telehealth monitoring for chronic heart failure (regime/therapy)"
+* activity[=].detail.code.text = "PA e FC quotidiane"
+* activity[=].detail.instantiatesCanonical = Canonical(AD-PAFC-Quotidiane)
+* activity[=].detail.performer[0] = Reference(DevSfigmo)
+* activity[=].detail.description = "1 misurazione/die, posizione seduta, bracciale adeguato."
+
+* activity[+].detail.status = #in-progress
+* activity[=].detail.code = $sct#879780004 "Telehealth monitoring for chronic heart failure (regime/therapy)"
+* activity[=].detail.code.text = "SpO₂ quotidiana"
+* activity[=].detail.instantiatesCanonical = Canonical(AD-SpO2-Quotidiana)
+* activity[=].detail.performer[0] = Reference(DevPulsossimetro)
+* activity[=].detail.description = "A riposo, dito indice, 1 misurazione/die."
+
+* note[0].text = "Prima stesura del Piano di Telemonitoraggio (30 giorni)."
+
+
