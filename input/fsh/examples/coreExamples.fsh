@@ -170,9 +170,6 @@ Usage: #example
 * section[informazioniDevice].title = "Informazioni sul dispositivo"
 * section[informazioniDevice].entry[0] = Reference(Pulsossimetro-DeviceUseStatement-Esempio)
 
-
-
-
 /*
   PIANO DI TELEMONITRAGIO: Caso d’uso: Scompenso cardiaco in follow-up (Telemonitoraggio di Tipo I)
   Paziente: Maria Rossi (67 anni), dimessa da 10 giorni dopo riacutizzazione di scompenso cardiaco (HFrEF).
@@ -209,7 +206,6 @@ Usage: #example
   * system = "http://hl7.it/sid/codiceFiscale"
   * value = "BNCLRA71E41D612A"
 
-// ===== DeviceDefinition per i tre dispositivi — profilo: DeviceDefinitionTelemonitoraggio =====
 // ===== Alias utili =====
 Alias: $csTipoAlimentazione = http://example.it/fhir/CodeSystem/tipoAlimentazione
 Alias: $csTipoCollegamento = http://example.it/fhir/CodeSystem/tipoCollegamento
@@ -240,14 +236,16 @@ InstanceOf: DeviceDefinitionTelemonitoraggio
 Usage: #example
 * manufacturerReference = Reference(OrgFab-AcmeHealth)
 * modelNumber = "ACME-B100"
-* type = $sct#469769005 "Weighing scale"
+* type = $sct#39857003 "Weighing patient"
 
 * property[tipoAlimentazione].type.text = "Tipo di alimentazione"
+* property[tipoAlimentazione].type = CSTipoPropertyDeviceDefinitionTM#tipoAlimentazione "Tipo di alimentazione"
 * property[tipoAlimentazione].valueCode.coding[0].system = $csTipoAlimentazione
 * property[tipoAlimentazione].valueCode.coding[0].code = #BAT
 * property[tipoAlimentazione].valueCode.coding[0].display = "Batterie"
 
 * property[tipoCollegamento].type.text = "Tipo di collegamento"
+* property[tipoCollegamento].type = CSTipoPropertyDeviceDefinitionTM#tipoCollegamento "Tipo di collegamento"
 * property[tipoCollegamento].valueCode.coding[0].system = $csTipoCollegamento
 * property[tipoCollegamento].valueCode.coding[0].code = #BLE
 * property[tipoCollegamento].valueCode.coding[0].display = "Bluetooth Low Energy"
@@ -258,7 +256,7 @@ InstanceOf: DeviceDefinitionTelemonitoraggio
 Usage: #example
 * manufacturerReference = Reference(OrgFab-AcmeHealth)
 * modelNumber = "ACME-P200"
-* type = $sct#707797006 "Automatic blood pressure monitor"
+* type = $sct#75367002 "Blood pressure"
 
 * property[tipoAlimentazione].type.text = "Tipo di alimentazione"
 * property[tipoAlimentazione].valueCode.coding[0].system = $csTipoAlimentazione
@@ -276,7 +274,7 @@ InstanceOf: DeviceDefinitionTelemonitoraggio
 Usage: #example
 * manufacturerReference = Reference(OrgFab-AcmeHealth)
 * modelNumber = "ACME-O50"
-* type = $sct#706043007 "Pulse oximeter"
+* type = $sct#448703006 "Pulse oximeter"
 
 * property[tipoAlimentazione].type.text = "Tipo di alimentazione"
 * property[tipoAlimentazione].valueCode.coding[0].system = $csTipoAlimentazione
@@ -330,7 +328,6 @@ Usage: #example
 // UDI (esempio GS1)
 * udiCarrier[0].deviceIdentifier = "22345678901231"
 * udiCarrier[0].issuer = "urn:oid:1.3.160.10.3"
-* udiCarrier[0].jurisdiction = "http://hl7.org/fhir/NamingSystem/gs1-di"
 * udiCarrier[0].carrierHRF = "(01)22345678901231(21)SN-P200-00421"
 // deviceName slicing
 * deviceName[nomeDelDevice].name = "Sfigmomanometro BT ACME-P200"
@@ -354,7 +351,6 @@ Usage: #example
 // UDI (esempio GS1)
 * udiCarrier[0].deviceIdentifier = "32345678901230"
 * udiCarrier[0].issuer = "urn:oid:1.3.160.10.3"
-* udiCarrier[0].jurisdiction = "http://hl7.org/fhir/NamingSystem/gs1-di"
 * udiCarrier[0].carrierHRF = "(01)32345678901230(21)SN-O50-00033"
 // deviceName slicing
 * deviceName[nomeDelDevice].name = "Pulsossimetro BT ACME-O50"
@@ -539,10 +535,10 @@ Usage: #example
 * event[0].period.start = "2025-11-07"
 * event[0].period.end = "2025-12-07"
 
-* section[pianoDiCura].code = $loinc#18776-5 "Plan of care note"
+* section[pianoDiCura].code = $loinc#18776-5
 * section[pianoDiCura].entry[0] = Reference(CarePlanPiano)
 
-* section[diagnosi].code = $loinc#29548-5 "Diagnosis"
+* section[diagnosi].code = $loinc#29548-5
 * section[diagnosi].entry[0] = Reference(ObsDiagnosiTM)
 
 
@@ -589,5 +585,80 @@ Usage: #example
 * activity[=].detail.description = "A riposo, dito indice, 1 misurazione/die."
 
 * note[0].text = "Prima stesura del Piano di Telemonitoraggio (30 giorni)."
+
+//************Bundel document pinao di telemonitoraggio************
+
+// ===============================================
+// BUNDLE DOCUMENT del Piano di Telemonitoraggio
+// ===============================================
+Instance: EsempioPianoDiTelemonitoraggio
+InstanceOf: BundlePianoTM
+Usage: #example
+Description: "Esempio di Bundle nel contesto del Piano di Telemonitoraggio."
+* type = #document
+* identifier.system = "urn:ietf:rfc:39861"
+* identifier.value = "urn:uuid:bnd-tm-2025-000123"
+* timestamp = "2025-11-07T10:20:00+01:00"
+
+* entry[0].fullUrl = "http://example.org/fhir/Composition/composition-piano-tm-1"
+* entry[0].resource = EsempioCompositionPianoTM
+
+* entry[1].fullUrl = "http://example.org/fhir/CarePlan/careplan-tm-1"
+* entry[1].resource = CarePlanPiano
+
+* entry[2].fullUrl = "http://example.org/fhir/Patient/patient-telemonitoraggio"
+* entry[2].resource = PatientTelemonitoraggioExample
+
+* entry[3].fullUrl = "http://example.org/fhir/PractitionerRole/practrole-bianchi-tm"
+* entry[3].resource = RoleMedicoBianchiTM
+
+* entry[4].fullUrl = "http://example.org/fhir/PractitionerRole/practrole-consulente-tm"
+* entry[4].resource = PractitionerRoleTelemonitoraggioConsulenteExample
+
+* entry[5].fullUrl = "http://example.org/fhir/Organization/org-asl-roma-1"
+* entry[5].resource = AslRoma1
+
+* entry[6].fullUrl = "http://example.org/fhir/Practitioner/pract-bianchi"
+* entry[6].resource = MedicoBianchi
+
+* entry[7].fullUrl = "http://example.org/fhir/Practitioner/pract-consulente"
+* entry[7].resource = PractitionerTelemonitoraggioConsulenteExample
+
+* entry[8].fullUrl = "http://example.org/fhir/Device/device-bilancia"
+* entry[8].resource = DevBilancia
+
+* entry[9].fullUrl = "http://example.org/fhir/Device/device-sfigmo"
+* entry[9].resource = DevSfigmo
+
+* entry[10].fullUrl = "http://example.org/fhir/Device/device-spo2"
+* entry[10].resource = DevPulsossimetro
+
+* entry[11].fullUrl = "http://example.org/fhir/ActivityDefinition/ad-peso-quotidiano"
+* entry[11].resource = AD-PesoQuotidiano
+
+* entry[12].fullUrl = "http://example.org/fhir/ActivityDefinition/ad-pafc-quotidiane"
+* entry[12].resource = AD-PAFC-Quotidiane
+
+* entry[13].fullUrl = "http://example.org/fhir/ActivityDefinition/ad-spo2-quotidiana"
+* entry[13].resource = AD-SpO2-Quotidiana
+
+* entry[14].fullUrl = "http://example.org/fhir/ObservationDefinition/obsdef-peso"
+* entry[14].resource = ObsDef-Peso
+
+* entry[15].fullUrl = "http://example.org/fhir/ObservationDefinition/obsdef-pas"
+* entry[15].resource = ObsDef-PAS
+
+* entry[16].fullUrl = "http://example.org/fhir/ObservationDefinition/obsdef-pad"
+* entry[16].resource = ObsDef-PAD
+
+* entry[17].fullUrl = "http://example.org/fhir/ObservationDefinition/obsdef-fc"
+* entry[17].resource = ObsDef-FC
+
+* entry[18].fullUrl = "http://example.org/fhir/ObservationDefinition/obsdef-spo2"
+* entry[18].resource = ObsDef-SpO2
+
+* entry[19].fullUrl = "http://example.org/fhir/Observation/obs-diagnosi-tm"
+* entry[19].resource = ObsDiagnosiTM
+
 
 
