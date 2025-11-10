@@ -162,7 +162,7 @@ Usage: #example
 * title = "Tesserino dispositivi"
 * subject = Reference(PatientTelemonitoraggioExample)
 * date = "2025-06-16T10:30:00+02:00"
-* author[0] = Reference(PractitionerRoleTelemonitoraggioConsulenteExample)
+* author = Reference(PractitionerRoleTelemonitoraggioConsulenteExample)
 * attester[legalAuthenticator].mode = #legal
 * attester[legalAuthenticator].time = "2025-06-16T10:30:00+02:00"
 * attester[legalAuthenticator].party = Reference(PractitionerRoleTelemonitoraggioConsulenteExample)
@@ -192,6 +192,7 @@ Usage: #example
 * practitioner = Reference(MedicoBianchi)         
 * organization = Reference(PresidioSandroPertini)
 * active = true
+* id = "practrole-bianchi-tm"
 * period.start = "2025-01-01"
 * period.end = "2026-12-31"
 * code[0].text = "Medico Referente Telemonitoraggio"
@@ -200,6 +201,7 @@ Usage: #example
 Instance: MedicoBianchi
 InstanceOf: PractitionerTelemonitoraggio
 Usage: #example
+* id = "pract-bianchi"
 * name[0].family = "Bianchi"
 * name[0].given[0] = "Laura"
 * identifier
@@ -294,6 +296,7 @@ Instance: DevBilancia
 InstanceOf: DeviceTelemonitoraggio
 Usage: #example
 * status = #active
+* id = "device-bilancia"
 * manufacturer = "Acme Health"
 * manufactureDate = "2025-01-15"
 * serialNumber = "SN-B100-00987"
@@ -319,6 +322,7 @@ Instance: DevSfigmo
 InstanceOf: DeviceTelemonitoraggio
 Usage: #example
 * status = #active
+* id = "device-sfigmo"
 * manufacturer = "Acme Health"
 * manufactureDate = "2025-02-10"
 * serialNumber = "SN-P200-00421"
@@ -342,6 +346,7 @@ Instance: DevPulsossimetro
 InstanceOf: DeviceTelemonitoraggio
 Usage: #example
 * status = #active
+* id = "device-spo2"
 * manufacturer = "Acme Health"
 * manufactureDate = "2025-03-05"
 * serialNumber = "SN-O50-00033"
@@ -375,6 +380,7 @@ Alias: $icd9cm = http://hl7.org/fhir/sid/icd-9-cm
 Instance: ObsDef-Peso
 InstanceOf: ObservationDefinitionPianoTM
 Usage: #example
+* id = "obsdef-peso"
 * category[0].coding[0].system = $catTM
 * category[0].coding[0].code = #intermediato
 * category[0].coding[0].display = "Intermediato"
@@ -386,6 +392,7 @@ Usage: #example
 Instance: ObsDef-PAS
 InstanceOf: ObservationDefinitionPianoTM
 Usage: #example
+* id = "obsdef-pas"
 * category[0].coding[0].system = $catTM
 * category[0].coding[0].code = #intermediato
 * category[0].coding[0].display = "Intermediato"
@@ -401,6 +408,7 @@ Usage: #example
 Instance: ObsDef-PAD
 InstanceOf: ObservationDefinitionPianoTM
 Usage: #example
+* id = "obsdef-pad"
 * category[0].coding[0].system = $catTM
 * category[0].coding[0].code = #intermediato
 * category[0].coding[0].display = "Intermediato"
@@ -416,6 +424,7 @@ Usage: #example
 Instance: ObsDef-FC
 InstanceOf: ObservationDefinitionPianoTM
 Usage: #example
+* id = "obsdef-fc"
 * category[0].coding[0].system = $catTM
 * category[0].coding[0].code = #intermediato
 * category[0].coding[0].display = "Intermediato"
@@ -431,6 +440,7 @@ Usage: #example
 Instance: ObsDef-SpO2
 InstanceOf: ObservationDefinitionPianoTM
 Usage: #example
+* id = "obsdef-spo2"
 * category[0].coding[0].system = $catTM
 * category[0].coding[0].code = #intermediato
 * category[0].coding[0].display = "Intermediato"
@@ -451,6 +461,8 @@ Instance: AD-PesoQuotidiano
 InstanceOf: ActivityDefinitionPianoTM
 Usage: #example
 * name = "PesoQuotidiano"
+* id = "ad-peso-quotidiano"
+* url = "http://example.org/fhir/ActivityDefinition/ad-peso-quotidiano"
 * title = "Rilevazione peso quotidiana"
 * description = "Misurazione del peso corporeo al mattino, a digiuno, con bilancia connessa."
 * status = #active
@@ -469,7 +481,9 @@ Instance: AD-PAFC-Quotidiane
 InstanceOf: ActivityDefinitionPianoTM
 Usage: #example
 * status = #active
+* id = "ad-pafc-quotidiane"
 * name = "PAFCQuotidiane"
+* url = "http://example.org/fhir/ActivityDefinition/ad-pafc-quotidiane"
 * title = "Pressione arteriosa e frequenza cardiaca quotidiane"
 * description = "Misurazione PA (sistolica e diastolica) e FC con sfigmomanometro automatico."
 * timingTiming.repeat.frequency = 1
@@ -488,6 +502,8 @@ Instance: AD-SpO2-Quotidiana
 InstanceOf: ActivityDefinitionPianoTM
 Usage: #example
 * status = #active
+* id = "ad-spo2-quotidiana"
+* url = "http://example.org/fhir/ActivityDefinition/ad-spo2-quotidiana"
 * name = "SpO2Quotidiana"
 * title = "Saturazione periferica di ossigeno quotidiana"
 * description = "Misurazione SpO₂ a riposo con pulsossimetro da dito."
@@ -504,6 +520,7 @@ Usage: #example
 Instance: ObsDiagnosiTM
 InstanceOf: ObservationPianoTelemonitoraggio
 Usage: #example
+* id = "obs-diagnosi-tm"
 * status = #final
 * code = CodeSystem_DiagnosiICD9CM#428 "INSUFFICIENZA CARDIACA (SCOMPENSO CARDIACO)"
 * code.text = "Scompenso cardiaco"
@@ -527,7 +544,7 @@ Usage: #example
 * title = "Piano di Telemonitoraggio"
 * subject = Reference(PatientTelemonitoraggioExample)
 * author = Reference(RoleMedicoBianchiTM)
-
+* id = "composition-piano-tm-1"
 * attester[legalAuthenticator].mode = #legal
 * attester[legalAuthenticator].time = "2025-11-07T10:15:00+01:00"
 * attester[legalAuthenticator].party = Reference(RoleMedicoBianchiTM)
@@ -551,7 +568,7 @@ Usage: #example
 * identifier[0].value = "TM-2025-000123"
 * category = csTipologiaPiano#01 "Piano di Telemonitoraggio"
 * subject = Reference(PatientTelemonitoraggioExample)
-
+* id = "careplan-tm-1"
 * status = #active
 * intent = #plan
 
@@ -566,21 +583,21 @@ Usage: #example
 * activity[+].detail.status = #in-progress
 * activity[=].detail.code = $sct#879780004 "Telehealth monitoring for chronic heart failure (regime/therapy)"
 * activity[=].detail.code.text = "Peso quotidiano"
-* activity[=].detail.instantiatesCanonical = Canonical(AD-PesoQuotidiano)
+* activity[=].detail.instantiatesCanonical = "http://example.org/fhir/ActivityDefinition/ad-peso-quotidiano"
 * activity[=].detail.performer[0] = Reference(DevBilancia)
 * activity[=].detail.description = "Misurazione mattutina a digiuno, 1/die."
 
 * activity[+].detail.status = #in-progress
 * activity[=].detail.code = $sct#879780004 "Telehealth monitoring for chronic heart failure (regime/therapy)"
 * activity[=].detail.code.text = "PA e FC quotidiane"
-* activity[=].detail.instantiatesCanonical = Canonical(AD-PAFC-Quotidiane)
+* activity[=].detail.instantiatesCanonical = "http://example.org/fhir/ActivityDefinition/ad-pafc-quotidiane"
 * activity[=].detail.performer[0] = Reference(DevSfigmo)
 * activity[=].detail.description = "1 misurazione/die, posizione seduta, bracciale adeguato."
 
 * activity[+].detail.status = #in-progress
 * activity[=].detail.code = $sct#879780004 "Telehealth monitoring for chronic heart failure (regime/therapy)"
 * activity[=].detail.code.text = "SpO₂ quotidiana"
-* activity[=].detail.instantiatesCanonical = Canonical(AD-SpO2-Quotidiana)
+* activity[=].detail.instantiatesCanonical = "http://example.org/fhir/ActivityDefinition/ad-spo2-quotidiana"
 * activity[=].detail.performer[0] = Reference(DevPulsossimetro)
 * activity[=].detail.description = "A riposo, dito indice, 1 misurazione/die."
 
@@ -606,59 +623,59 @@ Description: "Esempio di Bundle nel contesto del Piano di Telemonitoraggio."
 * entry[1].fullUrl = "http://example.org/fhir/CarePlan/careplan-tm-1"
 * entry[1].resource = CarePlanPiano
 
-* entry[2].fullUrl = "http://example.org/fhir/Patient/patient-telemonitoraggio"
+* entry[2].fullUrl = "http://example.org/fhir/Patient/2e7e0fe3-f0bf-4e0a-8228-b8e7fcec8c82"
 * entry[2].resource = PatientTelemonitoraggioExample
 
 * entry[3].fullUrl = "http://example.org/fhir/PractitionerRole/practrole-bianchi-tm"
 * entry[3].resource = RoleMedicoBianchiTM
 
-* entry[4].fullUrl = "http://example.org/fhir/PractitionerRole/practrole-consulente-tm"
-* entry[4].resource = PractitionerRoleTelemonitoraggioConsulenteExample
+// * entry[4].fullUrl = "http://example.org/fhir/PractitionerRole/9f1a2b87-7d4c-4a65-8fc7-e8b56f7312f5"
+// * entry[4].resource = PractitionerRoleTelemonitoraggioConsulenteExample
 
-* entry[5].fullUrl = "http://example.org/fhir/Organization/org-asl-roma-1"
-* entry[5].resource = AslRoma1
+// * entry[4].fullUrl = "http://example.org/fhir/Organization/asl-roma-1"
+// * entry[4].resource = AslRoma1
 
-* entry[6].fullUrl = "http://example.org/fhir/Practitioner/pract-bianchi"
-* entry[6].resource = MedicoBianchi
+* entry[4].fullUrl = "http://example.org/fhir/Practitioner/pract-bianchi"
+* entry[4].resource = MedicoBianchi
 
-* entry[7].fullUrl = "http://example.org/fhir/Practitioner/pract-consulente"
-* entry[7].resource = PractitionerTelemonitoraggioConsulenteExample
+// * entry[7].fullUrl = "http://example.org/fhir/Practitioner/d37c3d0a-96d9-4de5-873c-68b6c1c64db2"
+// * entry[7].resource = PractitionerTelemonitoraggioConsulenteExample
 
-* entry[8].fullUrl = "http://example.org/fhir/Device/device-bilancia"
-* entry[8].resource = DevBilancia
+* entry[5].fullUrl = "http://example.org/fhir/Device/device-bilancia"
+* entry[5].resource = DevBilancia
 
-* entry[9].fullUrl = "http://example.org/fhir/Device/device-sfigmo"
-* entry[9].resource = DevSfigmo
+* entry[6].fullUrl = "http://example.org/fhir/Device/device-sfigmo"
+* entry[6].resource = DevSfigmo
 
-* entry[10].fullUrl = "http://example.org/fhir/Device/device-spo2"
-* entry[10].resource = DevPulsossimetro
+* entry[7].fullUrl = "http://example.org/fhir/Device/device-spo2"
+* entry[7].resource = DevPulsossimetro
 
-* entry[11].fullUrl = "http://example.org/fhir/ActivityDefinition/ad-peso-quotidiano"
-* entry[11].resource = AD-PesoQuotidiano
+* entry[8].fullUrl = "http://example.org/fhir/ActivityDefinition/ad-peso-quotidiano"
+* entry[8].resource = AD-PesoQuotidiano
 
-* entry[12].fullUrl = "http://example.org/fhir/ActivityDefinition/ad-pafc-quotidiane"
-* entry[12].resource = AD-PAFC-Quotidiane
+* entry[9].fullUrl = "http://example.org/fhir/ActivityDefinition/ad-pafc-quotidiane"
+* entry[9].resource = AD-PAFC-Quotidiane
 
-* entry[13].fullUrl = "http://example.org/fhir/ActivityDefinition/ad-spo2-quotidiana"
-* entry[13].resource = AD-SpO2-Quotidiana
+* entry[10].fullUrl = "http://example.org/fhir/ActivityDefinition/ad-spo2-quotidiana"
+* entry[10].resource = AD-SpO2-Quotidiana
 
-* entry[14].fullUrl = "http://example.org/fhir/ObservationDefinition/obsdef-peso"
-* entry[14].resource = ObsDef-Peso
+* entry[11].fullUrl = "http://example.org/fhir/ObservationDefinition/obsdef-peso"
+* entry[11].resource = ObsDef-Peso
 
-* entry[15].fullUrl = "http://example.org/fhir/ObservationDefinition/obsdef-pas"
-* entry[15].resource = ObsDef-PAS
+* entry[12].fullUrl = "http://example.org/fhir/ObservationDefinition/obsdef-pas"
+* entry[12].resource = ObsDef-PAS
 
-* entry[16].fullUrl = "http://example.org/fhir/ObservationDefinition/obsdef-pad"
-* entry[16].resource = ObsDef-PAD
+* entry[13].fullUrl = "http://example.org/fhir/ObservationDefinition/obsdef-pad"
+* entry[13].resource = ObsDef-PAD
 
-* entry[17].fullUrl = "http://example.org/fhir/ObservationDefinition/obsdef-fc"
-* entry[17].resource = ObsDef-FC
+* entry[14].fullUrl = "http://example.org/fhir/ObservationDefinition/obsdef-fc"
+* entry[14].resource = ObsDef-FC
 
-* entry[18].fullUrl = "http://example.org/fhir/ObservationDefinition/obsdef-spo2"
-* entry[18].resource = ObsDef-SpO2
+* entry[15].fullUrl = "http://example.org/fhir/ObservationDefinition/obsdef-spo2"
+* entry[15].resource = ObsDef-SpO2
 
-* entry[19].fullUrl = "http://example.org/fhir/Observation/obs-diagnosi-tm"
-* entry[19].resource = ObsDiagnosiTM
+* entry[16].fullUrl = "http://example.org/fhir/Observation/obs-diagnosi-tm"
+* entry[16].resource = ObsDiagnosiTM
 
 
 
