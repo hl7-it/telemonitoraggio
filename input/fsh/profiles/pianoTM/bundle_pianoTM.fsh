@@ -4,8 +4,9 @@ Id: BundlePianoTM
 Description: "Profilo del Bundle utilizzato nel contesto del Piano di Telemonitoraggio"
 * ^status = #draft
 * type = #document (exactly)
-* entry ^slicing.discriminator.type = #type
-* entry ^slicing.discriminator.path = "resource.meta.profile"
+* entry ^slicing.discriminator[0].type = #type
+* entry ^slicing.discriminator[0].path = "resource"
+* entry ^slicing.ordered = false
 * entry ^slicing.rules = #open
 * entry contains
     composition 1..1 and
@@ -16,21 +17,15 @@ Description: "Profilo del Bundle utilizzato nel contesto del Piano di Telemonito
     practitioner 0..* and
     device 0..* and
     activityDefinition 0..* and
-    observationDefinition 0..*
+    observationDefinition 0..* and 
+    observation 0..*
 * entry[composition].resource only CompositionPianoTM
 * entry[carePlan].resource only CarePlanPianoDiCuraTelemonitoraggio
 * entry[patient].resource only PatientTelemonitoraggio
-* entry[patient].resource.address 1..
-* entry[patient].resource.address ^slicing.discriminator.type = #value
-* entry[patient].resource.address ^slicing.discriminator.path = "use"
-* entry[patient].resource.address ^slicing.rules = #open
 * entry[practitionerRole].resource only PractitionerRoleTelemonitoraggio
-* entry[organization].resource only OrganizationT1
+* entry[organization].resource only OrganizationT2
 * entry[practitioner].resource only PractitionerTelemonitoraggio
-* entry[practitioner].resource.identifier ^slicing.discriminator.type = #pattern
-* entry[practitioner].resource.identifier ^slicing.discriminator.path = "$this"
-* entry[practitioner].resource.identifier ^slicing.description = "Slice based on the identifier pattern"
-* entry[practitioner].resource.identifier ^slicing.rules = #open
 * entry[device].resource only DeviceTelemonitoraggio
 * entry[activityDefinition].resource only ActivityDefinitionPianoTM
 * entry[observationDefinition].resource only ObservationDefinitionPianoTM
+* entry[observation].resource only ObservationPianoTelemonitoraggio
