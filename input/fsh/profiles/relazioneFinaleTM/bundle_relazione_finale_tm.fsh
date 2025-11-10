@@ -28,7 +28,7 @@ Description: "Profilo del Bundle utilizzato nel contesto della Relazione Finale 
 * entry[patient].resource only PatientTelemonitoraggio
 * entry[patient].resource.address 1..
 
-* entry[carePlan].resource only CarePlanPianoDiCuraTelemonitoraggio
+* entry[carePlan].resource only CarePlanRelazioneFinaleTM
 * entry[practitionerRole].resource only PractitionerRoleTelemonitoraggio
 * entry[practitioner].resource only PractitionerTelemonitoraggio
 * entry[practitioner].resource.identifier ^slicing.discriminator.type = #pattern

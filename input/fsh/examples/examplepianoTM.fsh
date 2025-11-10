@@ -1,9 +1,7 @@
-/*
-    Esempio del paziente nel contesto del telemonitoraggio
-*/
+//Esempio del paziente nel contesto del telemonitoraggio
 Instance: PatientTelemonitoraggioExample
 InstanceOf: PatientTelemonitoraggio
-Description: "Esempio di paziente nel contesto della televisita"
+Description: "Esempio di paziente nel contesto del telemonitoraggio"
 Usage: #example
 * id = "2e7e0fe3-f0bf-4e0a-8228-b8e7fcec8c82"
 // * extension[luogoNascita].valueAddress.extension[residenza].valueBoolean = true
@@ -52,7 +50,6 @@ Usage: #example
 * contact[0].telecom.value = "3312345567"
 * contact[1].telecom.system = #phone
 * contact[1].telecom.value = "3311234598"
-
 
 Instance: PractitionerRoleTelemonitoraggioConsulenteExample
 InstanceOf: PractitionerRoleTelemonitoraggio
@@ -116,62 +113,8 @@ Usage: #example
 * identifier.system = "http://hl7.it/sid/hsp"
 * identifier.value = "UO12345"
 
-Instance: Device-Pulsossimetro-Esempio
-InstanceOf: DeviceTelemonitoraggio
-Usage: #example
-Title: "Pulsossimetro - Esempio"
-Description: "Device di teleassistenza per monitoraggio SpO2"
-* id = "7cbbe77d-dcdb-409b-a215-pulsioss"
-* status = #active
-* identifier[0].system = "http://example.org/fhir/id/device"
-* identifier[0].value = "DEV-SPO2-0021"
-
-* udiCarrier.deviceIdentifier = "98765432109876"
-* udiCarrier.carrierHRF = "(01)98765432109876(21)SNSPO20021(10)BATCH9"
-
-* manufacturer = "Meditech Italia S.r.l."
-* manufactureDate = "2023-11-02"
-* expirationDate = "2028-11-01"
-* lotNumber = "BATCH9"
-* serialNumber = "SNSPO20021"
-
-* deviceName[modelloDelDevice].name = "Meditech OxiCare Pro"
-* deviceName[modelloDelDevice].type = http://hl7.org/fhir/device-nametype#model-name "Model name"
-
-
-// *************** Esempi per il Tesserino Dispositivo *******************
-Instance: Pulsossimetro-DeviceUseStatement-Esempio
-InstanceOf: DeviceUseStatementTelemonitoraggio
-Usage: #example
-Title: "Use statetement pulsossimetro - Esempio"
-Description: "Assegnazione del device per il monitoraggio SpO2 al paziente"
-* id = "7cbbe77d-dcdb-409b-a215-tessdisp"
-* subject = Reference(PatientTelemonitoraggioExample)
-* device = Reference(Device-Pulsossimetro-Esempio)
-* timingPeriod.start = "2025-06-16T10:30:00+02:00"
-
-Instance: CompositionTesserinoDispositiviTM-Esempio
-InstanceOf: CompositionTesserinoDispositiviTM
-Title: "Esempio di Tesserino Dispositivo"
-Description: "Tesserino Dispositivo contenente tutte le informazioni obbligatorie"
-Usage: #example
-* id = "7cbbe77d-dcdb-409b-a215-comptess"
-* status = #final
-//rivedere il type
-* type = $loinc#75496-0 "Telehealth Note"
-* title = "Tesserino dispositivi"
-* subject = Reference(PatientTelemonitoraggioExample)
-* date = "2025-06-16T10:30:00+02:00"
-* author[0] = Reference(PractitionerRoleTelemonitoraggioConsulenteExample)
-* attester[legalAuthenticator].mode = #legal
-* attester[legalAuthenticator].time = "2025-06-16T10:30:00+02:00"
-* attester[legalAuthenticator].party = Reference(PractitionerRoleTelemonitoraggioConsulenteExample)
-* section[informazioniDevice].code = $loinc#104972-5
-* section[informazioniDevice].title = "Informazioni sul dispositivo"
-* section[informazioniDevice].entry[0] = Reference(Pulsossimetro-DeviceUseStatement-Esempio)
-
 /*
-  PIANO DI TELEMONITRAGIO: Caso d’uso: Scompenso cardiaco in follow-up (Telemonitoraggio di Tipo I)
+  PIANO DI TELEMONITORAGGIO: Caso d’uso: Scompenso cardiaco in follow-up (Telemonitoraggio di Tipo I)
   Paziente: Maria Rossi (67 anni), dimessa da 10 giorni dopo riacutizzazione di scompenso cardiaco (HFrEF).
   Obiettivo del TM: intercettare precocemente segni di congestione e variazioni pressorie/frequenza.
   Parametri e frequenze:
@@ -188,6 +131,7 @@ Usage: #example
 
 Instance: RoleMedicoBianchiTM
 InstanceOf: PractitionerRoleTelemonitoraggio
+Description: "Esempio di practitionerRole nel contesto del Telemonitoraggio"
 Usage: #example
 * practitioner = Reference(MedicoBianchi)         
 * organization = Reference(PresidioSandroPertini)
@@ -199,6 +143,7 @@ Usage: #example
 
 Instance: MedicoBianchi
 InstanceOf: PractitionerTelemonitoraggio
+Description: "Esempio di practitioner nel contesto del Telemonitoraggio"
 Usage: #example
 * name[0].family = "Bianchi"
 * name[0].given[0] = "Laura"
@@ -214,6 +159,7 @@ Alias: $sct = http://snomed.info/sct
 // ===== Fabbricante (profilo: OrganizationFabbricante) =====
 Instance: OrgFab-AcmeHealth
 InstanceOf: OrganizationFabbricante
+Description: "Esempio di azienda produttrice di device nel contesto del telemonitoraggio"
 Usage: #example
 * identifier[0].system = "http://hl7.it/sid/partitaIVA"
 * identifier[0].value = "09876543210"
@@ -233,6 +179,7 @@ Usage: #example
 // --- Bilancia connessa ACME-B100 ---
 Instance: DevDef-Bilancia-B100
 InstanceOf: DeviceDefinitionTelemonitoraggio
+Description: "Esempio di deviceDefinition per il dispositivo bilancia ACME-B100 nel contesto del telemonitoraggio"
 Usage: #example
 * manufacturerReference = Reference(OrgFab-AcmeHealth)
 * modelNumber = "ACME-B100"
@@ -253,6 +200,7 @@ Usage: #example
 // --- Sfigmomanometro BT ACME-P200 ---
 Instance: DevDef-Sfigmo-P200
 InstanceOf: DeviceDefinitionTelemonitoraggio
+Description: "Esempio di deviceDefinition per il dispositivo Sfigmomanometro ACME-P200 nel contesto del telemonitoraggio"
 Usage: #example
 * manufacturerReference = Reference(OrgFab-AcmeHealth)
 * modelNumber = "ACME-P200"
@@ -271,6 +219,7 @@ Usage: #example
 // --- Pulsossimetro BT ACME-O50 ---
 Instance: DevDef-Pulsossimetro-O50
 InstanceOf: DeviceDefinitionTelemonitoraggio
+Description: "Esempio di deviceDefinition per il pulsiossimetro ACME-O50 nel contesto del telemonitoraggio"
 Usage: #example
 * manufacturerReference = Reference(OrgFab-AcmeHealth)
 * modelNumber = "ACME-O50"
@@ -292,6 +241,7 @@ Usage: #example
 // --- Bilancia connessa ---
 Instance: DevBilancia
 InstanceOf: DeviceTelemonitoraggio
+Description: "Esempio di deviceTelemonitoraggio per il dispositivo bilancia"
 Usage: #example
 * status = #active
 * manufacturer = "Acme Health"
@@ -317,6 +267,7 @@ Usage: #example
 // --- Sfigmomanometro BT ---
 Instance: DevSfigmo
 InstanceOf: DeviceTelemonitoraggio
+Description: "Esempio di deviceTelemonitoraggio per il dispositivo sfigmomanometro"
 Usage: #example
 * status = #active
 * manufacturer = "Acme Health"
@@ -340,6 +291,7 @@ Usage: #example
 // --- Pulsossimetro BT ---
 Instance: DevPulsossimetro
 InstanceOf: DeviceTelemonitoraggio
+Description: "Esempio di deviceTelemonitoraggio per il dispositivo pulsiossimetro"
 Usage: #example
 * status = #active
 * manufacturer = "Acme Health"
@@ -374,6 +326,7 @@ Alias: $icd9cm = http://hl7.org/fhir/sid/icd-9-cm
 // -- Peso corporeo --
 Instance: ObsDef-Peso
 InstanceOf: ObservationDefinitionPianoTM
+Description: "Esempio di ObservationDefinitionPianoTM per il peso corporeo"
 Usage: #example
 * category[0].coding[0].system = $catTM
 * category[0].coding[0].code = #intermediato
@@ -385,6 +338,7 @@ Usage: #example
 // -- Pressione arteriosa sistolica --
 Instance: ObsDef-PAS
 InstanceOf: ObservationDefinitionPianoTM
+Description: "Esempio di ObservationDefinitionPianoTM per la pressione arteriosa sistolica"
 Usage: #example
 * category[0].coding[0].system = $catTM
 * category[0].coding[0].code = #intermediato
@@ -400,6 +354,7 @@ Usage: #example
 // -- Pressione arteriosa diastolica --
 Instance: ObsDef-PAD
 InstanceOf: ObservationDefinitionPianoTM
+Description: "Esempio di ObservationDefinitionPianoTM per la pressione arteriosa diastolica"
 Usage: #example
 * category[0].coding[0].system = $catTM
 * category[0].coding[0].code = #intermediato
@@ -415,6 +370,7 @@ Usage: #example
 // -- Frequenza cardiaca --
 Instance: ObsDef-FC
 InstanceOf: ObservationDefinitionPianoTM
+Description: "Esempio di ObservationDefinitionPianoTM per la frequenza cardiaca"
 Usage: #example
 * category[0].coding[0].system = $catTM
 * category[0].coding[0].code = #intermediato
@@ -430,6 +386,7 @@ Usage: #example
 // -- Saturazione periferica di O2 (SpO2) --
 Instance: ObsDef-SpO2
 InstanceOf: ObservationDefinitionPianoTM
+Description: "Esempio di ObservationDefinitionPianoTM per la SpO2"
 Usage: #example
 * category[0].coding[0].system = $catTM
 * category[0].coding[0].code = #intermediato
@@ -449,6 +406,7 @@ Usage: #example
 // --- Rilevazione peso quotidiana ---
 Instance: AD-PesoQuotidiano
 InstanceOf: ActivityDefinitionPianoTM
+Description: "Esempio di ActivityDefinitionPianoTM per la rilevazione quotidiana del peso."
 Usage: #example
 * name = "PesoQuotidiano"
 * title = "Rilevazione peso quotidiana"
@@ -467,6 +425,7 @@ Usage: #example
 // --- Pressione arteriosa + Frequenza cardiaca quotidiane ---
 Instance: AD-PAFC-Quotidiane
 InstanceOf: ActivityDefinitionPianoTM
+Description: "Esempio di ActivityDefinitionPianoTM per la rilevazione quotidiana di pressione arteriosa e frequenza cardiaca."
 Usage: #example
 * status = #active
 * name = "PAFCQuotidiane"
@@ -486,6 +445,7 @@ Usage: #example
 // --- SpO2 quotidiana ---
 Instance: AD-SpO2-Quotidiana
 InstanceOf: ActivityDefinitionPianoTM
+Description: "Esempio di ActivityDefinitionPianoTM per la rilevazione quotidiana della SpO2."
 Usage: #example
 * status = #active
 * name = "SpO2Quotidiana"
@@ -503,6 +463,7 @@ Usage: #example
 
 Instance: ObsDiagnosiTM
 InstanceOf: ObservationPianoTelemonitoraggio
+Description: "Esempio di ObservationPianoTelemonitoraggio relativa ad una diagnosi di scompenso cardiaco."
 Usage: #example
 * status = #final
 * code = CodeSystem_DiagnosiICD9CM#428 "INSUFFICIENZA CARDIACA (SCOMPENSO CARDIACO)"
@@ -545,6 +506,7 @@ Usage: #example
 //**********Care Plan Piano di telemonitoraggio**********
 Instance: CarePlanPiano
 InstanceOf: CarePlanPianoDiCuraTelemonitoraggio
+Description: "Esempio di CarePlan nel contesto del Piano di Telemonitoraggio"
 Usage: #example
 
 * identifier[0].system = "http://example.it/fhir/CarePlan/identifier"
@@ -586,7 +548,7 @@ Usage: #example
 
 * note[0].text = "Prima stesura del Piano di Telemonitoraggio (30 giorni)."
 
-//************Bundel document pinao di telemonitoraggio************
+//************Bundle document piano di telemonitoraggio************
 
 // ===============================================
 // BUNDLE DOCUMENT del Piano di Telemonitoraggio

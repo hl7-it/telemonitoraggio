@@ -12,8 +12,8 @@ Description: "Profilo della Composition utilizzata nel contesto della Relazione 
 * section ^slicing.rules = #open
 * section contains
     pianoDiCura 1..1 and
-    questitoDiagnostico 0..1 and
-    InquadramentoClinicoIniziale 0..1 and
+    quesitoDiagnostico 0..1 and
+    inquadramentoClinicoIniziale 0..1 and
     precedentiEsamiEseguiti 0..1 and
     confrontoPrecedentiEsamiEseguiti 0..1 and
     prestazioni 0..1 and
@@ -27,31 +27,31 @@ Description: "Profilo della Composition utilizzata nel contesto della Relazione 
 * section[pianoDiCura] ^sliceName = "pianoDiCura"
 * section[pianoDiCura].code = $loinc#18776-5 (exactly)
 * section[pianoDiCura].entry only Reference(CarePlanRelazioneFinaleTM)
-* section[questitoDiagnostico] ^sliceName = "questitoDiagnostico"
-* section[questitoDiagnostico].code = $loinc#29299-5 (exactly)
-* section[questitoDiagnostico].entry only Reference(ObservationTelemedicina)
-* section[InquadramentoClinicoIniziale] ^sliceName = "InquadramentoClinicoIniziale"
-* section[InquadramentoClinicoIniziale].code = $loinc#47039-3 (exactly)
-* section[InquadramentoClinicoIniziale].section ^slicing.discriminator.type = #value
-* section[InquadramentoClinicoIniziale].section ^slicing.discriminator.path = "code"
-* section[InquadramentoClinicoIniziale].section ^slicing.rules = #open
-* section[InquadramentoClinicoIniziale].section contains
+* section[quesitoDiagnostico] ^sliceName = "quesitoDiagnostico"
+* section[quesitoDiagnostico].code = $loinc#29299-5 (exactly)
+* section[quesitoDiagnostico].entry only Reference(ObservationTelemedicina)
+* section[inquadramentoClinicoIniziale] ^sliceName = "inquadramentoClinicoIniziale"
+* section[inquadramentoClinicoIniziale].code = $loinc#47039-3 (exactly)
+* section[inquadramentoClinicoIniziale].section ^slicing.discriminator.type = #value
+* section[inquadramentoClinicoIniziale].section ^slicing.discriminator.path = "code"
+* section[inquadramentoClinicoIniziale].section ^slicing.rules = #open
+* section[inquadramentoClinicoIniziale].section contains
     anamnesi 0..1 and
     allergie 0..* and
     terapiaFarmacologicaInAtto 0..* and
     esameObiettivo 0..1
-* section[InquadramentoClinicoIniziale].section[anamnesi] ^sliceName = "anamnesi"
-* section[InquadramentoClinicoIniziale].section[anamnesi].code = $loinc#11329-0  
-* section[InquadramentoClinicoIniziale].section[anamnesi].entry only Reference(ObservationTelemedicina)
-* section[InquadramentoClinicoIniziale].section[allergie] ^sliceName = "allergie"
-* section[InquadramentoClinicoIniziale].section[allergie].code = $loinc#48765-2 (exactly)
-* section[InquadramentoClinicoIniziale].section[allergie].entry only Reference(AllergyIntoleranceTelemedicina)
-* section[InquadramentoClinicoIniziale].section[terapiaFarmacologicaInAtto] ^sliceName = "terapiaFarmacologicaInAtto"
-* section[InquadramentoClinicoIniziale].section[terapiaFarmacologicaInAtto].code = $loinc#10160-0 (exactly)
-* section[InquadramentoClinicoIniziale].section[terapiaFarmacologicaInAtto].entry only Reference(MedicationStatementTelemedicina)
-* section[InquadramentoClinicoIniziale].section[esameObiettivo] ^sliceName = "esameObiettivo"
-* section[InquadramentoClinicoIniziale].section[esameObiettivo].code = $loinc#29545-1 (exactly)
-* section[InquadramentoClinicoIniziale].section[esameObiettivo].entry only Reference(ObservationTelemedicina)
+* section[inquadramentoClinicoIniziale].section[anamnesi] ^sliceName = "anamnesi"
+* section[inquadramentoClinicoIniziale].section[anamnesi].code = $loinc#11329-0  
+* section[inquadramentoClinicoIniziale].section[anamnesi].entry only Reference(ObservationTelemedicina)
+* section[inquadramentoClinicoIniziale].section[allergie] ^sliceName = "allergie"
+* section[inquadramentoClinicoIniziale].section[allergie].code = $loinc#48765-2 (exactly)
+* section[inquadramentoClinicoIniziale].section[allergie].entry only Reference(AllergyIntoleranceTelemedicina)
+* section[inquadramentoClinicoIniziale].section[terapiaFarmacologicaInAtto] ^sliceName = "terapiaFarmacologicaInAtto"
+* section[inquadramentoClinicoIniziale].section[terapiaFarmacologicaInAtto].code = $loinc#10160-0 (exactly)
+* section[inquadramentoClinicoIniziale].section[terapiaFarmacologicaInAtto].entry only Reference(MedicationStatementTelemedicina)
+* section[inquadramentoClinicoIniziale].section[esameObiettivo] ^sliceName = "esameObiettivo"
+* section[inquadramentoClinicoIniziale].section[esameObiettivo].code = $loinc#29545-1 (exactly)
+* section[inquadramentoClinicoIniziale].section[esameObiettivo].entry only Reference(ObservationTelemedicina)
 * section[precedentiEsamiEseguiti] ^sliceName = "precedentiEsamiEseguiti"
 * section[precedentiEsamiEseguiti].code = $loinc#30954-2 (exactly)
 * section[precedentiEsamiEseguiti].entry only Reference(ObservationRelazioneFinaleTm)

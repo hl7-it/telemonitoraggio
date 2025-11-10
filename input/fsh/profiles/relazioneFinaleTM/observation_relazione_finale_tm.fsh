@@ -1,7 +1,7 @@
 Profile: ObservationRelazioneFinaleTm
 Parent: ObservationTelemedicina
 Id: ObservationRelazioneFinaleTm
-Description: "Profilo base di Observation condiviso in tutti i documenti di Telemedicina"
+Description: "Profilo di Observation nell'ambito della relazione finale di Telemonitoraggio"
 * ^version = "1.0.0"
 * ^status = #draft
 * ^experimental = true
