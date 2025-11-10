@@ -7,6 +7,8 @@ Parent: CompositionTelemedicina
 Id: CompositionTesserinoDispositiviTM
 Description: "Profilo della Composition utilizzata nel contesto del Tesserino Dispositivi"
 * ^status = #draft
+// Capire come gestire il type (non è possibie mettere 0..1)
+// * type 0..1
 * section ^slicing.discriminator.type = #value
 * section ^slicing.discriminator.path = "code"
 * section ^slicing.rules = #open

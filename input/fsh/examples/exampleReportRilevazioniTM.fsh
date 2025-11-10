@@ -61,6 +61,7 @@ Usage: #example
 * valueQuantity.value = 96
 * valueQuantity.unit = "%"
 
+/*
 //**********Care Plan Report Rilevazione di telemonitoraggio**********
 Instance: CarePlanReportRilevazione
 InstanceOf: CarePlanReportRilevazioneTM
@@ -143,3 +144,4 @@ Description: "Esempio di Bundle nel contesto del Report di Rilevazione di Telemo
 * entry[7].fullUrl = "http://example.org/fhir/Observation/rilevazione5-11-11"
 * entry[7].resource = RilevazioneSpO2
 
+*/

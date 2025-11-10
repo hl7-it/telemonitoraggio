@@ -4,7 +4,7 @@ Instance: DeviceUseStatementBilancia
 InstanceOf: DeviceUseStatementTelemonitoraggio
 Usage: #example
 Description: "Esempio di DeviceUseStatement nel contesto del Telemonitoraggio"
-* id = "7cbbe77d-dcdb-409b-a215-tessdisp"
+* id = "7cbbe77d-dcdb-409b-a215-devusestat"
 * subject = Reference(PatientTelemonitoraggioExample)
 * device = Reference(DevBilancia)
 * timingPeriod.start = "2025-11-07T10:20:00+01:00"
@@ -14,7 +14,7 @@ Instance: EsempioCompositionTesserinoDispositiviTM
 InstanceOf: CompositionTesserinoDispositiviTM
 Description: "Esempio di Composition nel contesto del Tesserino Dispositivo di Telemonitoraggio"
 Usage: #example
-* id = "7cbbe77d-dcdb-409b-a215-comptess"
+* id = "7cbbe77d-dcdb-409b-a215-compTessDisp"
 * status = #final
 //rivedere il type
 * type = $loinc#75496-0 "Telehealth Note"
