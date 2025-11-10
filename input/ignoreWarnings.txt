@@ -3,12 +3,3 @@
 # Add warning and/or information messages here after you've confirmed that they aren't really a problem
 # (And include comments like this justifying why)
 # See https://github.com/FHIR/sample-ig/blob/master/input/ignoreWarnings.txt for examples
-
-Entry 'http://example.org/fhir/ActivityDefinition/ad-peso-quotidiano' isn't reachable by traversing links (forward or backward) from the Composition
-Entry 'http://example.org/fhir/ActivityDefinition/ad-pafc-quotidiane' isn't reachable by traversing links (forward or backward) from the Composition
-Entry 'http://example.org/fhir/ActivityDefinition/ad-spo2-quotidiana' isn't reachable by traversing links (forward or backward) from the Composition
-Entry 'http://example.org/fhir/ObservationDefinition/obsdef-peso' isn't reachable by traversing links (forward or backward) from the Composition
-Entry 'http://example.org/fhir/ObservationDefinition/obsdef-pas' isn't reachable by traversing links (forward or backward) from the Composition
-Entry 'http://example.org/fhir/ObservationDefinition/obsdef-pad' isn't reachable by traversing links (forward or backward) from the Composition
-Entry 'http://example.org/fhir/ObservationDefinition/obsdef-fc' isn't reachable by traversing links (forward or backward) from the Composition
-Entry 'http://example.org/fhir/ObservationDefinition/obsdef-spo2' isn't reachable by traversing links (forward or backward) from the Composition
