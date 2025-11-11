@@ -104,11 +104,14 @@ Title: "Peso corporeo - 09/11/2025"
 * effectiveDateTime = "2025-11-09T08:05:00+01:00"
 * valueQuantity.value = 72.4
 * valueQuantity.unit = "kg"
+* valueQuantity.system =  "http://unitsofmeasure.org"
+* valueQuantity.code = http://unitsofmeasure.org#kg "kg"
 * method.text = "Bilancia connessa domestica"
 * device = Reference(DevBilancia)
 * performer[0] = Reference(RoleMedicoBianchiTM)
 * note[0].text = "Misurazione mattutina a digiuno."
-* category = #activity
+* category[0] = http://terminology.hl7.org/CodeSystem/observation-category#vital-signs
+
 
 // =======================
 // PRESSIONE ARTERIOSA (panel) (ObservationTelemedicina)
@@ -119,7 +122,7 @@ Usage: #example
 Title: "Pressione arteriosa - 09/11/2025"
 * id = "obs-pa-2025-11-09"
 * status = #final
-* category = #activity
+* category[0] = http://terminology.hl7.org/CodeSystem/observation-category#activity "Activity"
 * code = http://loinc.org#85354-9 "Blood pressure panel with all children optional"
 * subject = Reference(PatientTelemonitoraggioExample)
 * effectiveDateTime = "2025-11-09T08:32:00+01:00"
@@ -130,11 +133,14 @@ Title: "Pressione arteriosa - 09/11/2025"
 * component[0].code = http://loinc.org#8480-6 "Systolic blood pressure"
 * component[0].valueQuantity.value = 118
 * component[0].valueQuantity.unit = "mmHg"
+* valueQuantity.system =  "http://unitsofmeasure.org"
+* valueQuantity.code = http://unitsofmeasure.org#mm[Hg]
 // component: Diastolica
 * component[1].code = http://loinc.org#8462-4 "Diastolic blood pressure"
 * component[1].valueQuantity.value = 74
 * component[1].valueQuantity.unit = "mmHg"
 * note[0].text = "Braccio sinistro, posizione seduta, bracciale adeguato."
+* category[0] = http://terminology.hl7.org/CodeSystem/observation-category#vital-signs
 
 // =======================
 // SpO2 (ObservationTelemedicina)
@@ -145,13 +151,17 @@ Usage: #example
 Title: "SpO₂ - 09/11/2025"
 * id = "obs-spo2-2025-11-09"
 * status = #final
-* category = #activity
+* category[0] = http://terminology.hl7.org/CodeSystem/observation-category#activity "Activity"
 * code = http://loinc.org#59408-5 "Oxygen saturation in Arterial blood by Pulse oximetry"
 * subject = Reference(PatientTelemonitoraggioExample)
 * effectiveDateTime = "2025-11-09T08:47:00+01:00"
 * valueQuantity.value = 95
 * valueQuantity.unit = "%"
+* valueQuantity.system =  "http://unitsofmeasure.org"
+* valueQuantity.code = http://unitsofmeasure.org#%
 * method.text = "Pulsossimetro da dito"
 * device = Reference(DevPulsossimetro)
 * performer[0] = Reference(RoleMedicoBianchiTM)
 * note[0].text = "A riposo, dito indice."
+* category[0] = http://terminology.hl7.org/CodeSystem/observation-category#vital-signs
+
