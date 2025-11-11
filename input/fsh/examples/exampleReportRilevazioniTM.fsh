@@ -16,6 +16,8 @@ Usage: #example
 * effectiveDateTime = "2025-11-11T07:30:00+01:00"
 * valueQuantity.value = 62.1
 * valueQuantity.unit = "Kg"
+* valueQuantity.system = "http://unitsofmeasure.org"
+* valueQuantity.code =  http://unitsofmeasure.org#kg
 
 //**********Misurazione pressione sistolica**********
 Instance: RilevazionePressioneSistolica
@@ -27,6 +29,8 @@ Usage: #example
 * effectiveDateTime = "2025-11-11T07:45:00+01:00"
 * valueQuantity.value = 132
 * valueQuantity.unit = "mmHg"
+* valueQuantity.system = "http://unitsofmeasure.org"
+* valueQuantity.code =  http://unitsofmeasure.org#/mm[Hg]
 
 //**********Misurazione pressione diastolica**********
 Instance: RilevazionePressioneDiastolica
@@ -38,6 +42,8 @@ Usage: #example
 * effectiveDateTime = "2025-11-11T07:45:00+01:00"
 * valueQuantity.value = 86
 * valueQuantity.unit = "mmHg"
+* valueQuantity.system = "http://unitsofmeasure.org"
+* valueQuantity.code =  http://unitsofmeasure.org#/mm[Hg]
 
 //**********Misurazione frequenza cardiaca**********
 Instance: RilevazioneFrequenzaCardiaca
@@ -49,6 +55,8 @@ Usage: #example
 * effectiveDateTime = "2025-11-11T07:45:00+01:00"
 * valueQuantity.value = 80
 * valueQuantity.unit = "beats/min"
+* valueQuantity.system = "http://unitsofmeasure.org"
+* valueQuantity.code =  http://unitsofmeasure.org#/min
 
 //**********Misurazione SpO2**********
 Instance: RilevazioneSpO2
@@ -60,6 +68,8 @@ Usage: #example
 * effectiveDateTime = "2025-11-11T07:45:00+01:00"
 * valueQuantity.value = 96
 * valueQuantity.unit = "%"
+* valueQuantity.system = "http://unitsofmeasure.org"
+* valueQuantity.code =  http://unitsofmeasure.org#/%
 
 /*
 //**********Care Plan Report Rilevazione di telemonitoraggio**********

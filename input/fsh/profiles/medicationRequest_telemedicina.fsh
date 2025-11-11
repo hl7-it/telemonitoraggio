@@ -8,7 +8,6 @@ Description: "Profilo base della MedicationRequest condiviso in tutti i document
 
 * status ^definition = "Codice che desctive lo stato della request"
 
-* intent = #proposal
 * intent ^definition = "Scopo della request"
 
 * medication[x] from https://www.hl7.it/fhir/terminology/ValueSet/aifa-aic (required)
@@ -18,7 +17,7 @@ Description: "Profilo base della MedicationRequest condiviso in tutti i document
 * subject only Reference(PatientTelemonitoraggio)
 * subject ^short = "Soggetto per cui è ricchiesta la medication"
 
-* requester 1..1
+// * requester 1..1
 
 * instantiatesCanonical ^short = "Crea un'istanza del protocollo o della definizione FHIR"
 * instantiatesCanonical ^definition = "L'URL che punta a un protocollo, una linea guida, un set di ordini o un'altra definizione a cui aderisce in tutto o in parte questa MedicationRequest."

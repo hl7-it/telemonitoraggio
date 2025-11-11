@@ -4,8 +4,9 @@ Id: BundleRelazioneFinaleTM
 Description: "Profilo del Bundle utilizzato nel contesto della Relazione Finale di Telemonitoraggio"
 * ^status = #draft
 * type = #document (exactly)
-* entry ^slicing.discriminator.type = #type
-* entry ^slicing.discriminator.path = "resource.meta.profile"
+* entry ^slicing.discriminator[0].type = #type
+* entry ^slicing.discriminator[0].path = "resource"
+* entry ^slicing.ordered = false
 * entry ^slicing.rules = #open
 
 * entry contains
@@ -21,27 +22,24 @@ Description: "Profilo del Bundle utilizzato nel contesto della Relazione Finale 
     allergyIntolerance 0..* and
     procedure 0..* and
     device 0..* and
-    location 0..* and
-    specimen 0..*
+    // location 0..* and
+    specimen 0..* and
+    medicationStatement 0..* and
+    documentReference 0..*
 
 * entry[composition].resource only CompositionRelazioneFinaleTelemonitoraggio
 * entry[patient].resource only PatientTelemonitoraggio
-* entry[patient].resource.address 1..
-
 * entry[carePlan].resource only CarePlanRelazioneFinaleTM
 * entry[practitionerRole].resource only PractitionerRoleTelemonitoraggio
 * entry[practitioner].resource only PractitionerTelemonitoraggio
-* entry[practitioner].resource.identifier ^slicing.discriminator.type = #pattern
-* entry[practitioner].resource.identifier ^slicing.discriminator.path = "$this"
-* entry[practitioner].resource.identifier ^slicing.description = "Slice based on the identifier pattern"
-* entry[practitioner].resource.identifier ^slicing.rules = #open
-
 * entry[organization].resource only OrganizationT1
 * entry[medicationRequest].resource only MedicationRequest
-* entry[encounter].resource only Encounter
+* entry[encounter].resource only EncounterRelazioneFinaleTm
 * entry[observation].resource only ObservationTelemedicina
 * entry[allergyIntolerance].resource only AllergyIntoleranceTelemedicina
 * entry[procedure].resource only ProcedureTelemonitoraggio
 * entry[device].resource only DeviceTelemonitoraggio
-* entry[location].resource only Location
+//* entry[location].resource only Location
 * entry[specimen].resource only Specimen
+* entry[medicationStatement].resource only MedicationStatementTelemedicina
+* entry[documentReference].resource only DocumentReference

@@ -4,8 +4,9 @@ Id: BundleTesserinoDispositiviTM
 Description: "Profilo del Bundle utilizzato nel contesto del Tesserino Dispositivi"
 * ^status = #draft
 * type = #document (exactly)
-* entry ^slicing.discriminator.type = #type
-* entry ^slicing.discriminator.path = "resource.meta.profile"
+* entry ^slicing.discriminator[0].type = #type
+* entry ^slicing.discriminator[0].path = "resource"
+* entry ^slicing.ordered = false
 * entry ^slicing.rules = #open
 * entry contains
     composition 1..1 and

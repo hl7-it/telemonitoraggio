@@ -55,16 +55,16 @@ Usage: #example
 
 Instance: EsempioCompositionRelazioneFinaleTM
 InstanceOf: CompositionRelazioneFinaleTelemonitoraggio
-Description: "Esempio di Composition nel contesto della Relazione Finale di Telemonitoraggio"
 Usage: #example
+Description: "Esempio di Composition conforme al profilo della Relazione Finale di Telemonitoraggio"
 * status = #final
-* type = $loinc#53576-5 "Personal health monitoring report Document"
-
+* id = "composition-relfin-tm"
+* type = $loinc#53576-5
 * date = "2025-12-07T16:30:00+01:00"
 * title = "Relazione Finale di Telemonitoraggio"
 * subject = Reference(PatientTelemonitoraggioExample)
 * author = Reference(RoleMedicoBianchiTM)
-
+* encounter = Reference(EncounterRelazioneFinaleTM-Esempio)
 * attester[legalAuthenticator].mode = #legal
 * attester[legalAuthenticator].time = "2025-12-07T16:30:00+01:00"
 * attester[legalAuthenticator].party = Reference(RoleMedicoBianchiTM)
@@ -73,21 +73,52 @@ Usage: #example
 * section[pianoDiCura].entry[0] = Reference(CarePlanRelazioneFinale)
 
 * section[quesitoDiagnostico].code = $loinc#29299-5
-* section[quesitoDiagnostico].entry[0] = Reference(ObsDiagnosiTM)
+* section[quesitoDiagnostico].entry[0] = Reference(QuesitoDiagnosticoTM)
 
 * section[inquadramentoClinicoIniziale].code = $loinc#47039-3
-* section[inquadramentoClinicoIniziale].text.status = #additional
-* section[inquadramentoClinicoIniziale].text.div = "<div>Paziente con storia di scompenso cardiaco HFrEF, dimessa da 10 giorni dopo episodio di riacutizzazione. Presentava segni di congestione polmonare e periferica, con terapia ottimizzata in ospedale. Obiettivo del telemonitoraggio era intercettare tempestivamente variazioni di peso, pressione arteriosa, frequenza cardiaca e saturazione di ossigeno per prevenire recidive.</div>"
+
+* section[inquadramentoClinicoIniziale].section[anamnesi].code = $loinc#11329-0
+* section[inquadramentoClinicoIniziale].section[anamnesi].entry[0] = Reference(AnamnesiInizialeTM)
+
+* section[inquadramentoClinicoIniziale].section[allergie].code = $loinc#48765-2
+* section[inquadramentoClinicoIniziale].section[allergie].entry[0] = Reference(AllergiaACEi)
+
+* section[inquadramentoClinicoIniziale].section[terapiaFarmacologicaInAtto].code = $loinc#10160-0
+* section[inquadramentoClinicoIniziale].section[terapiaFarmacologicaInAtto].entry[0] = Reference(TerapiaInAttoTM)
+
+* section[inquadramentoClinicoIniziale].section[esameObiettivo].code = $loinc#29545-1
+* section[inquadramentoClinicoIniziale].section[esameObiettivo].entry[0] = Reference(EsameObiettivoInizialeTM)
 
 * section[precedentiEsamiEseguiti].code = $loinc#30954-2
 * section[precedentiEsamiEseguiti].entry[0] = Reference(PrecedenteEsameRelazioneFinaleTM)
 
-* section[referto].code = $loinc#47045-0
-* section[referto].text.status = #additional
-* section[referto].text.div = "<div>Peso: stabile, senza trend di aumento significativo. Pressione arteriosa: nessun nuovo episodio di ipertensione marcata. Frequenza cardiaca: media 75 bpm, con normali variazioni fisiologiche. Saturazione ossigeno: stabile intorno al 96-98% a riposo. Durante il periodo di telemonitoraggio, la paziente ha mantenuto uno stato clinico stabile con assenza di segni evidenti di congestione o peggioramento emodinamico. Non sono stati rilevati aumenti significativi di peso o variazioni patologiche di PA, FC o SpO2. La diagnosi di scompenso cardiaco HFrEF rimane stabile in fase compensata.</div>" 
+* section[confrontoPrecedentiEsamiEseguiti].code = $loinc#93126-1
+* section[confrontoPrecedentiEsamiEseguiti].entry[0] = Reference(ConfrontoPrecedentiEsamiTM)
+
+* section[prestazioni].code = $loinc#62387-6
+* section[prestazioni].entry[0] = Reference(PrestazioneTM)
 
 * section[diagnosi].code = $loinc#29548-5
 * section[diagnosi].entry[0] = Reference(ObsDiagnosiTM)
+
+* section[referto].code = $loinc#47045-0
+* section[referto].entry[0] = Reference(RefertoSintesiTM)
+
+* section[terapiaFarmacologicaConsigliata].code = $loinc#93341-6
+* section[terapiaFarmacologicaConsigliata].entry[0] = Reference(TerapiaConsigliataTM)
+
+
+* section[suggerimentiPerMedicoPrescrittore].code = $loinc#62385-0
+* section[suggerimentiPerMedicoPrescrittore].entry[0] = Reference(SuggerimentiPrescrittoreTM)
+
+* section[accertamentiControlliConsigliati].code = $loinc#80615-8
+* section[accertamentiControlliConsigliati].entry[0] = Reference(AccertamentiControlliTM)
+
+* section[conclusioni].code = $loinc#55110-1
+* section[conclusioni].entry[0] = Reference(ConclusioniTM)
+
+* section[allegati].code = $loinc#77599-9
+* section[allegati].entry[0] = Reference(AllegatoEducazionaleTM)
 
 //************Bundle document Relazione finale di Telemonitoraggio************
 
@@ -97,7 +128,7 @@ Usage: #example
 Instance: EsempioRelazioneFinaleTM
 InstanceOf: BundleRelazioneFinaleTM
 Usage: #example
-Description: "Esempio di Bundle nel contesto del Relazione finale di Telemonitoraggio."
+Description: "Esempio di Bundle nel contesto della Relazione finale di Telemonitoraggio."
 * type = #document
 * identifier.system = "urn:ietf:rfc:39861"
 * identifier.value = "urn:uuid:bnd-tm-2025-12-07-123"
@@ -109,38 +140,246 @@ Description: "Esempio di Bundle nel contesto del Relazione finale di Telemonitor
 * entry[1].fullUrl = "http://example.org/fhir/Patient/patient-telemonitoraggio"
 * entry[1].resource = PatientTelemonitoraggioExample
 
-* entry[2].fullUrl = "http://example.org/fhir/CarePlan/careplan-relfin-tm"
-* entry[2].resource = CarePlanRelazioneFinale
+* entry[2].fullUrl = "http://example.org/fhir/Encounter/encounter-relfin-tm"
+* entry[2].resource = EncounterRelazioneFinaleTM-Esempio
 
-* entry[3].fullUrl = "http://example.org/fhir/PractitionerRole/practrole-bianchi-tm"
-* entry[3].resource = RoleMedicoBianchiTM
+* entry[3].fullUrl = "http://example.org/fhir/CarePlan/careplan-relfin-tm"
+* entry[3].resource = CarePlanRelazioneFinale
 
-* entry[4].fullUrl = "http://example.org/fhir/Organization/org-asl-roma-1"
-* entry[4].resource = AslRoma1
+* entry[4].fullUrl = "http://example.org/fhir/PractitionerRole/practrole-bianchi-tm"
+* entry[4].resource = RoleMedicoBianchiTM
 
 * entry[5].fullUrl = "http://example.org/fhir/Practitioner/pract-bianchi"
 * entry[5].resource = MedicoBianchi
 
-* entry[6].fullUrl = "http://example.org/fhir/Observation/obs-diagnosi-tm"
-* entry[6].resource = ObsDiagnosiTM
+* entry[6].fullUrl = "http://example.org/fhir/Organization/org-asl-roma-1"
+* entry[6].resource = AslRoma1
 
-* entry[7].fullUrl = "http://example.org/fhir/Observation/rilevazione1-11-11"
-* entry[7].resource = RilevazionePeso
+* entry[7].fullUrl = "http://example.org/fhir/Observation/obs-diagnosi-tm"
+* entry[7].resource = ObsDiagnosiTM
 
-* entry[8].fullUrl = "http://example.org/fhir/Observation/rilevazione2-11-11"
-* entry[8].resource = RilevazionePressioneDiastolica
+* entry[8].fullUrl = "http://example.org/fhir/Observation/quesito-dx"
+* entry[8].resource = QuesitoDiagnosticoTM
 
-* entry[9].fullUrl = "http://example.org/fhir/Observation/rilevazione3-11-11"
-* entry[9].resource = RilevazionePressioneSistolica
+* entry[9].fullUrl = "http://example.org/fhir/Observation/anamnesi-iniziale"
+* entry[9].resource = AnamnesiInizialeTM
 
-* entry[10].fullUrl = "http://example.org/fhir/Observation/rilevazione4-11-11"
-* entry[10].resource = RilevazioneFrequenzaCardiaca
+* entry[10].fullUrl = "http://example.org/fhir/AllergyIntolerance/allergia-acei"
+* entry[10].resource = AllergiaACEi
 
-* entry[11].fullUrl = "http://example.org/fhir/Observation/rilevazione5-11-11"
-* entry[11].resource = RilevazioneSpO2
+* entry[11].fullUrl = "http://example.org/fhir/Observation/esame-obiettivo-iniziale"
+* entry[11].resource = EsameObiettivoInizialeTM
 
 * entry[12].fullUrl = "http://example.org/fhir/Observation/prec-esame"
 * entry[12].resource = PrecedenteEsameRelazioneFinaleTM
 
-* entry[13].fullUrl = "http://example.org/fhir/Specimen/camp-prec-esame"
-* entry[13].resource = CampionePrecedenteEsameRelazioneFinaleTM
+* entry[13].fullUrl = "http://example.org/fhir/Observation/confronto-precedenti"
+* entry[13].resource = ConfrontoPrecedentiEsamiTM
+
+* entry[14].fullUrl = "http://example.org/fhir/Observation/rilevazione1-11-11"
+* entry[14].resource = RilevazionePeso
+
+* entry[15].fullUrl = "http://example.org/fhir/Observation/rilevazione2-11-11"
+* entry[15].resource = RilevazionePressioneDiastolica
+
+* entry[16].fullUrl = "http://example.org/fhir/Observation/rilevazione3-11-11"
+* entry[16].resource = RilevazionePressioneSistolica
+
+* entry[17].fullUrl = "http://example.org/fhir/Observation/rilevazione4-11-11"
+* entry[17].resource = RilevazioneFrequenzaCardiaca
+
+* entry[18].fullUrl = "http://example.org/fhir/Observation/rilevazione5-11-11"
+* entry[18].resource = RilevazioneSpO2
+
+* entry[19].fullUrl = "http://example.org/fhir/Observation/referto-sintesi"
+* entry[19].resource = RefertoSintesiTM
+
+* entry[20].fullUrl = "http://example.org/fhir/Observation/suggerimenti-prescrittore"
+* entry[20].resource = SuggerimentiPrescrittoreTM
+
+* entry[21].fullUrl = "http://example.org/fhir/Observation/accertamenti-controlli"
+* entry[21].resource = AccertamentiControlliTM
+
+* entry[22].fullUrl = "http://example.org/fhir/Observation/conclusioni"
+* entry[22].resource = ConclusioniTM
+
+* entry[23].fullUrl = "http://example.org/fhir/Procedure/prestazione-tm"
+* entry[23].resource = PrestazioneTM
+
+* entry[24].fullUrl = "http://example.org/fhir/MedicationRequest/terapia-consigliata"
+* entry[24].resource = TerapiaConsigliataTM
+
+* entry[25].fullUrl = "http://example.org/fhir/Specimen/camp-prec-esame"
+* entry[25].resource = CampionePrecedenteEsameRelazioneFinaleTM
+
+* entry[26].fullUrl = "http://example.org/fhir/Device/device-bilancia"
+* entry[26].resource = DevBilancia
+
+* entry[27].fullUrl = "http://example.org/fhir/Device/device-sfigmo"
+* entry[27].resource = DevSfigmo
+
+* entry[28].fullUrl = "http://example.org/fhir/Device/device-spo2"
+* entry[28].resource = DevPulsossimetro
+
+* entry[29].fullUrl = "http://example.org/fhir/MedicationStatement/terapia-in-atto"
+* entry[29].resource = TerapiaInAttoTM
+
+* entry[30].fullUrl = "http://example.org/fhir/DocumentReference/allegato-educazionale"
+* entry[30].resource = AllegatoEducazionaleTM
+
+// ========== Alias ==========
+Alias: $loinc = http://loinc.org
+Alias: $sct = http://snomed.info/sct
+
+// ========== Risorse DI SUPPORTO (minime) per rispettare le slice ==========
+
+// Quesito diagnostico (motivazione/quesito del referto)
+Instance: QuesitoDiagnosticoTM
+InstanceOf: ObservationTelemedicina
+Usage: #example
+* status = #final
+* code.text = "Quesito diagnostico"
+* subject = Reference(PatientTelemonitoraggioExample)
+* effectiveDateTime = "2025-12-07"
+* valueString = "Follow-up scompenso cardiaco HFrEF in telemonitoraggio: valutare andamento clinico nel periodo e necessità di modifiche terapeutiche."
+
+// Inquadramento clinico iniziale — Anamnesi
+Instance: AnamnesiInizialeTM
+InstanceOf: ObservationTelemedicina
+Usage: #example
+* status = #final
+* code = $loinc#11329-0 "History of past illness Narrative"
+* subject = Reference(PatientTelemonitoraggioExample)
+* effectiveDateTime = "2025-11-07"
+* valueString = "Storia di scompenso cardiaco HFrEF, ipertensione arteriosa, dislipidemia."
+
+// Inquadramento clinico iniziale — Allergia (esempio singolo)
+Instance: AllergiaACEi
+InstanceOf: AllergyIntoleranceTelemedicina
+Usage: #example
+* clinicalStatus = http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical#active
+* verificationStatus = http://terminology.hl7.org/CodeSystem/allergyintolerance-verification#confirmed
+* code = $sct#373270004 "Adverse reaction to angiotensin-converting-enzyme inhibitor (finding)"
+* patient = Reference(PatientTelemonitoraggioExample)
+* onsetDateTime = "2015-06-01"
+
+// Inquadramento clinico iniziale — Terapia farmacologica in atto
+Instance: TerapiaInAttoTM
+InstanceOf: MedicationStatementTelemedicina
+Usage: #example
+* status = #active
+* subject = Reference(PatientTelemonitoraggioExample)
+* effectivePeriod.start = "2025-11-07"
+* medicationCodeableConcept.text = "ACE-inibitore, beta-bloccante, diuretico dell’ansa"
+
+// Inquadramento clinico iniziale — Esame obiettivo
+Instance: EsameObiettivoInizialeTM
+InstanceOf: ObservationTelemedicina
+Usage: #example
+* status = #final
+* code = $loinc#29545-1 "Physical findings Narrative"
+* subject = Reference(PatientTelemonitoraggioExample)
+* effectiveDateTime = "2025-11-07"
+* valueString = "PA 125/75 mmHg, FC 74 bpm, MV conservato, assenza edemi declivi."
+
+// Confronto con precedenti esami eseguiti
+Instance: ConfrontoPrecedentiEsamiTM
+InstanceOf: ObservationTelemedicina
+Usage: #example
+* status = #final
+* code = $loinc#93126-1 "Comparison with previous studies"
+* subject = Reference(PatientTelemonitoraggioExample)
+* effectiveDateTime = "2025-12-07"
+* valueString = "Nessuna variazione clinicamente significativa rispetto ai controlli precedenti."
+
+// Prestazioni (procedura/e effettuate nel periodo)
+Instance: PrestazioneTM
+InstanceOf: ProcedureTelemonitoraggio
+Usage: #example
+* status = #completed
+* subject = Reference(PatientTelemonitoraggioExample)
+* performedPeriod.start = "2025-11-07"
+* performedPeriod.end = "2025-12-07"
+* code = CsCatalogoNazionalePrestazioni#89.17.3 "MONITORAGGIO CARDIORESPIRATORIO NOTTURNO COMPLETOPer studio apnee"
+
+// Referto (sintesi narrativa strutturata)
+Instance: RefertoSintesiTM
+InstanceOf: ObservationTelemedicina
+Usage: #example
+* status = #final
+* code = $loinc#47045-0 "Interpretation and findings"
+* subject = Reference(PatientTelemonitoraggioExample)
+* effectiveDateTime = "2025-12-07"
+* valueString = "Andamento clinico stabile: peso senza aumenti significativi; PA nella norma; FC in range; SpO₂ 96–98%."
+
+// Terapia farmacologica consigliata (post-valutazione)
+Instance: TerapiaConsigliataTM
+InstanceOf: MedicationRequestTelemedicina
+Usage: #example
+* status = #active
+* intent = #plan
+* subject = Reference(PatientTelemonitoraggioExample)
+* requester
+* authoredOn = "2025-12-07"
+* medicationCodeableConcept.text = "Confermare terapia in atto; valutare titolazione beta-bloccante se FC > 80 bpm in controlli successivi."
+
+// Suggerimenti per medico prescrittore
+Instance: SuggerimentiPrescrittoreTM
+InstanceOf: ObservationTelemedicina
+Usage: #example
+* status = #final
+* code = $loinc#62385-0 "Recommendations to prescriber"
+* subject = Reference(PatientTelemonitoraggioExample)
+* effectiveDateTime = "2025-12-07"
+* valueString = "Educazione a monitoraggio domiciliare; verificare aderenza; follow-up a 30 giorni in MMG/cardiologia."
+
+// Accertamenti/controlli consigliati
+Instance: AccertamentiControlliTM
+InstanceOf: ObservationTelemedicina
+Usage: #example
+* status = #final
+* code = $loinc#80615-8 "Follow-up studies recommended"
+* subject = Reference(PatientTelemonitoraggioExample)
+* effectiveDateTime = "2025-12-07"
+* valueString = "Ematochimici di controllo tra 30 giorni; eco-cardiogramma a 3–6 mesi."
+
+// Conclusioni
+Instance: ConclusioniTM
+InstanceOf: ObservationTelemedicina
+Usage: #example
+* status = #final
+* code = $loinc#55110-1 "Clinical impression/plan Narrative"
+* subject = Reference(PatientTelemonitoraggioExample)
+* effectiveDateTime = "2025-12-07"
+* valueString = "Quadro compensato; proseguire TM al bisogno; educazione terapeutica mantenuta."
+
+// Allegati (es. opuscolo educativo in PDF)
+Instance: AllegatoEducazionaleTM
+InstanceOf: DocumentReference
+Usage: #example
+* status = #current
+* type = $loinc#53576-5 "Personal health monitoring report Document"
+* subject = Reference(PatientTelemonitoraggioExample)
+* date = "2025-12-07T16:25:00+01:00"
+* content[0].attachment.url = "http://example.org/files/opuscolo-scompenso.pdf"
+
+
+Instance: EncounterRelazioneFinaleTM-Esempio
+InstanceOf: EncounterRelazioneFinaleTm
+Usage: #example
+Description: "Encounter che descrive l’episodio di telemonitoraggio del caso d’uso HFrEF (Tipo I)"
+* identifier[codiceNosologico].system = "http://agenas.gov.it/sid/codiceNosologico"
+* identifier[codiceNosologico].value = "NOSO-2025-000123"
+
+* status = #finished
+* class = http://terminology.hl7.org/CodeSystem/v3-ActCode#VR "virtual"
+
+* type[0] = http://snomed.info/sct#394579002 "Cardiologia"
+
+* subject = Reference(PatientTelemonitoraggioExample)
+
+* period.start = "2025-11-07T10:00:00+01:00"
+* period.end   = "2025-12-07T16:30:00+01:00"
+
+// Partecipante (figura tecnica/clinica) – vincolo su PractitionerTelemonitoraggio
+* participant[0].individual = Reference(MedicoBianchi)
