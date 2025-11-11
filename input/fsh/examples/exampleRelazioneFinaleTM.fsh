@@ -19,7 +19,7 @@ InstanceOf: ObservationRelazioneFinaleTm
 Description: "Esempio di ObservationRelazioneFinaleTM relativa ad un precedente esame eseguito"
 Usage: #example
 
-* id = "obs-prec-esame"
+* id = "prec-esame"
 * status = #final
 
 * code = $loinc#10346-5	"Hemoglobin A [Units/volume] in Blood by Electrophoresis"
@@ -155,8 +155,10 @@ Description: "Esempio di Bundle nel contesto della Relazione finale di Telemonit
 * entry[5].fullUrl = "http://example.org/fhir/Practitioner/pract-bianchi"
 * entry[5].resource = MedicoBianchi
 
-* entry[6].fullUrl = "http://example.org/fhir/Organization/asl-roma-1"
-* entry[6].resource = AslRoma1
+// * entry[6].fullUrl = "http://example.org/fhir/Organization/asl-roma-1"
+// * entry[6].resource = AslRoma1
+* entry[6].fullUrl = "http://example.org/fhir/MedicationStatement/terapia-in-atto"
+* entry[6].resource = TerapiaInAttoTM
 
 * entry[7].fullUrl = "http://example.org/fhir/Observation/obs-diagnosi-tm"
 * entry[7].resource = ObsDiagnosiTM
@@ -212,20 +214,18 @@ Description: "Esempio di Bundle nel contesto della Relazione finale di Telemonit
 * entry[24].fullUrl = "http://example.org/fhir/Specimen/camp-prec-esame"
 * entry[24].resource = CampionePrecedenteEsameRelazioneFinaleTM
 
-* entry[25].fullUrl = "http://example.org/fhir/Device/device-bilancia"
-* entry[25].resource = DevBilancia
+// * entry[25].fullUrl = "http://example.org/fhir/Device/device-bilancia"
+// * entry[25].resource = DevBilancia
+* entry[25].fullUrl = "http://example.org/fhir/DocumentReference/allegato-pdf"
+* entry[25].resource = AllegatoEducazionaleTM
+
 
 * entry[26].fullUrl = "http://example.org/fhir/Device/device-sfigmo"
 * entry[26].resource = DevSfigmo
 
-* entry[27].fullUrl = "http://example.org/fhir/Device/device-spo2"
-* entry[27].resource = DevPulsossimetro
+// * entry[27].fullUrl = "http://example.org/fhir/Device/device-spo2"
+// * entry[27].resource = DevPulsossimetro
 
-* entry[28].fullUrl = "http://example.org/fhir/MedicationStatement/terapia-in-atto"
-* entry[28].resource = TerapiaInAttoTM
-
-* entry[29].fullUrl = "http://example.org/fhir/DocumentReference/allegato-pdf"
-* entry[29].resource = AllegatoEducazionaleTM
 
 // ========== Alias ==========
 Alias: $loinc = http://loinc.org
@@ -236,6 +236,7 @@ Alias: $sct = http://snomed.info/sct
 // Quesito diagnostico (motivazione/quesito del referto)
 Instance: QuesitoDiagnosticoTM
 InstanceOf: ObservationTelemedicina
+Description: "Esempio di quesito diagnostico"
 Usage: #example
 * id = "quesito-diagnostico"
 * status = #final
@@ -243,32 +244,37 @@ Usage: #example
 * subject = Reference(PatientTelemonitoraggioExample)
 * effectiveDateTime = "2025-11-07"
 * valueString = "Follow-up scompenso cardiaco HFrEF in telemonitoraggio: valutare andamento clinico nel periodo e necessità di modifiche terapeutiche."
+* performer = Reference(RoleMedicoBianchiTM)
 
 // Inquadramento clinico iniziale — Anamnesi
 Instance: AnamnesiInizialeTM
 InstanceOf: ObservationTelemedicina
+Description: "Esempio di anamnesi"
 Usage: #example
 * id = "anamnesi"
 * status = #final
-* code = $loinc#11329-0 "History of past illness Narrative"
+* code = $loinc#11329-0 "History general Narrative - Reported"
 * subject = Reference(PatientTelemonitoraggioExample)
 * effectiveDateTime = "2025-11-07"
 * valueString = "Storia di scompenso cardiaco HFrEF, ipertensione arteriosa, dislipidemia."
+* performer = Reference(RoleMedicoBianchiTM)
 
 // Inquadramento clinico iniziale — Allergia (esempio singolo)
 Instance: AllergiaACEi
 InstanceOf: AllergyIntoleranceTelemedicina
+Description: "Esempio di allergie"
 Usage: #example
 * id = "allergia"
 * clinicalStatus = http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical#active
 * verificationStatus = http://terminology.hl7.org/CodeSystem/allergyintolerance-verification#confirmed
-* code = $sct#373270004 "Adverse reaction to angiotensin-converting-enzyme inhibitor (finding)"
+* code = $sct#373270004 "Substance with penicillin structure and antibacterial mechanism of action"
 * patient = Reference(PatientTelemonitoraggioExample)
 * onsetDateTime = "2015-06-01"
 
 // Inquadramento clinico iniziale — Terapia farmacologica in atto
 Instance: TerapiaInAttoTM
 InstanceOf: MedicationStatementTelemedicina
+Description: "Esempio di terapia in atto"
 Usage: #example
 * id = "terapia-in-atto"
 * status = #active
@@ -277,30 +283,35 @@ Usage: #example
 * medicationCodeableConcept.text = "ACE-inibitore, beta-bloccante, diuretico dell'ansa"
 
 // Inquadramento clinico iniziale — Esame obiettivo
-* id = "esame-obiettivo"
 Instance: EsameObiettivoInizialeTM
 InstanceOf: ObservationTelemedicina
+Description: "Esempio di esame obiettivo"
 Usage: #example
+* id = "esame-obiettivo"
 * status = #final
-* code = $loinc#29545-1 "Physical findings Narrative"
+* code = $loinc#29545-1 "Physical findings note"
 * subject = Reference(PatientTelemonitoraggioExample)
 * effectiveDateTime = "2025-11-07"
 * valueString = "PA 125/75 mmHg, FC 74 bpm, MV conservato, assenza edemi declivi."
+* performer = Reference(RoleMedicoBianchiTM)
 
 // Confronto con precedenti esami eseguiti
 Instance: ConfrontoPrecedentiEsamiTM
 InstanceOf: ObservationTelemedicina
+Description: "Esempio di confronto con precedenti esami eseguiti"
 Usage: #example
 * id = "confronto-prec-esami"
 * status = #final
-* code = $loinc#93126-1 "Comparison with previous studies"
+* code = $loinc#93126-1 "Comparison with previous results"
 * subject = Reference(PatientTelemonitoraggioExample)
 * effectiveDateTime = "2025-12-07"
 * valueString = "Nessuna variazione clinicamente significativa rispetto ai controlli precedenti."
+* performer = Reference(RoleMedicoBianchiTM)
 
 // Prestazioni (procedura/e effettuate nel periodo)
 Instance: PrestazioneTM
 InstanceOf: ProcedureTelemonitoraggio
+Description: "Esempio di procedura"
 Usage: #example
 * id = "prestazione-tm"
 * status = #completed
@@ -312,17 +323,20 @@ Usage: #example
 // Referto (sintesi narrativa strutturata)
 Instance: RefertoSintesiTM
 InstanceOf: ObservationTelemedicina
+Description: "Esempio di referto"
 Usage: #example
 * id = "referto"
 * status = #final
-* code = $loinc#47045-0 "Interpretation and findings"
+* code = $loinc#47045-0 "Study report"
 * subject = Reference(PatientTelemonitoraggioExample)
 * effectiveDateTime = "2025-12-07"
 * valueString = "Andamento clinico stabile: peso senza aumenti significativi; PA nella norma; FC in range; SpO₂ 96–98%."
+* performer = Reference(RoleMedicoBianchiTM)
 
 // Terapia farmacologica consigliata (post-valutazione)
 Instance: TerapiaConsigliataTM
 InstanceOf: MedicationRequestTelemedicina
+Description: "Esempio di terapia farmacologica consigliata"
 Usage: #example
 * id = "terapia-consigliata"
 * status = #active
@@ -335,21 +349,24 @@ Usage: #example
 // Suggerimenti per medico prescrittore
 Instance: SuggerimentiPrescrittoreTM
 InstanceOf: ObservationTelemedicina
+Description: "Esempio di suggerimenti dal medico prescrittore"
 Usage: #example
 * id = "suggerimenti-prescrittore"
 * status = #final
-* code = $loinc#62385-0 "Recommendations to prescriber"
+* code = $loinc#62385-0 "Recommendation [Interpretation] Document"
 * subject = Reference(PatientTelemonitoraggioExample)
 * effectiveDateTime = "2025-12-07"
 * valueString = "Educazione a monitoraggio domiciliare; verificare aderenza; follow-up a 30 giorni in MMG/cardiologia."
+* performer = Reference(RoleMedicoBianchiTM)
 
 // Accertamenti/controlli consigliati
 Instance: AccertamentiControlliTM
 InstanceOf: ObservationTelemedicina
+Description: "Esempio di accertamenti e controlli consigliati"
 Usage: #example
 * id = "accertamenti-controlli"
 * status = #final
-* code = $loinc#80615-8 "Follow-up studies recommended"
+* code = $loinc#80615-8 "Recommended follow-up [Identifier] Narrative"
 * subject = Reference(PatientTelemonitoraggioExample)
 * effectiveDateTime = "2025-12-07"
 * valueString = "Ematochimici di controllo tra 30 giorni; eco-cardiogramma a 3–6 mesi."
@@ -357,17 +374,20 @@ Usage: #example
 // Conclusioni
 Instance: ConclusioniTM
 InstanceOf: ObservationTelemedicina
+Description: "Esempio di conclusioni"
 Usage: #example
 * id = "conclusioni"
 * status = #final
-* code = $loinc#55110-1 "Clinical impression/plan Narrative"
+* code = $loinc#55110-1 "Conclusions [Interpretation] Document"
 * subject = Reference(PatientTelemonitoraggioExample)
 * effectiveDateTime = "2025-12-07"
 * valueString = "Quadro compensato; proseguire TM al bisogno; educazione terapeutica mantenuta."
+* performer = Reference(RoleMedicoBianchiTM)
 
 // Allegati (es. opuscolo educativo in PDF)
 Instance: AllegatoEducazionaleTM
 InstanceOf: DocumentReference
+Description: "Esempio di allegati"
 Usage: #example
 * id = "allegato-pdf"
 * status = #current
@@ -387,9 +407,9 @@ Description: "Encounter che descrive l'episodio di telemonitoraggio del caso d'u
 * identifier[codiceNosologico].value = "NOSO-2025-000123"
 
 * status = #finished
-* class = http://terminology.hl7.org/CodeSystem/v3-ActCode#VR "virtual"
+* class = http://terminology.hl7.org/CodeSystem/v3-ActCode#VR
 
-* type[0] = http://snomed.info/sct#394579002 "Cardiologia"
+* type[0] = http://snomed.info/sct#394579002 "Cardiology (qualifier value)"
 
 * subject = Reference(PatientTelemonitoraggioExample)
 

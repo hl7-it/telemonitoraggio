@@ -46,5 +46,14 @@ Description: "Esempio di Bundle nel contesto del Tesserino Dispositivo di Telemo
 * entry[0].fullUrl = "http://example.org/fhir/Composition/composition-tesserinodisp"
 * entry[0].resource = EsempioCompositionTesserinoDispositiviTM
 
-* entry[1].fullUrl = "http://example.org/fhir/Patient/2e7e0fe3-f0bf-4e0a-8228-b8e7fcec8c82"
-* entry[1].resource = PatientTelemonitoraggioExample
+* entry[1].fullUrl = "http://example.org/fhir/Device/device-bilancia"
+* entry[1].resource = DevBilancia
+
+* entry[2].fullUrl = "http://example.org/fhir/Patient/2e7e0fe3-f0bf-4e0a-8228-b8e7fcec8c82"
+* entry[2].resource = PatientTelemonitoraggioExample
+
+* entry[3].fullUrl = "http://example.org/fhir/PractitionerRole/practrole-bianchi-tm"
+* entry[3].resource = RoleMedicoBianchiTM
+
+* entry[4].fullUrl = "http://example.org/fhir/DeviceUseStatement/7cbbe77d-dcdb-409b-a215-devusestat"
+* entry[4].resource = DeviceUseStatementBilancia

@@ -11,13 +11,16 @@ Description: "Profilo del Bundle utilizzato nel contesto del Tesserino Dispositi
 * entry contains
     composition 1..1 and
     device 0..* and
-    patient 1..1 and
-    condition 0..* and
-    procedure 0..* and
-    organization 0..*
+    patient 1..1 and 
+    practitionerRole 0..* and
+    deviceUseStatement 0..* 
+    // condition 0..* and
+    // procedure 0..* and
+    // organization 0..*
 * entry[composition].resource only CompositionTesserinoDispositiviTM
 * entry[device].resource only DeviceTelemonitoraggio
 * entry[patient].resource only PatientTelemonitoraggio
-* entry[patient].resource.address 1..
-* entry[procedure].resource only ProcedureTelemonitoraggio
-* entry[organization].resource only OrganizationT1
+* entry[practitionerRole].resource only PractitionerTelemonitoraggio
+* entry[deviceUseStatement].resource only DeviceUseStatementTelemonitoraggio
+// * entry[procedure].resource only ProcedureTelemonitoraggio
+// * entry[organization].resource only OrganizationT2

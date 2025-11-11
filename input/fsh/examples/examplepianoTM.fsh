@@ -666,32 +666,32 @@ Description: "Esempio di Bundle nel contesto del Piano di Telemonitoraggio."
 * entry[7].fullUrl = "http://example.org/fhir/Device/device-spo2"
 * entry[7].resource = DevPulsossimetro
 
-* entry[8].fullUrl = "http://example.org/fhir/ActivityDefinition/ad-peso-quotidiano"
-* entry[8].resource = AD-PesoQuotidiano
+// * entry[8].fullUrl = "http://example.org/fhir/ActivityDefinition/ad-peso-quotidiano"
+// * entry[8].resource = AD-PesoQuotidiano
 
-* entry[9].fullUrl = "http://example.org/fhir/ActivityDefinition/ad-pafc-quotidiane"
-* entry[9].resource = AD-PAFC-Quotidiane
+// * entry[9].fullUrl = "http://example.org/fhir/ActivityDefinition/ad-pafc-quotidiane"
+// * entry[9].resource = AD-PAFC-Quotidiane
 
-* entry[10].fullUrl = "http://example.org/fhir/ActivityDefinition/ad-spo2-quotidiana"
-* entry[10].resource = AD-SpO2-Quotidiana
+// * entry[10].fullUrl = "http://example.org/fhir/ActivityDefinition/ad-spo2-quotidiana"
+// * entry[10].resource = AD-SpO2-Quotidiana
 
-* entry[11].fullUrl = "http://example.org/fhir/ObservationDefinition/obsdef-peso"
-* entry[11].resource = ObsDef-Peso
+// * entry[11].fullUrl = "http://example.org/fhir/ObservationDefinition/obsdef-peso"
+// * entry[11].resource = ObsDef-Peso
 
-* entry[12].fullUrl = "http://example.org/fhir/ObservationDefinition/obsdef-pas"
-* entry[12].resource = ObsDef-PAS
+// * entry[12].fullUrl = "http://example.org/fhir/ObservationDefinition/obsdef-pas"
+// * entry[12].resource = ObsDef-PAS
 
-* entry[13].fullUrl = "http://example.org/fhir/ObservationDefinition/obsdef-pad"
-* entry[13].resource = ObsDef-PAD
+// * entry[13].fullUrl = "http://example.org/fhir/ObservationDefinition/obsdef-pad"
+// * entry[13].resource = ObsDef-PAD
 
-* entry[14].fullUrl = "http://example.org/fhir/ObservationDefinition/obsdef-fc"
-* entry[14].resource = ObsDef-FC
+// * entry[14].fullUrl = "http://example.org/fhir/ObservationDefinition/obsdef-fc"
+// * entry[14].resource = ObsDef-FC
 
-* entry[15].fullUrl = "http://example.org/fhir/ObservationDefinition/obsdef-spo2"
-* entry[15].resource = ObsDef-SpO2
+// * entry[15].fullUrl = "http://example.org/fhir/ObservationDefinition/obsdef-spo2"
+// * entry[15].resource = ObsDef-SpO2
 
-* entry[16].fullUrl = "http://example.org/fhir/Observation/obs-diagnosi-tm"
-* entry[16].resource = ObsDiagnosiTM
+* entry[8].fullUrl = "http://example.org/fhir/Observation/obs-diagnosi-tm"
+* entry[8].resource = ObsDiagnosiTM
 
 
 

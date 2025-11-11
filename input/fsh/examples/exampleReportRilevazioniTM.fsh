@@ -67,7 +67,7 @@ Usage: #example
 * valueQuantity.unit = "beats/min"
 * valueQuantity.system = "http://unitsofmeasure.org"
 * valueQuantity.code =  http://unitsofmeasure.org#/min
-* category[0] = http://terminology.hl7.org/CodeSystem/observation-category#activity "Activity"
+* category[0] = http://terminology.hl7.org/CodeSystem/observation-category#vital-signs
 
 //**********Misurazione SpO2**********
 Instance: RilevazioneSpO2
@@ -77,14 +77,14 @@ Title: "SpO2 - 11/11/2025"
 Usage: #example
 * id = "obs-SpO2-2025-11-11"
 * status = #final
-* code = $loinc#59408-5 "Oxygen saturation in Arterial blood by Pulse oximetry"
+* code = $loinc#2708-6 "Oxygen saturation in Arterial blood"
 * subject = Reference(PatientTelemonitoraggioExample)
 * effectiveDateTime = "2025-11-11T07:45:00+01:00"
 * valueQuantity.value = 96
 * valueQuantity.unit = "%"
 * valueQuantity.system = "http://unitsofmeasure.org"
-* valueQuantity.code =  http://unitsofmeasure.org#/%
-* category[0] = http://terminology.hl7.org/CodeSystem/observation-category#activity "Activity"
+* valueQuantity.code =  http://unitsofmeasure.org#%
+* category[0] = http://terminology.hl7.org/CodeSystem/observation-category#vital-signs
 
 /*
 //**********Care Plan Report Rilevazione di telemonitoraggio**********
