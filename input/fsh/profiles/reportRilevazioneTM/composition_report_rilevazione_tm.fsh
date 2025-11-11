@@ -7,6 +7,9 @@ Id: CompositionReportRilevazioneTM
 Description: "Profilo della Composition utilizzata nel contesto del Report Rilevazione di Telemonitoraggio"
 * ^status = #draft
 * type = $loinc#64296-7 (exactly)
+
+* encounter only Reference(EncounterTelemedicina)
+
 * section ^slicing.discriminator.type = #value
 * section ^slicing.discriminator.path = "code"
 * section ^slicing.rules = #open

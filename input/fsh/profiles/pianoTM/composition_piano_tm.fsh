@@ -9,6 +9,8 @@ Description: "Profilo della Composition utilizzata nel contesto del Telemonitora
 * title = "Piano di Telemonitoraggio" (exactly)
 * title ^definition = "Titolo human-readable ufficiale per la Composition."
 
+* encounter only Reference(EncounterTelemedicina)
+
 //Section
 * section
 * section ^slicing.discriminator.type = #value

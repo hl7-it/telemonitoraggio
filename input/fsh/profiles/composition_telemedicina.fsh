@@ -16,7 +16,6 @@ Description: "Profilo base della Composition condiviso in tutti i documenti di T
 
 * subject only Reference(PatientTelemonitoraggio)
 
-* encounter only Reference(EncounterTelemedicina)
 * encounter ^short = "Contesto in cui è stato generato il documento."
 
 * date ^short = "Data di modifica della risorsa da parte del firmatario."
