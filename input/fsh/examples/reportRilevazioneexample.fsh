@@ -133,12 +133,14 @@ Title: "Pressione arteriosa - 09/11/2025"
 * component[0].code = http://loinc.org#8480-6 "Systolic blood pressure"
 * component[0].valueQuantity.value = 118
 * component[0].valueQuantity.unit = "mmHg"
-* valueQuantity.system =  "http://unitsofmeasure.org"
-* valueQuantity.code = http://unitsofmeasure.org#mm[Hg]
+* component[0].valueQuantity.system = "http://unitsofmeasure.org"
+* component[0].valueQuantity.code = http://unitsofmeasure.org#mm[Hg]
 // component: Diastolica
 * component[1].code = http://loinc.org#8462-4 "Diastolic blood pressure"
 * component[1].valueQuantity.value = 74
 * component[1].valueQuantity.unit = "mmHg"
+* component[1].valueQuantity.system = "http://unitsofmeasure.org"
+* component[1].valueQuantity.code = http://unitsofmeasure.org#mm[Hg]
 * note[0].text = "Braccio sinistro, posizione seduta, bracciale adeguato."
 * category[0] = http://terminology.hl7.org/CodeSystem/observation-category#vital-signs
 
@@ -152,7 +154,7 @@ Title: "SpO₂ - 09/11/2025"
 * id = "obs-spo2-2025-11-09"
 * status = #final
 * category[0] = http://terminology.hl7.org/CodeSystem/observation-category#activity "Activity"
-* code = http://loinc.org#59408-5 "Oxygen saturation in Arterial blood by Pulse oximetry"
+* code = http://loinc.org#2708-6 "Oxygen saturation in Arterial blood"
 * subject = Reference(PatientTelemonitoraggioExample)
 * effectiveDateTime = "2025-11-09T08:47:00+01:00"
 * valueQuantity.value = 95
