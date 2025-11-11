@@ -14,7 +14,7 @@ Instance: EsempioCompositionTesserinoDispositiviTM
 InstanceOf: CompositionTesserinoDispositiviTM
 Description: "Esempio di Composition nel contesto del Tesserino Dispositivo di Telemonitoraggio"
 Usage: #example
-* id = "7cbbe77d-dcdb-409b-a215-compTessDisp"
+* id = "composition-tesserinodisp"
 * status = #final
 //rivedere il type
 * type = $loinc#75496-0 "Telehealth Note"
@@ -46,5 +46,5 @@ Description: "Esempio di Bundle nel contesto del Tesserino Dispositivo di Telemo
 * entry[0].fullUrl = "http://example.org/fhir/Composition/composition-tesserinodisp"
 * entry[0].resource = EsempioCompositionTesserinoDispositiviTM
 
-* entry[1].fullUrl = "http://example.org/fhir/Patient/careplan-rilevazione-tm-11-11"
+* entry[1].fullUrl = "http://example.org/fhir/Patient/2e7e0fe3-f0bf-4e0a-8228-b8e7fcec8c82"
 * entry[1].resource = PatientTelemonitoraggioExample

@@ -8,6 +8,7 @@ Instance: CampionePrecedenteEsameRelazioneFinaleTM
 InstanceOf: SpecimenRelazioneFinaleTm
 Description: "Esempio di Specimen nel contesto della Relazione finale di Telemonitoraggio"
 Usage: #example
+* id = "camp-prec-esame"
 * subject = Reference(PatientTelemonitoraggioExample)
 * type = $specType#BLD "Whole blood"
 * collection.method = $sct#129300006 "Puncture - action"
@@ -18,6 +19,7 @@ InstanceOf: ObservationRelazioneFinaleTm
 Description: "Esempio di ObservationRelazioneFinaleTM relativa ad un precedente esame eseguito"
 Usage: #example
 
+* id = "obs-prec-esame"
 * status = #final
 
 * code = $loinc#10346-5	"Hemoglobin A [Units/volume] in Blood by Electrophoresis"
@@ -33,6 +35,8 @@ InstanceOf: CarePlanRelazioneFinaleTM
 Description: "Esempio di CarePlan nel contesto della Relazione finale di Telemonitoraggio"
 Usage: #example
 
+* id = "careplan-relfin-tm"
+
 * identifier[0].system = "http://example.it/fhir/CarePlan/identifier"
 * identifier[0].value = "TM-2025-07-12-123"
 * subject = Reference(PatientTelemonitoraggioExample)
@@ -43,8 +47,7 @@ Usage: #example
 * created = "2025-07-12T16:15:00+01:00"
 
 * activity[+].outcomeReference = Reference(RilevazionePeso)
-* activity[+].outcomeReference = Reference(RilevazionePressioneSistolica)
-* activity[+].outcomeReference = Reference(RilevazionePressioneDiastolica)
+* activity[+].outcomeReference = Reference(RilevazionePressione)
 * activity[+].outcomeReference = Reference(RilevazioneFrequenzaCardiaca)
 * activity[+].outcomeReference = Reference(RilevazioneSpO2)
 
@@ -137,10 +140,10 @@ Description: "Esempio di Bundle nel contesto della Relazione finale di Telemonit
 * entry[0].fullUrl = "http://example.org/fhir/Composition/composition-relfin-tm"
 * entry[0].resource = EsempioCompositionRelazioneFinaleTM
 
-* entry[1].fullUrl = "http://example.org/fhir/Patient/patient-telemonitoraggio"
+* entry[1].fullUrl = "http://example.org/fhir/Patient/2e7e0fe3-f0bf-4e0a-8228-b8e7fcec8c82"
 * entry[1].resource = PatientTelemonitoraggioExample
 
-* entry[2].fullUrl = "http://example.org/fhir/Encounter/encounter-relfin-tm"
+* entry[2].fullUrl = "http://example.org/fhir/Encounter/encounter-relfin"
 * entry[2].resource = EncounterRelazioneFinaleTM-Esempio
 
 * entry[3].fullUrl = "http://example.org/fhir/CarePlan/careplan-relfin-tm"
@@ -152,80 +155,77 @@ Description: "Esempio di Bundle nel contesto della Relazione finale di Telemonit
 * entry[5].fullUrl = "http://example.org/fhir/Practitioner/pract-bianchi"
 * entry[5].resource = MedicoBianchi
 
-* entry[6].fullUrl = "http://example.org/fhir/Organization/org-asl-roma-1"
+* entry[6].fullUrl = "http://example.org/fhir/Organization/asl-roma-1"
 * entry[6].resource = AslRoma1
 
 * entry[7].fullUrl = "http://example.org/fhir/Observation/obs-diagnosi-tm"
 * entry[7].resource = ObsDiagnosiTM
 
-* entry[8].fullUrl = "http://example.org/fhir/Observation/quesito-dx"
+* entry[8].fullUrl = "http://example.org/fhir/Observation/quesito-diagnostico"
 * entry[8].resource = QuesitoDiagnosticoTM
 
-* entry[9].fullUrl = "http://example.org/fhir/Observation/anamnesi-iniziale"
+* entry[9].fullUrl = "http://example.org/fhir/Observation/anamnesi"
 * entry[9].resource = AnamnesiInizialeTM
 
-* entry[10].fullUrl = "http://example.org/fhir/AllergyIntolerance/allergia-acei"
+* entry[10].fullUrl = "http://example.org/fhir/AllergyIntolerance/allergia"
 * entry[10].resource = AllergiaACEi
 
-* entry[11].fullUrl = "http://example.org/fhir/Observation/esame-obiettivo-iniziale"
+* entry[11].fullUrl = "http://example.org/fhir/Observation/esame-obiettivo"
 * entry[11].resource = EsameObiettivoInizialeTM
 
 * entry[12].fullUrl = "http://example.org/fhir/Observation/prec-esame"
 * entry[12].resource = PrecedenteEsameRelazioneFinaleTM
 
-* entry[13].fullUrl = "http://example.org/fhir/Observation/confronto-precedenti"
+* entry[13].fullUrl = "http://example.org/fhir/Observation/confronto-prec-esami"
 * entry[13].resource = ConfrontoPrecedentiEsamiTM
 
-* entry[14].fullUrl = "http://example.org/fhir/Observation/rilevazione1-11-11"
+* entry[14].fullUrl = "http://example.org/fhir/Observation/obs-peso-2025-11-11"
 * entry[14].resource = RilevazionePeso
 
-* entry[15].fullUrl = "http://example.org/fhir/Observation/rilevazione2-11-11"
-* entry[15].resource = RilevazionePressioneDiastolica
+* entry[15].fullUrl = "http://example.org/fhir/Observation/obs-pa-2025-11-11"
+* entry[15].resource = RilevazionePressione
 
-* entry[16].fullUrl = "http://example.org/fhir/Observation/rilevazione3-11-11"
-* entry[16].resource = RilevazionePressioneSistolica
+* entry[16].fullUrl = "http://example.org/fhir/Observation/obs-freqcard-2025-11-11"
+* entry[16].resource = RilevazioneFrequenzaCardiaca
 
-* entry[17].fullUrl = "http://example.org/fhir/Observation/rilevazione4-11-11"
-* entry[17].resource = RilevazioneFrequenzaCardiaca
+* entry[17].fullUrl = "http://example.org/fhir/Observation/obs-SpO2-2025-11-11"
+* entry[17].resource = RilevazioneSpO2
 
-* entry[18].fullUrl = "http://example.org/fhir/Observation/rilevazione5-11-11"
-* entry[18].resource = RilevazioneSpO2
+* entry[18].fullUrl = "http://example.org/fhir/Observation/referto"
+* entry[18].resource = RefertoSintesiTM
 
-* entry[19].fullUrl = "http://example.org/fhir/Observation/referto-sintesi"
-* entry[19].resource = RefertoSintesiTM
+* entry[19].fullUrl = "http://example.org/fhir/Observation/suggerimenti-prescrittore"
+* entry[19].resource = SuggerimentiPrescrittoreTM
 
-* entry[20].fullUrl = "http://example.org/fhir/Observation/suggerimenti-prescrittore"
-* entry[20].resource = SuggerimentiPrescrittoreTM
+* entry[20].fullUrl = "http://example.org/fhir/Observation/accertamenti-controlli"
+* entry[20].resource = AccertamentiControlliTM
 
-* entry[21].fullUrl = "http://example.org/fhir/Observation/accertamenti-controlli"
-* entry[21].resource = AccertamentiControlliTM
+* entry[21].fullUrl = "http://example.org/fhir/Observation/conclusioni"
+* entry[21].resource = ConclusioniTM
 
-* entry[22].fullUrl = "http://example.org/fhir/Observation/conclusioni"
-* entry[22].resource = ConclusioniTM
+* entry[22].fullUrl = "http://example.org/fhir/Procedure/prestazione-tm"
+* entry[22].resource = PrestazioneTM
 
-* entry[23].fullUrl = "http://example.org/fhir/Procedure/prestazione-tm"
-* entry[23].resource = PrestazioneTM
+* entry[23].fullUrl = "http://example.org/fhir/MedicationRequest/terapia-consigliata"
+* entry[23].resource = TerapiaConsigliataTM
 
-* entry[24].fullUrl = "http://example.org/fhir/MedicationRequest/terapia-consigliata"
-* entry[24].resource = TerapiaConsigliataTM
+* entry[24].fullUrl = "http://example.org/fhir/Specimen/camp-prec-esame"
+* entry[24].resource = CampionePrecedenteEsameRelazioneFinaleTM
 
-* entry[25].fullUrl = "http://example.org/fhir/Specimen/camp-prec-esame"
-* entry[25].resource = CampionePrecedenteEsameRelazioneFinaleTM
+* entry[25].fullUrl = "http://example.org/fhir/Device/device-bilancia"
+* entry[25].resource = DevBilancia
 
-* entry[26].fullUrl = "http://example.org/fhir/Device/device-bilancia"
-* entry[26].resource = DevBilancia
+* entry[26].fullUrl = "http://example.org/fhir/Device/device-sfigmo"
+* entry[26].resource = DevSfigmo
 
-* entry[27].fullUrl = "http://example.org/fhir/Device/device-sfigmo"
-* entry[27].resource = DevSfigmo
+* entry[27].fullUrl = "http://example.org/fhir/Device/device-spo2"
+* entry[27].resource = DevPulsossimetro
 
-* entry[28].fullUrl = "http://example.org/fhir/Device/device-spo2"
-* entry[28].resource = DevPulsossimetro
+* entry[28].fullUrl = "http://example.org/fhir/MedicationStatement/terapia-in-atto"
+* entry[28].resource = TerapiaInAttoTM
 
-* entry[29].fullUrl = "http://example.org/fhir/MedicationStatement/terapia-in-atto"
-* entry[29].resource = TerapiaInAttoTM
-
-* entry[30].fullUrl = "http://example.org/fhir/DocumentReference/allegato-educazionale"
-* entry[30].resource = AllegatoEducazionaleTM
+* entry[29].fullUrl = "http://example.org/fhir/DocumentReference/allegato-pdf"
+* entry[29].resource = AllegatoEducazionaleTM
 
 // ========== Alias ==========
 Alias: $loinc = http://loinc.org
@@ -237,16 +237,18 @@ Alias: $sct = http://snomed.info/sct
 Instance: QuesitoDiagnosticoTM
 InstanceOf: ObservationTelemedicina
 Usage: #example
+* id = "quesito-diagnostico"
 * status = #final
 * code.text = "Quesito diagnostico"
 * subject = Reference(PatientTelemonitoraggioExample)
-* effectiveDateTime = "2025-12-07"
+* effectiveDateTime = "2025-11-07"
 * valueString = "Follow-up scompenso cardiaco HFrEF in telemonitoraggio: valutare andamento clinico nel periodo e necessità di modifiche terapeutiche."
 
 // Inquadramento clinico iniziale — Anamnesi
 Instance: AnamnesiInizialeTM
 InstanceOf: ObservationTelemedicina
 Usage: #example
+* id = "anamnesi"
 * status = #final
 * code = $loinc#11329-0 "History of past illness Narrative"
 * subject = Reference(PatientTelemonitoraggioExample)
@@ -257,6 +259,7 @@ Usage: #example
 Instance: AllergiaACEi
 InstanceOf: AllergyIntoleranceTelemedicina
 Usage: #example
+* id = "allergia"
 * clinicalStatus = http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical#active
 * verificationStatus = http://terminology.hl7.org/CodeSystem/allergyintolerance-verification#confirmed
 * code = $sct#373270004 "Adverse reaction to angiotensin-converting-enzyme inhibitor (finding)"
@@ -267,12 +270,14 @@ Usage: #example
 Instance: TerapiaInAttoTM
 InstanceOf: MedicationStatementTelemedicina
 Usage: #example
+* id = "terapia-in-atto"
 * status = #active
 * subject = Reference(PatientTelemonitoraggioExample)
 * effectivePeriod.start = "2025-11-07"
-* medicationCodeableConcept.text = "ACE-inibitore, beta-bloccante, diuretico dell’ansa"
+* medicationCodeableConcept.text = "ACE-inibitore, beta-bloccante, diuretico dell'ansa"
 
 // Inquadramento clinico iniziale — Esame obiettivo
+* id = "esame-obiettivo"
 Instance: EsameObiettivoInizialeTM
 InstanceOf: ObservationTelemedicina
 Usage: #example
@@ -286,6 +291,7 @@ Usage: #example
 Instance: ConfrontoPrecedentiEsamiTM
 InstanceOf: ObservationTelemedicina
 Usage: #example
+* id = "confronto-prec-esami"
 * status = #final
 * code = $loinc#93126-1 "Comparison with previous studies"
 * subject = Reference(PatientTelemonitoraggioExample)
@@ -296,6 +302,7 @@ Usage: #example
 Instance: PrestazioneTM
 InstanceOf: ProcedureTelemonitoraggio
 Usage: #example
+* id = "prestazione-tm"
 * status = #completed
 * subject = Reference(PatientTelemonitoraggioExample)
 * performedPeriod.start = "2025-11-07"
@@ -306,6 +313,7 @@ Usage: #example
 Instance: RefertoSintesiTM
 InstanceOf: ObservationTelemedicina
 Usage: #example
+* id = "referto"
 * status = #final
 * code = $loinc#47045-0 "Interpretation and findings"
 * subject = Reference(PatientTelemonitoraggioExample)
@@ -316,6 +324,7 @@ Usage: #example
 Instance: TerapiaConsigliataTM
 InstanceOf: MedicationRequestTelemedicina
 Usage: #example
+* id = "terapia-consigliata"
 * status = #active
 * intent = #plan
 * subject = Reference(PatientTelemonitoraggioExample)
@@ -327,6 +336,7 @@ Usage: #example
 Instance: SuggerimentiPrescrittoreTM
 InstanceOf: ObservationTelemedicina
 Usage: #example
+* id = "suggerimenti-prescrittore"
 * status = #final
 * code = $loinc#62385-0 "Recommendations to prescriber"
 * subject = Reference(PatientTelemonitoraggioExample)
@@ -337,6 +347,7 @@ Usage: #example
 Instance: AccertamentiControlliTM
 InstanceOf: ObservationTelemedicina
 Usage: #example
+* id = "accertamenti-controlli"
 * status = #final
 * code = $loinc#80615-8 "Follow-up studies recommended"
 * subject = Reference(PatientTelemonitoraggioExample)
@@ -347,6 +358,7 @@ Usage: #example
 Instance: ConclusioniTM
 InstanceOf: ObservationTelemedicina
 Usage: #example
+* id = "conclusioni"
 * status = #final
 * code = $loinc#55110-1 "Clinical impression/plan Narrative"
 * subject = Reference(PatientTelemonitoraggioExample)
@@ -357,6 +369,7 @@ Usage: #example
 Instance: AllegatoEducazionaleTM
 InstanceOf: DocumentReference
 Usage: #example
+* id = "allegato-pdf"
 * status = #current
 * type = $loinc#53576-5 "Personal health monitoring report Document"
 * subject = Reference(PatientTelemonitoraggioExample)
@@ -367,7 +380,9 @@ Usage: #example
 Instance: EncounterRelazioneFinaleTM-Esempio
 InstanceOf: EncounterRelazioneFinaleTm
 Usage: #example
-Description: "Encounter che descrive l’episodio di telemonitoraggio del caso d’uso HFrEF (Tipo I)"
+Description: "Encounter che descrive l'episodio di telemonitoraggio del caso d'uso HFrEF (Tipo I)"
+* id = "encounter-relfin"
+
 * identifier[codiceNosologico].system = "http://agenas.gov.it/sid/codiceNosologico"
 * identifier[codiceNosologico].value = "NOSO-2025-000123"
 

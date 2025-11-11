@@ -10,66 +10,81 @@ Alias: $loinc = http://loinc.org
 Instance: RilevazionePeso
 InstanceOf: ObservationTelemedicina
 Description: "Esempio di ObservationTelemedicina relativa al peso corporeo rilevato nel contesto del Telemonitoraggio"
+Title: "Peso corporeo - 11/11/2025"
 Usage: #example
+* id = "obs-peso-2025-11-11"
 * status = #final
 * code = $loinc#29463-7 "Body weight"
+* subject = Reference(PatientTelemonitoraggioExample)
 * effectiveDateTime = "2025-11-11T07:30:00+01:00"
 * valueQuantity.value = 62.1
 * valueQuantity.unit = "Kg"
 * valueQuantity.system = "http://unitsofmeasure.org"
 * valueQuantity.code =  http://unitsofmeasure.org#kg
+* category[0] = http://terminology.hl7.org/CodeSystem/observation-category#vital-signs
 
-//**********Misurazione pressione sistolica**********
-Instance: RilevazionePressioneSistolica
+//**********Misurazione pressione **********
+Instance: RilevazionePressione
 InstanceOf: ObservationTelemedicina
-Description: "Esempio di ObservationTelemedicina relativa alla pressione sistolica rilevata nel contesto del Telemonitoraggio"
-Usage: #example
+Description: "Esempio di ObservationTelemedicina relativa alla pressione rilevata nel contesto del Telemonitoraggio"
+Title: "Pressione - 11/11/2025"
+* id = "obs-pa-2025-11-11"
 * status = #final
-* code = $loinc#8480-6 "Systolic blood pressure"
-* effectiveDateTime = "2025-11-11T07:45:00+01:00"
-* valueQuantity.value = 132
-* valueQuantity.unit = "mmHg"
-* valueQuantity.system = "http://unitsofmeasure.org"
-* valueQuantity.code =  http://unitsofmeasure.org#/mm[Hg]
-
-//**********Misurazione pressione diastolica**********
-Instance: RilevazionePressioneDiastolica
-InstanceOf: ObservationTelemedicina
-Description: "Esempio di ObservationTelemedicina relativa alla pressione diastolica rilevata nel contesto del Telemonitoraggio"
-Usage: #example
-* status = #final
-* code = $loinc#8462-4 "Diastolic blood pressure"
-* effectiveDateTime = "2025-11-11T07:45:00+01:00"
-* valueQuantity.value = 86
-* valueQuantity.unit = "mmHg"
-* valueQuantity.system = "http://unitsofmeasure.org"
-* valueQuantity.code =  http://unitsofmeasure.org#/mm[Hg]
+* category[0] = http://terminology.hl7.org/CodeSystem/observation-category#activity "Activity"
+* code = http://loinc.org#85354-9 "Blood pressure panel with all children optional"
+* subject = Reference(PatientTelemonitoraggioExample)
+* effectiveDateTime = "2025-11-11T08:32:00+01:00"
+* method.text = "Sfigmomanometro automatico (bracciale)"
+* device = Reference(DevSfigmo)
+* performer[0] = Reference(RoleMedicoBianchiTM)
+// component: Sistolica
+* component[0].code = http://loinc.org#8480-6 "Systolic blood pressure"
+* component[0].valueQuantity.value = 128
+* component[0].valueQuantity.unit = "mmHg"
+* component[0].valueQuantity.system = "http://unitsofmeasure.org"
+* component[0].valueQuantity.code = http://unitsofmeasure.org#mm[Hg]
+// component: Diastolica
+* component[1].code = http://loinc.org#8462-4 "Diastolic blood pressure"
+* component[1].valueQuantity.value = 84
+* component[1].valueQuantity.unit = "mmHg"
+* component[1].valueQuantity.system = "http://unitsofmeasure.org"
+* component[1].valueQuantity.code = http://unitsofmeasure.org#mm[Hg]
+* note[0].text = "Braccio sinistro, posizione seduta, bracciale adeguato."
+* category[0] = http://terminology.hl7.org/CodeSystem/observation-category#vital-signs
 
 //**********Misurazione frequenza cardiaca**********
 Instance: RilevazioneFrequenzaCardiaca
 InstanceOf: ObservationTelemedicina
 Description: "Esempio di ObservationTelemedicina relativa alla frequenza cardiaca rilevata nel contesto del Telemonitoraggio"
+Title: "Frequenza cardiaca - 11/11/2025"
 Usage: #example
+* id = "obs-freqcard-2025-11-11"
 * status = #final
 * code = $loinc#8867-4 "Heart rate"
+* subject = Reference(PatientTelemonitoraggioExample)
 * effectiveDateTime = "2025-11-11T07:45:00+01:00"
 * valueQuantity.value = 80
 * valueQuantity.unit = "beats/min"
 * valueQuantity.system = "http://unitsofmeasure.org"
 * valueQuantity.code =  http://unitsofmeasure.org#/min
+* category[0] = http://terminology.hl7.org/CodeSystem/observation-category#activity "Activity"
 
 //**********Misurazione SpO2**********
 Instance: RilevazioneSpO2
 InstanceOf: ObservationTelemedicina
 Description: "Esempio di ObservationTelemedicina relativa alla SpO2 rilevata nel contesto del Telemonitoraggio"
+Title: "SpO2 - 11/11/2025"
 Usage: #example
+* id = "obs-SpO2-2025-11-11"
 * status = #final
 * code = $loinc#59408-5 "Oxygen saturation in Arterial blood by Pulse oximetry"
+* subject = Reference(PatientTelemonitoraggioExample)
 * effectiveDateTime = "2025-11-11T07:45:00+01:00"
 * valueQuantity.value = 96
 * valueQuantity.unit = "%"
 * valueQuantity.system = "http://unitsofmeasure.org"
 * valueQuantity.code =  http://unitsofmeasure.org#/%
+* category[0] = http://terminology.hl7.org/CodeSystem/observation-category#activity "Activity"
 
 /*
 //**********Care Plan Report Rilevazione di telemonitoraggio**********
@@ -88,8 +103,7 @@ Usage: #example
 * created = "2025-11-11T23:59:00+01:00"
 
 * activity[+].outcomeReference = Reference(RilevazionePeso)
-* activity[+].outcomeReference = Reference(RilevazionePressioneSistolica)
-* activity[+].outcomeReference = Reference(RilevazionePressioneDiastolica)
+* activity[+].outcomeReference = Reference(RilevazionePressione)
 * activity[+].outcomeReference = Reference(RilevazioneFrequenzaCardiaca)
 * activity[+].outcomeReference = Reference(RilevazioneSpO2)
 
@@ -142,11 +156,8 @@ Description: "Esempio di Bundle nel contesto del Report di Rilevazione di Telemo
 * entry[3].fullUrl = "http://example.org/fhir/Observation/rilevazione1-11-11"
 * entry[3].resource = RilevazionePeso
 
-* entry[4].fullUrl = "http://example.org/fhir/Observation/rilevazione2-11-11"
-* entry[4].resource = RilevazionePressioneDiastolica
-
 * entry[5].fullUrl = "http://example.org/fhir/Observation/rilevazione3-11-11"
-* entry[5].resource = RilevazionePressioneSistolica
+* entry[5].resource = RilevazionePressione
 
 * entry[6].fullUrl = "http://example.org/fhir/Observation/rilevazione4-11-11"
 * entry[6].resource = RilevazioneFrequenzaCardiaca
