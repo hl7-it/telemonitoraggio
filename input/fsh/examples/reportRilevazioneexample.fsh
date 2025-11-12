@@ -39,6 +39,7 @@ Description: "Document bundle del Report Rilevazioni quotidiane del 09/11/2025"
 Instance: CompositionReportRilevazioneTM-2025-11-09
 InstanceOf: CompositionReportRilevazioneTM
 Usage: #example
+Description: "Esempio di Composition nel contesto del report rilevazione di telemonitoraggio"
 Title: "Report rilevazioni quotidiane — 09/11/2025"
 * id = "composition-report-rilevazioni-2025-11-09"
 * status = #final
@@ -96,6 +97,7 @@ Title: "Report rilevazioni quotidiane — 09/11/2025"
 Instance: ObsPeso-2025-11-09
 InstanceOf: ObservationTelemedicina
 Usage: #example
+Description: "Esempio di osservazione per il peso corporeo"
 Title: "Peso corporeo - 09/11/2025"
 * id = "obs-peso-2025-11-09"
 * status = #final
@@ -119,6 +121,7 @@ Title: "Peso corporeo - 09/11/2025"
 Instance: ObsPA-2025-11-09
 InstanceOf: ObservationTelemedicina
 Usage: #example
+Description: "Esempio di osservazione per la pressione arteriosa"
 Title: "Pressione arteriosa - 09/11/2025"
 * id = "obs-pa-2025-11-09"
 * status = #final
@@ -150,6 +153,7 @@ Title: "Pressione arteriosa - 09/11/2025"
 Instance: ObsSpO2-2025-11-09
 InstanceOf: ObservationTelemedicina
 Usage: #example
+Description: "Esempio di osservazione per la saturazione di ossigeno"
 Title: "SpO₂ - 09/11/2025"
 * id = "obs-spo2-2025-11-09"
 * status = #final
