@@ -7,7 +7,7 @@ Description: "Profilo di Observation nell'ambito della relazione finale di Telem
 * ^experimental = true
 * effectiveDateTime ^short = "Data e ora dell'osservazione"
 * code ^short = "Tipo di indagine/analisi"
-* valueInteger ^short = "Risultato della misurazione"
+* value[x] ^short = "Risultato della misurazione"
 * referenceRange ^short = "Intervallo di riferimento"
 * specimen ^short = "Campione utilizzato per l'osservazione"
 * specimen only Reference(SpecimenRelazioneFinaleTm)

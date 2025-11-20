@@ -7,6 +7,7 @@ Description: "Profilo della Composition utilizzata nel contesto della Relazione 
 * ^status = #draft
 * title = "Relazione Finale di Telemonitoraggio" (exactly)
 * type = $loinc#53576-5 (exactly)
+* event.code ^short = "Tipologia di accesso"
 * encounter only Reference(EncounterRelazioneFinaleTm)
 * section ^slicing.discriminator.type = #value
 * section ^slicing.discriminator.path = "code"
