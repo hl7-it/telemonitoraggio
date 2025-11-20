@@ -10,6 +10,7 @@ Description: "Profilo base del Device condiviso in tutti i documenti di Telemedi
 * identifier ^definition = "Descrive identificativi business per la risorsa"
 * udiCarrier ^short = "L'UDI utilizza il formato “identificazione automatica e raccolta dei dati” (AIDC), ad esempio codici a barre lineari o 2D e l'identificativo del dispositivo UDI (UDI-DI) utilizza un formato leggibile dall'uomo"
 * udiCarrier ^definition = "Unique device identifier (UDI) assegnato all'etichetta o al pacchetto del dispositivo."
+* 1..
 * manufacturer ^short = "Informazioni del fabbricante."
 * manufactureDate ^short = "Data di fabbricazione"
 * expirationDate ^short = "Data di scadenza (se applicabile)"

@@ -6,11 +6,13 @@ Description: "Profilo dell'ActivityDefinition utilizzato nel contesto di Telemon
 * description ^short = "Descrizione della prestazione pianificata"
 * description ^definition = "Descrizione attività"
 
+* extension contains NumberOfActivitiesPerCycle named numberOfActivitiesPerCycle 0..1
+
 * code ^short = "Codice della prestazione pianificata."
 * timing[x] only Timing
 * timingTiming.repeat.count ^short = "Numero di cicli di attività previsti durante la durata del piano."
 * timingTiming.repeat.duration ^short = "Durata del singolo ciclo."
-* timingTiming.repeat.frequency ^short = "Numero di attività per Ciclo."
+* timingTiming.repeat.frequency ^short = "Frequenza."
 * timingTiming.repeat.timeOfDay ^short = "Fascia orario di svolgimento dell’attività programmata."
 
 * observationRequirement only Reference(ObservationDefinitionPianoTM)

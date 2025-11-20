@@ -478,6 +478,7 @@ Usage: #example
 * title = "Rilevazione peso quotidiana"
 * description = "Misurazione del peso corporeo al mattino, a digiuno, con bilancia connessa."
 * status = #active
+* extension[NumberOfActivitiesPerCycle].valuePositiveInt = 5
 // timing[x] = Timing
 * timingTiming.repeat.frequency = 1
 * timingTiming.repeat.period = 1
