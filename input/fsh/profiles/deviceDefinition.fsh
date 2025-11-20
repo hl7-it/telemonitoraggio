@@ -14,6 +14,7 @@ Description: "Profilo del DeviceDefinition per dispositivi di telemonitoraggio."
 * modelNumber ^short = "Numero di modello"
 
 // Slicing per tipo di property
+* property ^short = "Parametri tecnici del dispositivo "
 * property ^slicing.discriminator[0].type = #value
 * property ^slicing.discriminator[0].path = "type"
 * property ^slicing.rules = #open
