@@ -3,6 +3,86 @@ Alias: $specType = http://terminology.hl7.org/CodeSystem/v2-0487
 Alias: $sct = http://snomed.info/sct
 Alias: $loinc = http://loinc.org
 
+//**********Misurazione peso**********
+Instance: RilevazionePeso
+InstanceOf: ObservationTelemedicina
+Description: "Esempio di ObservationTelemedicina relativa al peso corporeo rilevato nel contesto del Telemonitoraggio"
+Title: "Peso corporeo - 11/11/2025"
+Usage: #example
+* id = "obs-peso-2025-11-11"
+* status = #final
+* code = $loinc#29463-7 "Body weight"
+* subject = Reference(PatientTelemonitoraggioExample)
+* effectiveDateTime = "2025-11-11T07:30:00+01:00"
+* valueQuantity.value = 62.1
+* valueQuantity.unit = "Kg"
+* valueQuantity.system = "http://unitsofmeasure.org"
+* valueQuantity.code =  http://unitsofmeasure.org#kg
+* category[0] = http://terminology.hl7.org/CodeSystem/observation-category#vital-signs
+
+//**********Misurazione pressione **********
+Instance: RilevazionePressione
+InstanceOf: ObservationTelemedicina
+Description: "Esempio di ObservationTelemedicina relativa alla pressione rilevata nel contesto del Telemonitoraggio"
+Title: "Pressione - 11/11/2025"
+* id = "obs-pa-2025-11-11"
+* status = #final
+* category[0] = http://terminology.hl7.org/CodeSystem/observation-category#activity "Activity"
+* code = http://loinc.org#85354-9 "Blood pressure panel with all children optional"
+* subject = Reference(PatientTelemonitoraggioExample)
+* effectiveDateTime = "2025-11-11T08:32:00+01:00"
+* method.text = "Sfigmomanometro automatico (bracciale)"
+* device = Reference(DevSfigmo)
+* performer[0] = Reference(RoleMedicoBianchiTM)
+// component: Sistolica
+* component[0].code = http://loinc.org#8480-6 "Systolic blood pressure"
+* component[0].valueQuantity.value = 128
+* component[0].valueQuantity.unit = "mmHg"
+* component[0].valueQuantity.system = "http://unitsofmeasure.org"
+* component[0].valueQuantity.code = http://unitsofmeasure.org#mm[Hg]
+// component: Diastolica
+* component[1].code = http://loinc.org#8462-4 "Diastolic blood pressure"
+* component[1].valueQuantity.value = 84
+* component[1].valueQuantity.unit = "mmHg"
+* component[1].valueQuantity.system = "http://unitsofmeasure.org"
+* component[1].valueQuantity.code = http://unitsofmeasure.org#mm[Hg]
+* note[0].text = "Braccio sinistro, posizione seduta, bracciale adeguato."
+* category[0] = http://terminology.hl7.org/CodeSystem/observation-category#vital-signs
+
+//**********Misurazione frequenza cardiaca**********
+Instance: RilevazioneFrequenzaCardiaca
+InstanceOf: ObservationTelemedicina
+Description: "Esempio di ObservationTelemedicina relativa alla frequenza cardiaca rilevata nel contesto del Telemonitoraggio"
+Title: "Frequenza cardiaca - 11/11/2025"
+Usage: #example
+* id = "obs-freqcard-2025-11-11"
+* status = #final
+* code = $loinc#8867-4 "Heart rate"
+* subject = Reference(PatientTelemonitoraggioExample)
+* effectiveDateTime = "2025-11-11T07:45:00+01:00"
+* valueQuantity.value = 80
+* valueQuantity.unit = "beats/min"
+* valueQuantity.system = "http://unitsofmeasure.org"
+* valueQuantity.code =  http://unitsofmeasure.org#/min
+* category[0] = http://terminology.hl7.org/CodeSystem/observation-category#vital-signs
+
+//**********Misurazione SpO2**********
+Instance: RilevazioneSpO2
+InstanceOf: ObservationTelemedicina
+Description: "Esempio di ObservationTelemedicina relativa alla SpO2 rilevata nel contesto del Telemonitoraggio"
+Title: "SpO2 - 11/11/2025"
+Usage: #example
+* id = "obs-SpO2-2025-11-11"
+* status = #final
+* code = $loinc#2708-6 "Oxygen saturation in Arterial blood"
+* subject = Reference(PatientTelemonitoraggioExample)
+* effectiveDateTime = "2025-11-11T07:45:00+01:00"
+* valueQuantity.value = 96
+* valueQuantity.unit = "%"
+* valueQuantity.system = "http://unitsofmeasure.org"
+* valueQuantity.code =  http://unitsofmeasure.org#%
+* category[0] = http://terminology.hl7.org/CodeSystem/observation-category#vital-signs
+
 //**********Specimen Relazione finale di telemonitoraggio**********
 Instance: CampionePrecedenteEsameRelazioneFinaleTM
 InstanceOf: SpecimenRelazioneFinaleTm
@@ -56,7 +136,7 @@ Usage: #example
 
 //**********Composition Relazione finale di telemonitoraggio**********
 
-Instance: EsempioCompositionRelazioneFinaleTM
+Instance: CompositionRelazioneFinaleTM
 InstanceOf: CompositionRelazioneFinaleTelemonitoraggio
 Usage: #example
 Description: "Esempio di Composition conforme al profilo della Relazione Finale di Telemonitoraggio"
@@ -64,10 +144,9 @@ Description: "Esempio di Composition conforme al profilo della Relazione Finale 
 * id = "composition-relfin-tm"
 * type = $loinc#53576-5
 * date = "2025-12-07T16:30:00+01:00"
-* title = "Relazione Finale di Telemonitoraggio"
 * subject = Reference(PatientTelemonitoraggioExample)
 * author = Reference(RoleMedicoBianchiTM)
-* encounter = Reference(EncounterRelazioneFinaleTM-Esempio)
+* encounter = Reference(EncounterRelazioneFinale)
 * attester[legalAuthenticator].mode = #legal
 * attester[legalAuthenticator].time = "2025-12-07T16:30:00+01:00"
 * attester[legalAuthenticator].party = Reference(RoleMedicoBianchiTM)
@@ -128,7 +207,7 @@ Description: "Esempio di Composition conforme al profilo della Relazione Finale 
 // ===============================================
 // BUNDLE DOCUMENT del Relazione finale di Telemonitoraggio
 // ===============================================
-Instance: EsempioRelazioneFinaleTM
+Instance: BundleRelazioneFinale
 InstanceOf: BundleRelazioneFinaleTM
 Usage: #example
 Description: "Esempio di Bundle nel contesto della Relazione finale di Telemonitoraggio."
@@ -138,13 +217,13 @@ Description: "Esempio di Bundle nel contesto della Relazione finale di Telemonit
 * timestamp = "2025-12-07T16:30:00+01:00"
 
 * entry[0].fullUrl = "http://example.org/fhir/Composition/composition-relfin-tm"
-* entry[0].resource = EsempioCompositionRelazioneFinaleTM
+* entry[0].resource = CompositionRelazioneFinaleTM
 
 * entry[1].fullUrl = "http://example.org/fhir/Patient/2e7e0fe3-f0bf-4e0a-8228-b8e7fcec8c82"
 * entry[1].resource = PatientTelemonitoraggioExample
 
 * entry[2].fullUrl = "http://example.org/fhir/Encounter/encounter-relfin"
-* entry[2].resource = EncounterRelazioneFinaleTM-Esempio
+* entry[2].resource = EncounterRelazioneFinale
 
 * entry[3].fullUrl = "http://example.org/fhir/CarePlan/careplan-relfin-tm"
 * entry[3].resource = CarePlanRelazioneFinale
@@ -397,10 +476,10 @@ Usage: #example
 * content[0].attachment.url = "http://example.org/files/opuscolo-scompenso.pdf"
 
 
-Instance: EncounterRelazioneFinaleTM-Esempio
+Instance: EncounterRelazioneFinale
 InstanceOf: EncounterRelazioneFinaleTm
 Usage: #example
-Description: "Encounter che descrive l'episodio di telemonitoraggio del caso d'uso HFrEF (Tipo I)"
+Description: "Esempio di encounter che descrive l'episodio di telemonitoraggio del caso d'uso HFrEF (Tipo I)"
 * id = "encounter-relfin"
 
 * identifier[codiceNosologico].system = "http://agenas.gov.it/sid/codiceNosologico"

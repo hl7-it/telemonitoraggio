@@ -33,4 +33,5 @@ Description: "Profilo base del Device condiviso in tutti i documenti di Telemedi
 * definition only Reference(DeviceDefinitionTelemonitoraggio)
 * owner ^short = "Nome e indirizzo dell’istituzione sanitaria che ha effettuato l’assegnazione del dispositivo in oggetto "
 * owner only Reference(OrganizationT2)
+* property ^short = "Parametri tecnici del dispositivo"
 

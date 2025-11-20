@@ -10,7 +10,7 @@ Description: "Esempio di DeviceUseStatement nel contesto del Telemonitoraggio"
 * timingPeriod.start = "2025-11-07T10:20:00+01:00"
 
 //**********Composition Tesserino Dispositivo di telemonitoraggio**********
-Instance: EsempioCompositionTesserinoDispositiviTM
+Instance: CompositionTesserino
 InstanceOf: CompositionTesserinoDispositiviTM
 Description: "Esempio di Composition nel contesto del Tesserino Dispositivo di Telemonitoraggio"
 Usage: #example
@@ -18,7 +18,7 @@ Usage: #example
 * status = #final
 //rivedere il type
 * type = $loinc#75496-0 "Telehealth Note"
-* title = "Tesserino dispositivi"
+* title = "CompositionTesserinoDispositivi"
 * subject = Reference(PatientTelemonitoraggioExample)
 * date = "2025-11-07T10:20:00+01:00"
 * author[0] = Reference(RoleMedicoBianchiTM)
@@ -34,7 +34,7 @@ Usage: #example
 // ===============================================
 // BUNDLE DOCUMENT del Tesserino Dispositivo di Telemonitoraggio
 // ===============================================
-Instance: EsempioTesserinoDispositivoTM
+Instance: BundleTesserinoDispositivo
 InstanceOf: BundleTesserinoDispositiviTM
 Usage: #example
 Description: "Esempio di Bundle nel contesto del Tesserino Dispositivo di Telemonitoraggio."
@@ -44,7 +44,7 @@ Description: "Esempio di Bundle nel contesto del Tesserino Dispositivo di Telemo
 * timestamp = "2025-11-07T10:30:00+01:00"
 
 * entry[0].fullUrl = "http://example.org/fhir/Composition/composition-tesserinodisp"
-* entry[0].resource = EsempioCompositionTesserinoDispositiviTM
+* entry[0].resource = CompositionTesserino
 
 * entry[1].fullUrl = "http://example.org/fhir/Device/device-bilancia"
 * entry[1].resource = DevBilancia

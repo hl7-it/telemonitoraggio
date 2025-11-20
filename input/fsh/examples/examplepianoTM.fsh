@@ -91,7 +91,7 @@ Usage: #example
 Instance: PresidioSandroPertini
 InstanceOf: OrganizationT2
 Title: "Presidio Sandro Pertini"
-Description: "Presidio ospedaliero facente parte di ASL Roma 1"
+Description: "Esempio di Presidio ospedaliero facente parte di ASL Roma 1"
 Usage: #example
 
 * id = "osp-pertini"
@@ -104,7 +104,7 @@ Usage: #example
 Instance: UOCardiologiaPertini
 InstanceOf: OrganizationT3
 Title: "U.O. Cardiologia - Ospedale Pertini"
-Description: "Unità Operativa di Cardiologia afferente all'Ospedale Pertini"
+Description: "Esempio di Unità Operativa di Cardiologia afferente all'Ospedale Pertini"
 Usage: #example
 
 * id = "uo-cardiologia-pertini"
@@ -117,7 +117,7 @@ Instance: Device-Pulsossimetro-Esempio
 InstanceOf: DeviceTelemonitoraggio
 Usage: #example
 Title: "Pulsossimetro - Esempio"
-Description: "Device di teleassistenza per monitoraggio SpO2"
+Description: "Esempio di device di teleassistenza per monitoraggio SpO2"
 * id = "7cbbe77d-dcdb-409b-a215-pulsioss"
 * status = #active
 * identifier[0].system = "http://example.org/fhir/id/device"
@@ -134,38 +134,6 @@ Description: "Device di teleassistenza per monitoraggio SpO2"
 
 * deviceName[modelloDelDevice].name = "Meditech OxiCare Pro"
 * deviceName[modelloDelDevice].type = http://hl7.org/fhir/device-nametype#model-name "Model name"
-
-
-// *************** Esempi per il Tesserino Dispositivo *******************
-Instance: Pulsossimetro-DeviceUseStatement-Esempio
-InstanceOf: DeviceUseStatementTelemonitoraggio
-Usage: #example
-Title: "Use statetement pulsossimetro - Esempio"
-Description: "Assegnazione del device per il monitoraggio SpO2 al paziente"
-* id = "7cbbe77d-dcdb-409b-a215-tessdisp"
-* subject = Reference(PatientTelemonitoraggioExample)
-* device = Reference(Device-Pulsossimetro-Esempio)
-* timingPeriod.start = "2025-06-16T10:30:00+02:00"
-
-Instance: CompositionTesserinoDispositiviTM-Esempio
-InstanceOf: CompositionTesserinoDispositiviTM
-Title: "Esempio di Tesserino Dispositivo"
-Description: "Tesserino Dispositivo contenente tutte le informazioni obbligatorie"
-Usage: #example
-* id = "7cbbe77d-dcdb-409b-a215-comptess"
-* status = #final
-//rivedere il type
-* type = $loinc#75496-0 "Telehealth Note"
-* title = "Tesserino dispositivi"
-* subject = Reference(PatientTelemonitoraggioExample)
-* date = "2025-06-16T10:30:00+02:00"
-* author = Reference(PractitionerRoleTelemonitoraggioConsulenteExample)
-* attester[legalAuthenticator].mode = #legal
-* attester[legalAuthenticator].time = "2025-06-16T10:30:00+02:00"
-* attester[legalAuthenticator].party = Reference(PractitionerRoleTelemonitoraggioConsulenteExample)
-* section[informazioniDevice].code = $loinc#104972-5
-* section[informazioniDevice].title = "Informazioni sul dispositivo"
-* section[informazioniDevice].entry[0] = Reference(Pulsossimetro-DeviceUseStatement-Esempio)
 
 /*
   PIANO DI TELEMONITORAGGIO: Caso d’uso: Scompenso cardiaco in follow-up (Telemonitoraggio di Tipo I)
@@ -550,14 +518,13 @@ Usage: #example
 
 //**********Composition Piano di telemonitoraggio**********
 
-Instance: EsempioCompositionPianoTM
+Instance: CompositionPianoTelemonitoraggio
 InstanceOf: CompositionPianoTM
 Description: "Esempio di Composition nel contesto del Piano di Telemonitoraggio"
 Usage: #example
 * status = #final
 * type = $loinc#53576-5 "Personal health monitoring report Document"
 * date = "2025-11-07T10:00:00+01:00"
-* title = "Piano di Telemonitoraggio"
 * subject = Reference(PatientTelemonitoraggioExample)
 * author = Reference(RoleMedicoBianchiTM)
 * id = "composition-piano-tm-1"
@@ -569,14 +536,14 @@ Usage: #example
 * event[0].period.end = "2025-12-07"
 
 * section[pianoDiCura].code = $loinc#18776-5
-* section[pianoDiCura].entry[0] = Reference(CarePlanPiano)
+* section[pianoDiCura].entry[0] = Reference(CarePlanPianoTM)
 
 * section[diagnosi].code = $loinc#29548-5
 * section[diagnosi].entry[0] = Reference(ObsDiagnosiTM)
 
 
 //**********Care Plan Piano di telemonitoraggio**********
-Instance: CarePlanPiano
+Instance: CarePlanPianoTM
 InstanceOf: CarePlanPianoDiCuraTelemonitoraggio
 Description: "Esempio di CarePlan nel contesto del Piano di Telemonitoraggio"
 Usage: #example
@@ -625,7 +592,7 @@ Usage: #example
 // ===============================================
 // BUNDLE DOCUMENT del Piano di Telemonitoraggio
 // ===============================================
-Instance: EsempioPianoDiTelemonitoraggio
+Instance: BundlePianoDiTelemonitoraggio
 InstanceOf: BundlePianoTM
 Usage: #example
 Description: "Esempio di Bundle nel contesto del Piano di Telemonitoraggio."
@@ -635,10 +602,10 @@ Description: "Esempio di Bundle nel contesto del Piano di Telemonitoraggio."
 * timestamp = "2025-11-07T10:20:00+01:00"
 
 * entry[0].fullUrl = "http://example.org/fhir/Composition/composition-piano-tm-1"
-* entry[0].resource = EsempioCompositionPianoTM
+* entry[0].resource = CompositionPianoTelemonitoraggio
 
 * entry[1].fullUrl = "http://example.org/fhir/CarePlan/careplan-tm-1"
-* entry[1].resource = CarePlanPiano
+* entry[1].resource = CarePlanPianoTM
 
 * entry[2].fullUrl = "http://example.org/fhir/Patient/2e7e0fe3-f0bf-4e0a-8228-b8e7fcec8c82"
 * entry[2].resource = PatientTelemonitoraggioExample

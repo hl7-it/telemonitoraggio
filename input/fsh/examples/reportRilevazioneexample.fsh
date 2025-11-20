@@ -1,23 +1,23 @@
 // =======================================
 // BUNDLE document — Report 09/11/2025
 // =======================================
-Instance: BundleReportRilevazioni-2025-11-09
+Instance: BundleReportRilevazioni
 InstanceOf: BundleReportRilevazioniTM
 Usage: #example
-Description: "Document bundle del Report Rilevazioni quotidiane del 09/11/2025"
+Description: "Esempio di Bundle nel contesto del Report Rilevazioni di Telemonitoraggio"
 * type = #document
 * identifier.system = "urn:ietf:rfc:3986"
 * identifier.value = "urn:uuid:bundle-report-2025-11-09"
 * timestamp = "2025-11-09T09:05:00+01:00"
 
 * entry[0].fullUrl = "http://example.org/fhir/Composition/composition-report-rilevazioni-2025-11-09"
-* entry[0].resource = CompositionReportRilevazioneTM-2025-11-09
+* entry[0].resource = CompositionReportRilevazione
 
 * entry[1].fullUrl = "http://example.org/fhir/Patient/2e7e0fe3-f0bf-4e0a-8228-b8e7fcec8c82"
 * entry[1].resource = PatientTelemonitoraggioExample
 
 * entry[2].fullUrl = "http://example.org/fhir/CarePlan/careplan-report-2025-11-09"
-* entry[2].resource = CarePlanReportRilevazioneTM-2025-11-09
+* entry[2].resource = CarePlanReportRilevazione
 
 * entry[3].fullUrl = "http://example.org/fhir/Observation/obs-peso-2025-11-09"
 * entry[3].resource = ObsPeso-2025-11-09
@@ -36,11 +36,11 @@ Description: "Document bundle del Report Rilevazioni quotidiane del 09/11/2025"
 // =======================================
 // COMPOSITION Report Rilevazione TM
 // =======================================
-Instance: CompositionReportRilevazioneTM-2025-11-09
+Instance: CompositionReportRilevazione
 InstanceOf: CompositionReportRilevazioneTM
 Usage: #example
 Description: "Esempio di Composition nel contesto del report rilevazione di telemonitoraggio"
-Title: "Report rilevazioni quotidiane — 09/11/2025"
+Title: "CompositionReportRilevazione"
 * id = "composition-report-rilevazioni-2025-11-09"
 * status = #final
 * type = http://loinc.org#64296-7
@@ -54,16 +54,17 @@ Title: "Report rilevazioni quotidiane — 09/11/2025"
 
 * section[pianoDiCura].code = http://loinc.org#18776-5
 * section[pianoDiCura].title = "Riepilogo del piano e degli esiti di giornata"
-* section[pianoDiCura].entry[0] = Reference(CarePlanReportRilevazioneTM-2025-11-09)
+* section[pianoDiCura].entry[0] = Reference(CarePlanReportRilevazione)
 
 // =======================================
 // CARE PLAN Report Rilevazione TM
 // =======================================
 
-Instance: CarePlanReportRilevazioneTM-2025-11-09
+Instance: CarePlanReportRilevazione
 InstanceOf: CarePlanReportRilevazioneTM
 Usage: #example
-Title: "Report rilevazioni quotidiane — 09/11/2025"
+Title: "CareplanReportRilevazioni"
+Description: "Esempio di Careplan nel contesto del report rilevazione di telemonitoraggio"
 * id = "careplan-report-2025-11-09"
 * identifier[0].value = "RPT-2025-11-09-0001"
 * subject = Reference(PatientTelemonitoraggioExample)
