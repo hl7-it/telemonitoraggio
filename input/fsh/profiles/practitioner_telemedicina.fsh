@@ -6,9 +6,8 @@ Description: "Profilo base del Practitioner condiviso in tutti i documenti di Te
 * ^status = #active
 
 * identifier 1..
-* identifier ^slicing.discriminator.type = #pattern
-* identifier ^slicing.discriminator.path = "$this"
-* identifier ^slicing.description = "Slice based on the identifier pattern"
+* identifier ^slicing.discriminator.type = #value
+* identifier ^slicing.discriminator.path = "$this.system"
 * identifier ^slicing.rules = #open
 * identifier ^short = "Identificativo dell'operatore sanitario"
 * identifier ^definition = "Un identificatore che si applica a questa persona in questo ruolo."
