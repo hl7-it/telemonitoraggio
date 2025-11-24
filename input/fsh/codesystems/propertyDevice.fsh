@@ -11,7 +11,7 @@ Description: "Codifica dei tipi di property utilizzate nei DeviceDefinition di t
 * ^experimental = false
 * #tipoAlimentazione "Tipo di alimentazione" "Tipologia di alimentazione elettrica del dispositivo (es. rete, batterie, ricaricabile)."
 * #tipoCollegamento "Tipo di collegamento" "Tipologia di collegamento dati del dispositivo (es. Bluetooth, Wi-Fi, cellulare)."
-
+* #parametriTecnici "Parametri tecnici dispositivo" "Parametri tecnici dispositivo."
 // ===============================
 // ValueSet: Tipo di property del DeviceDefinition
 // ===============================

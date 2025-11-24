@@ -139,6 +139,7 @@ Usage: #example
 Instance: CompositionRelazioneFinaleTM
 InstanceOf: CompositionRelazioneFinaleTelemonitoraggio
 Usage: #example
+Title: "CompositionRelazioneFinaleTM"
 Description: "Esempio di Composition conforme al profilo della Relazione Finale di Telemonitoraggio"
 * status = #final
 * id = "composition-relfin-tm"

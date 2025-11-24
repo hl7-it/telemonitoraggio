@@ -520,6 +520,7 @@ Usage: #example
 
 Instance: CompositionPianoTelemonitoraggio
 InstanceOf: CompositionPianoTM
+Title: "CompositionPianoTelemonitoraggio"
 Description: "Esempio di Composition nel contesto del Piano di Telemonitoraggio"
 Usage: #example
 * status = #final

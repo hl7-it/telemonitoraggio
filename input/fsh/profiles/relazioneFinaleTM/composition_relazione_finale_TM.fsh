@@ -44,7 +44,8 @@ Description: "Profilo della Composition utilizzata nel contesto della Relazione 
     esameObiettivo 0..1
 * section[inquadramentoClinicoIniziale].section[anamnesi] ^sliceName = "anamnesi"
 * section[inquadramentoClinicoIniziale].section[anamnesi].code = $loinc#11329-0  
-* section[inquadramentoClinicoIniziale].section[anamnesi].entry only Reference(ObservationTelemedicina)
+* section[inquadramentoClinicoIniziale].section[anamnesi].entry only Reference(ObservationTelemonitoraggioNarrative)
+* section[inquadramentoClinicoIniziale].section[anamnesi] obeys sec-obs-code-match
 * section[inquadramentoClinicoIniziale].section[allergie] ^sliceName = "allergie"
 * section[inquadramentoClinicoIniziale].section[allergie].code = $loinc#48765-2 (exactly)
 * section[inquadramentoClinicoIniziale].section[allergie].entry only Reference(AllergyIntoleranceTelemedicina)
@@ -53,13 +54,16 @@ Description: "Profilo della Composition utilizzata nel contesto della Relazione 
 * section[inquadramentoClinicoIniziale].section[terapiaFarmacologicaInAtto].entry only Reference(MedicationStatementTelemedicina)
 * section[inquadramentoClinicoIniziale].section[esameObiettivo] ^sliceName = "esameObiettivo"
 * section[inquadramentoClinicoIniziale].section[esameObiettivo].code = $loinc#29545-1 (exactly)
-* section[inquadramentoClinicoIniziale].section[esameObiettivo].entry only Reference(ObservationTelemedicina)
+* section[inquadramentoClinicoIniziale].section[esameObiettivo].entry only Reference(ObservationTelemonitoraggioNarrative)
+* section[inquadramentoClinicoIniziale].section[esameObiettivo] obeys sec-obs-code-match
 * section[precedentiEsamiEseguiti] ^sliceName = "precedentiEsamiEseguiti"
 * section[precedentiEsamiEseguiti].code = $loinc#30954-2 (exactly)
-* section[precedentiEsamiEseguiti].entry only Reference(ObservationRelazioneFinaleTm)
+* section[precedentiEsamiEseguiti].entry only Reference(ObservationTelemonitoraggioNarrative)
+* section[precedentiEsamiEseguiti] obeys sec-obs-code-match
 * section[confrontoPrecedentiEsamiEseguiti] ^sliceName = "confrontoPrecedentiEsamiEseguiti"
 * section[confrontoPrecedentiEsamiEseguiti].code = $loinc#93126-1 (exactly)
-* section[confrontoPrecedentiEsamiEseguiti].entry only Reference(ObservationTelemedicina)
+* section[confrontoPrecedentiEsamiEseguiti].entry only Reference(ObservationTelemonitoraggioNarrative)
+* section[confrontoPrecedentiEsamiEseguiti] obeys sec-obs-code-match
 * section[prestazioni] ^sliceName = "prestazioni"
 * section[prestazioni].code = $loinc#62387-6 (exactly)
 * section[prestazioni].entry only Reference(ProcedureTelemonitoraggio)
@@ -68,19 +72,30 @@ Description: "Profilo della Composition utilizzata nel contesto della Relazione 
 * section[diagnosi].entry only Reference(ObservationTelemedicina)
 * section[referto] ^sliceName = "referto"
 * section[referto].code = $loinc#47045-0 (exactly)
-* section[referto].entry only Reference(ObservationTelemedicina)
+* section[referto].entry only Reference(ObservationTelemonitoraggioNarrative)
+* section[referto] obeys sec-obs-code-match
 * section[terapiaFarmacologicaConsigliata] ^sliceName = "terapiaFarmacologicaConsigliata"
 * section[terapiaFarmacologicaConsigliata].code = $loinc#93341-6 (exactly)
 * section[terapiaFarmacologicaConsigliata].entry only Reference(MedicationRequestTelemedicina)
 * section[suggerimentiPerMedicoPrescrittore] ^sliceName = "suggerimentiPerMedicoPrescrittore"
 * section[suggerimentiPerMedicoPrescrittore].code = $loinc#62385-0 (exactly)
-* section[suggerimentiPerMedicoPrescrittore].entry only Reference(ObservationTelemedicina)
+* section[suggerimentiPerMedicoPrescrittore].entry only Reference(ObservationTelemonitoraggioNarrative)
+* section[suggerimentiPerMedicoPrescrittore] obeys sec-obs-code-match
 * section[accertamentiControlliConsigliati] ^sliceName = "accertamentiControlliConsigliati"
 * section[accertamentiControlliConsigliati].code = $loinc#80615-8 (exactly)
-* section[accertamentiControlliConsigliati].entry only Reference(ObservationTelemedicina)
+* section[accertamentiControlliConsigliati].entry only Reference(ObservationTelemonitoraggioNarrative)
+* section[accertamentiControlliConsigliati] obeys sec-obs-code-match
 * section[conclusioni] ^sliceName = "conclusioni"
-* section[conclusioni].entry only Reference(ObservationTelemedicina)
+* section[conclusioni].entry only Reference(ObservationTelemonitoraggioNarrative)
 * section[conclusioni].code = $loinc#55110-1  
+* section[conclusioni] obeys sec-obs-code-match
 * section[allegati] ^sliceName = "allegati"
 * section[allegati].entry only Reference(DocumentReference or Binary or Media)
 * section[allegati].code = $loinc#77599-9  
+
+
+// Invariante valutato su Composition.section
+Invariant: sec-obs-code-match
+Severity: #error
+Description: "Ogni ObservationNarrative in section.entry deve condividere il code con section.code."
+Expression: "entry.reference.resolve().ofType(Observation).empty() or entry.reference.resolve().ofType(Observation).where(code.coding.where(code.exists()).code.intersect(%context.code.coding.where(code.exists()).code).empty()).empty()"
